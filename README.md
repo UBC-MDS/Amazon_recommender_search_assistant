@@ -104,8 +104,3 @@ Open and run `notebooks/milestone1_exploration.ipynb` to download and preprocess
 ```bash
 streamlit run app/app.py
 ```
-
-## Notes
-
-- Data files are not committed to the repo. Run the EDA notebook first to generate them.
-- The `.env` file should never be committed -- it is listed in `.gitignore`.
