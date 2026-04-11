@@ -31,7 +31,6 @@ We download a working subset (~20K reviews) using DuckDB and store it as parquet
 2. Convert to parquet format locally for fast repeated queries
 3. Join reviews with metadata on `parent_asin`
 4. Drop rows with missing review text or product title
-5. Create a combined text field for retrieval (product title + description + review text)
 
 Preprocessing details and justifications are documented in `notebooks/milestone1_exploration.ipynb`.
 
