@@ -166,8 +166,19 @@ def discover_data_file(data_dir: Path | None = None) -> Path | None:
     if not root.exists():
         return None
 
-    for pattern in ("*.csv", "*.parquet", "*.jsonl.gz", "*.jsonl", "*.json.gz", "*.json"):
-        matches = sorted(root.glob(pattern))
+    preferred_names = [
+        "appliances_clean.parquet",
+        "appliances_merged.parquet",
+        "clean.parquet",
+        "merged.parquet",
+    ]
+    for name in preferred_names:
+        candidate = root / name
+        if candidate.exists() and candidate.is_file():
+            return candidate
+
+    for pattern in ("*.parquet", "*.jsonl.gz", "*.jsonl", "*.json.gz", "*.json", "*.csv"):
+        matches = [path for path in sorted(root.glob(pattern)) if path.name.lower() != "feedback.csv"]
         if matches:
             return matches[0]
     return None
