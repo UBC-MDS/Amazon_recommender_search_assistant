@@ -96,6 +96,9 @@ class SemanticRetriever:
         self.documents = documents
         self.text_field = text_field
         self._texts = [normalize_text(document.get(self.text_field, "")) for document in documents]
+        self._backend = "tfidf"
+        self._model = None
+        self._embeddings: list[list[float]] = []
         self._doc_vectors: list[dict[str, float]] = []
         self._doc_norms: list[float] = []
         self._term_document_frequency: dict[str, int] = {}
@@ -103,6 +106,17 @@ class SemanticRetriever:
         self.fit()
 
     def fit(self) -> "SemanticRetriever":
+        try:
+            from sentence_transformers import SentenceTransformer
+
+            self._model = SentenceTransformer("all-MiniLM-L6-v2")
+            embeddings = self._model.encode(self._texts, normalize_embeddings=True)
+            self._embeddings = [list(vector) for vector in embeddings.tolist()]
+            self._backend = "sentence-transformers"
+            return self
+        except Exception:
+            self._backend = "tfidf"
+
         self._term_document_frequency = {}
         tokenized_documents = [tokenize(text) for text in self._texts]
         for tokens in tokenized_documents:
@@ -137,14 +151,29 @@ class SemanticRetriever:
         dot_product = sum(query_vector[token] * document_vector[token] for token in overlap)
         return dot_product / (query_norm * document_norm)
 
+    def _cosine_dense(self, query_vector: list[float], document_vector: list[float]) -> float:
+        if not query_vector or not document_vector:
+            return 0.0
+        dot_product = sum(query_value * document_value for query_value, document_value in zip(query_vector, document_vector))
+        query_norm = sqrt(sum(value * value for value in query_vector))
+        document_norm = sqrt(sum(value * value for value in document_vector))
+        if query_norm == 0.0 or document_norm == 0.0:
+            return 0.0
+        return dot_product / (query_norm * document_norm)
+
     def search(self, query: str, top_k: int = 5) -> list[SearchResult]:
         if not query:
             return []
 
-        query_tokens = tokenize(query)
-        query_vector = self._build_tfidf_vector(query_tokens)
-        query_norm = sqrt(sum(weight * weight for weight in query_vector.values()))
-        scores = [self._cosine_similarity(query_vector, query_norm, document_vector, document_norm) for document_vector, document_norm in zip(self._doc_vectors, self._doc_norms)]
+        if self._backend == "sentence-transformers" and self._model is not None:
+            query_embedding = self._model.encode([query], normalize_embeddings=True)
+            query_vector = list(query_embedding.tolist()[0])
+            scores = [self._cosine_dense(query_vector, document_vector) for document_vector in self._embeddings]
+        else:
+            query_tokens = tokenize(query)
+            query_vector = self._build_tfidf_vector(query_tokens)
+            query_norm = sqrt(sum(weight * weight for weight in query_vector.values()))
+            scores = [self._cosine_similarity(query_vector, query_norm, document_vector, document_norm) for document_vector, document_norm in zip(self._doc_vectors, self._doc_norms)]
 
         ranked = [item for item in sorted(enumerate(scores), key=lambda item: item[1], reverse=True) if item[1] > 0.0][:top_k]
         return [SearchResult(document=self.documents[index], score=float(score), method="Semantic") for index, score in ranked]
