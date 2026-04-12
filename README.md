@@ -40,8 +40,14 @@ Preprocessing details and justifications are documented in `notebooks/milestone1
 ### BM25 (keyword search)
 Lexical retrieval using a lightweight in-repo BM25 implementation. Documents are tokenized with lowercasing and basic punctuation removal. Returns top-k results ranked by BM25 score. Implementation in `src/bm25.py`.
 
+Persistence:
+- Tokenized corpus and BM25 index are saved to `data/processed/bm25_index.pkl`.
+
 ### Semantic Search (embedding-based)
 Uses `sentence-transformers` (`all-MiniLM-L6-v2`) when available, with a TF-IDF cosine-similarity fallback in this workspace. Implementation in `src/semantic.py`.
+
+Persistence:
+- When sentence-transformers is available, a FAISS index and metadata are saved under `data/processed/semantic_faiss/`.
 
 ## Step 4: Qualitative Evaluation
 
@@ -140,6 +146,19 @@ Open and run `notebooks/milestone1_exploration.ipynb` to download and preprocess
 ```bash
 streamlit run app/app.py
 ```
+
+### 5.1 Build persistent indexes (recommended before running app)
+
+```bash
+python -m src.build_indexes
+```
+
+This creates:
+- `data/processed/bm25_index.pkl`
+- `data/processed/semantic_faiss/index.faiss`
+- `data/processed/semantic_faiss/metadata.json`
+
+The app automatically loads these persisted indexes when present.
 
 ### 6. Generate the Step 4 report
 

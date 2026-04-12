@@ -18,7 +18,25 @@ from src.ranking import BM25Retriever, HybridRetriever, SemanticRetriever, ensur
 
 def _build_indexes(data_path: str | None = None):
     documents = ensure_search_text(load_documents(data_path=data_path))
-    return documents, BM25Retriever(documents), SemanticRetriever(documents), HybridRetriever(documents)
+    processed_dir = ROOT / "data" / "processed"
+    bm25_index_path = processed_dir / "bm25_index.pkl"
+    semantic_index_dir = processed_dir / "semantic_faiss"
+
+    if data_path is None and bm25_index_path.exists():
+        bm25 = BM25Retriever.load_index(bm25_index_path)
+    else:
+        bm25 = BM25Retriever(documents)
+
+    if data_path is None and (semantic_index_dir / "index.faiss").exists() and (semantic_index_dir / "metadata.json").exists():
+        try:
+            semantic = SemanticRetriever.load_index(semantic_index_dir)
+        except Exception:
+            semantic = SemanticRetriever(documents)
+    else:
+        semantic = SemanticRetriever(documents)
+
+    hybrid = HybridRetriever(documents, bm25=bm25, semantic=semantic)
+    return documents, bm25, semantic, hybrid
 
 
 @st.cache_resource(show_spinner=False)

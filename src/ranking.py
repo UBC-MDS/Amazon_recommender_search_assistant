@@ -5,8 +5,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 from math import log
 from math import sqrt
+from pathlib import Path
 from typing import Any
+import json
+import pickle
 import re
+
+import numpy as np
 
 from .data_io import normalize_text
 
@@ -88,6 +93,42 @@ class BM25Retriever:
         ranked = [item for item in sorted(enumerate(scores), key=lambda item: item[1], reverse=True) if item[1] > 0.0][:top_k]
         return [SearchResult(document=self.documents[index], score=float(score), method="BM25") for index, score in ranked]
 
+    def save_index(self, output_path: str | Path) -> Path:
+        """Persist BM25 index state to disk using pickle."""
+        path = Path(output_path)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        payload = {
+            "documents": self.documents,
+            "text_field": self.text_field,
+            "k1": self.k1,
+            "b": self.b,
+            "doc_tokens": self._doc_tokens,
+            "doc_lengths": self._doc_lengths,
+            "doc_freq": self._doc_freq,
+            "avg_doc_length": self._avg_doc_length,
+        }
+        with path.open("wb") as handle:
+            pickle.dump(payload, handle)
+        return path
+
+    @classmethod
+    def load_index(cls, input_path: str | Path) -> "BM25Retriever":
+        """Load a persisted BM25 index from disk."""
+        path = Path(input_path)
+        with path.open("rb") as handle:
+            payload = pickle.load(handle)
+
+        retriever = cls.__new__(cls)
+        retriever.documents = payload["documents"]
+        retriever.text_field = payload["text_field"]
+        retriever.k1 = payload["k1"]
+        retriever.b = payload["b"]
+        retriever._doc_tokens = payload["doc_tokens"]
+        retriever._doc_lengths = payload["doc_lengths"]
+        retriever._doc_freq = payload["doc_freq"]
+        retriever._avg_doc_length = payload["avg_doc_length"]
+        return retriever
+
 
 class SemanticRetriever:
     """Semantic retriever using sentence-transformers when available, with TF-IDF fallback."""
@@ -97,8 +138,10 @@ class SemanticRetriever:
         self.text_field = text_field
         self._texts = [normalize_text(document.get(self.text_field, "")) for document in documents]
         self._backend = "tfidf"
+        self._model_name = "all-MiniLM-L6-v2"
         self._model = None
         self._embeddings: list[list[float]] = []
+        self._faiss_index = None
         self._doc_vectors: list[dict[str, float]] = []
         self._doc_norms: list[float] = []
         self._term_document_frequency: dict[str, int] = {}
@@ -109,7 +152,7 @@ class SemanticRetriever:
         try:
             from sentence_transformers import SentenceTransformer
 
-            self._model = SentenceTransformer("all-MiniLM-L6-v2")
+            self._model = SentenceTransformer(self._model_name)
             embeddings = self._model.encode(self._texts, normalize_embeddings=True)
             self._embeddings = [list(vector) for vector in embeddings.tolist()]
             self._backend = "sentence-transformers"
@@ -165,6 +208,17 @@ class SemanticRetriever:
         if not query:
             return []
 
+        if self._backend == "faiss" and self._model is not None and self._faiss_index is not None:
+            query_embedding = self._model.encode([query], normalize_embeddings=True)
+            query_vector = np.asarray(query_embedding, dtype="float32")
+            scores, indices = self._faiss_index.search(query_vector, min(top_k, len(self.documents)))
+            ranked = [
+                (int(index), float(score))
+                for index, score in zip(indices[0].tolist(), scores[0].tolist())
+                if index >= 0 and score > 0.0
+            ]
+            return [SearchResult(document=self.documents[index], score=score, method="Semantic") for index, score in ranked]
+
         if self._backend == "sentence-transformers" and self._model is not None:
             query_embedding = self._model.encode([query], normalize_embeddings=True)
             query_vector = list(query_embedding.tolist()[0])
@@ -178,16 +232,75 @@ class SemanticRetriever:
         ranked = [item for item in sorted(enumerate(scores), key=lambda item: item[1], reverse=True) if item[1] > 0.0][:top_k]
         return [SearchResult(document=self.documents[index], score=float(score), method="Semantic") for index, score in ranked]
 
+    def save_index(self, index_dir: str | Path) -> Path:
+        """Persist semantic FAISS index and metadata to disk."""
+        if self._backend != "sentence-transformers" or not self._embeddings:
+            raise ValueError("Semantic FAISS index requires sentence-transformers embeddings.")
+
+        import faiss
+
+        directory = Path(index_dir)
+        directory.mkdir(parents=True, exist_ok=True)
+        index_path = directory / "index.faiss"
+        metadata_path = directory / "metadata.json"
+
+        matrix = np.asarray(self._embeddings, dtype="float32")
+        faiss.normalize_L2(matrix)
+        index = faiss.IndexFlatIP(matrix.shape[1])
+        index.add(matrix)
+        faiss.write_index(index, str(index_path))
+
+        metadata = {
+            "documents": self.documents,
+            "text_field": self.text_field,
+            "model_name": self._model_name,
+        }
+        metadata_path.write_text(json.dumps(metadata), encoding="utf-8")
+        return directory
+
+    @classmethod
+    def load_index(cls, index_dir: str | Path) -> "SemanticRetriever":
+        """Load a persisted FAISS semantic index and model."""
+        import faiss
+        from sentence_transformers import SentenceTransformer
+
+        directory = Path(index_dir)
+        index_path = directory / "index.faiss"
+        metadata_path = directory / "metadata.json"
+        metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+
+        retriever = cls.__new__(cls)
+        retriever.documents = metadata["documents"]
+        retriever.text_field = metadata.get("text_field", "search_text")
+        retriever._texts = [normalize_text(document.get(retriever.text_field, "")) for document in retriever.documents]
+        retriever._backend = "faiss"
+        retriever._model_name = metadata.get("model_name", "all-MiniLM-L6-v2")
+        retriever._model = SentenceTransformer(retriever._model_name)
+        retriever._embeddings = []
+        retriever._faiss_index = faiss.read_index(str(index_path))
+        retriever._doc_vectors = []
+        retriever._doc_norms = []
+        retriever._term_document_frequency = {}
+        retriever._document_count = len(retriever._texts)
+        return retriever
+
 
 class HybridRetriever:
     """Combine BM25 and semantic scores using normalized score fusion."""
 
-    def __init__(self, documents: list[dict[str, Any]], bm25_weight: float = 0.5, semantic_weight: float = 0.5):
+    def __init__(
+        self,
+        documents: list[dict[str, Any]],
+        bm25_weight: float = 0.5,
+        semantic_weight: float = 0.5,
+        bm25: BM25Retriever | None = None,
+        semantic: SemanticRetriever | None = None,
+    ):
         self.documents = documents
         self.bm25_weight = bm25_weight
         self.semantic_weight = semantic_weight
-        self.bm25 = BM25Retriever(documents)
-        self.semantic = SemanticRetriever(documents)
+        self.bm25 = bm25 or BM25Retriever(documents)
+        self.semantic = semantic or SemanticRetriever(documents)
 
     def search(self, query: str, top_k: int = 5) -> list[SearchResult]:
         if not query:
