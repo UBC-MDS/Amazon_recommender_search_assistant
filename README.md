@@ -37,10 +37,41 @@ Preprocessing details and justifications are documented in `notebooks/milestone1
 ## Retrieval Methods
 
 ### BM25 (keyword search)
-Lexical retrieval using the `rank_bm25` library. Documents are tokenized with lowercasing and basic punctuation removal. Returns top-k results ranked by BM25 score. Implementation in `src/bm25.py`.
+Lexical retrieval using a lightweight in-repo BM25 implementation. Documents are tokenized with lowercasing and basic punctuation removal. Returns top-k results ranked by BM25 score. Implementation in `src/bm25.py`.
 
 ### Semantic Search (embedding-based)
-Uses `sentence-transformers` (`all-MiniLM-L6-v2`) to embed documents and queries into a shared vector space. FAISS index for fast similarity search. Implementation in `src/semantic.py`.
+Uses `sentence-transformers` (`all-MiniLM-L6-v2`) when available, with a TF-IDF cosine-similarity fallback in this workspace. Implementation in `src/semantic.py`.
+
+## Step 4: Qualitative Evaluation
+
+The qualitative evaluation workflow lives in `src/qualitative_eval.py` and writes the step-4 report to `results/milestone1_discussion.md`.
+
+It covers:
+
+- A 10-query set spanning easy, medium, and complex query types
+- Top-5 retrieval outputs for both BM25 and semantic search
+- Side-by-side comparison for five selected queries
+- A short discussion of strengths, weaknesses, and cases that may need reranking or RAG
+
+Run the report generator after your processed corpus is available:
+
+```bash
+python -m src.qualitative_eval
+```
+
+## Step 5: Web App
+
+The Streamlit app is implemented in `app/app.py`.
+
+Features:
+
+- Search mode selector for BM25, Semantic, and Hybrid retrieval
+- Query input box
+- Top 3 result display with title, review snippet, rating, and retrieval score
+- Thumbs-up / thumbs-down feedback buttons
+- Local CSV feedback storage in `data/processed/feedback.csv`
+
+If no processed corpus is found, the app falls back to a small demo corpus so the interface still runs.
 
 ## Repository Structure
 
@@ -102,4 +133,10 @@ Open and run `notebooks/milestone1_exploration.ipynb` to download and preprocess
 
 ```bash
 streamlit run app/app.py
+```
+
+### 6. Generate the Step 4 report
+
+```bash
+python -m src.qualitative_eval
 ```
