@@ -3,3 +3,9 @@ pandas
 scikit-learn
 rank-bm25
 sentence-transformers
+faiss-cpu
+duckdb
+matplotlib
+streamlit
+python-dotenv
+tqdm
