@@ -33,18 +33,6 @@ This report was generated from the currently available corpus. If no processed p
    - Review: Loud enough for picnics, water resistant, and the battery lasts through an afternoon outside.  
    - Rating: ★★★★☆ (4.2)  
    - Score: 2.0479
-3. **Insulated Stainless Steel Water Bottle 1 Liter**  
-   - Review: Keeps water cold all day during hikes and fits easily into a backpack side pocket.  
-   - Rating: ★★★★★ (4.8)  
-   - Score: 0.0000
-4. **Star Space Battle Building Set**  
-   - Review: A fun educational toy for kids who like space ships, missions, and creative building.  
-   - Rating: ★★★★★ (4.6)  
-   - Score: 0.0000
-5. **Compact Air Fryer Oven**  
-   - Review: Great for quick healthy meals and fits well in a small apartment kitchen.  
-   - Rating: ★★★★☆ (4.5)  
-   - Score: 0.0000
 
 **Semantic Top 5**
 
@@ -56,18 +44,6 @@ This report was generated from the currently available corpus. If no processed p
    - Review: Loud enough for picnics, water resistant, and the battery lasts through an afternoon outside.  
    - Rating: ★★★★☆ (4.2)  
    - Score: 0.1220
-3. **Insulated Stainless Steel Water Bottle 1 Liter**  
-   - Review: Keeps water cold all day during hikes and fits easily into a backpack side pocket.  
-   - Rating: ★★★★★ (4.8)  
-   - Score: 0.0000
-4. **Star Space Battle Building Set**  
-   - Review: A fun educational toy for kids who like space ships, missions, and creative building.  
-   - Rating: ★★★★★ (4.6)  
-   - Score: 0.0000
-5. **Compact Air Fryer Oven**  
-   - Review: Great for quick healthy meals and fits well in a small apartment kitchen.  
-   - Rating: ★★★★☆ (4.5)  
-   - Score: 0.0000
 
 ### stainless steel water bottle 1 liter
 
@@ -83,18 +59,6 @@ This report was generated from the currently available corpus. If no processed p
    - Review: Loud enough for picnics, water resistant, and the battery lasts through an afternoon outside.  
    - Rating: ★★★★☆ (4.2)  
    - Score: 1.5228
-3. **Noise Cancelling Wireless Headphones**  
-   - Review: Blocks engine noise on long flights and has comfortable ear pads for all-day listening.  
-   - Rating: ★★★★★ (4.7)  
-   - Score: 0.0000
-4. **Star Space Battle Building Set**  
-   - Review: A fun educational toy for kids who like space ships, missions, and creative building.  
-   - Rating: ★★★★★ (4.6)  
-   - Score: 0.0000
-5. **Compact Air Fryer Oven**  
-   - Review: Great for quick healthy meals and fits well in a small apartment kitchen.  
-   - Rating: ★★★★☆ (4.5)  
-   - Score: 0.0000
 
 **Semantic Top 5**
 
@@ -106,18 +70,6 @@ This report was generated from the currently available corpus. If no processed p
    - Review: Loud enough for picnics, water resistant, and the battery lasts through an afternoon outside.  
    - Rating: ★★★★☆ (4.2)  
    - Score: 0.0638
-3. **Noise Cancelling Wireless Headphones**  
-   - Review: Blocks engine noise on long flights and has comfortable ear pads for all-day listening.  
-   - Rating: ★★★★★ (4.7)  
-   - Score: 0.0000
-4. **Star Space Battle Building Set**  
-   - Review: A fun educational toy for kids who like space ships, missions, and creative building.  
-   - Rating: ★★★★★ (4.6)  
-   - Score: 0.0000
-5. **Compact Air Fryer Oven**  
-   - Review: Great for quick healthy meals and fits well in a small apartment kitchen.  
-   - Rating: ★★★★☆ (4.5)  
-   - Score: 0.0000
 
 ### kids lego star wars set
 
@@ -129,22 +81,6 @@ This report was generated from the currently available corpus. If no processed p
    - Review: A fun educational toy for kids who like space ships, missions, and creative building.  
    - Rating: ★★★★★ (4.6)  
    - Score: 6.0386
-2. **Noise Cancelling Wireless Headphones**  
-   - Review: Blocks engine noise on long flights and has comfortable ear pads for all-day listening.  
-   - Rating: ★★★★★ (4.7)  
-   - Score: 0.0000
-3. **Insulated Stainless Steel Water Bottle 1 Liter**  
-   - Review: Keeps water cold all day during hikes and fits easily into a backpack side pocket.  
-   - Rating: ★★★★★ (4.8)  
-   - Score: 0.0000
-4. **Compact Air Fryer Oven**  
-   - Review: Great for quick healthy meals and fits well in a small apartment kitchen.  
-   - Rating: ★★★★☆ (4.5)  
-   - Score: 0.0000
-5. **Travel Neck Pillow with Memory Foam**  
-   - Review: Makes long flights more comfortable and supports the neck without taking much luggage space.  
-   - Rating: ★★★★☆ (4.3)  
-   - Score: 0.0000
 
 **Semantic Top 5**
 
@@ -152,22 +88,6 @@ This report was generated from the currently available corpus. If no processed p
    - Review: A fun educational toy for kids who like space ships, missions, and creative building.  
    - Rating: ★★★★★ (4.6)  
    - Score: 0.2124
-2. **Noise Cancelling Wireless Headphones**  
-   - Review: Blocks engine noise on long flights and has comfortable ear pads for all-day listening.  
-   - Rating: ★★★★★ (4.7)  
-   - Score: 0.0000
-3. **Insulated Stainless Steel Water Bottle 1 Liter**  
-   - Review: Keeps water cold all day during hikes and fits easily into a backpack side pocket.  
-   - Rating: ★★★★★ (4.8)  
-   - Score: 0.0000
-4. **Compact Air Fryer Oven**  
-   - Review: Great for quick healthy meals and fits well in a small apartment kitchen.  
-   - Rating: ★★★★☆ (4.5)  
-   - Score: 0.0000
-5. **Travel Neck Pillow with Memory Foam**  
-   - Review: Makes long flights more comfortable and supports the neck without taking much luggage space.  
-   - Rating: ★★★★☆ (4.3)  
-   - Score: 0.0000
 
 ### headphones that block airplane noise
 
@@ -179,22 +99,6 @@ This report was generated from the currently available corpus. If no processed p
    - Review: Blocks engine noise on long flights and has comfortable ear pads for all-day listening.  
    - Rating: ★★★★★ (4.7)  
    - Score: 6.0766
-2. **Insulated Stainless Steel Water Bottle 1 Liter**  
-   - Review: Keeps water cold all day during hikes and fits easily into a backpack side pocket.  
-   - Rating: ★★★★★ (4.8)  
-   - Score: 0.0000
-3. **Star Space Battle Building Set**  
-   - Review: A fun educational toy for kids who like space ships, missions, and creative building.  
-   - Rating: ★★★★★ (4.6)  
-   - Score: 0.0000
-4. **Compact Air Fryer Oven**  
-   - Review: Great for quick healthy meals and fits well in a small apartment kitchen.  
-   - Rating: ★★★★☆ (4.5)  
-   - Score: 0.0000
-5. **Travel Neck Pillow with Memory Foam**  
-   - Review: Makes long flights more comfortable and supports the neck without taking much luggage space.  
-   - Rating: ★★★★☆ (4.3)  
-   - Score: 0.0000
 
 **Semantic Top 5**
 
@@ -202,22 +106,6 @@ This report was generated from the currently available corpus. If no processed p
    - Review: Blocks engine noise on long flights and has comfortable ear pads for all-day listening.  
    - Rating: ★★★★★ (4.7)  
    - Score: 0.3237
-2. **Insulated Stainless Steel Water Bottle 1 Liter**  
-   - Review: Keeps water cold all day during hikes and fits easily into a backpack side pocket.  
-   - Rating: ★★★★★ (4.8)  
-   - Score: 0.0000
-3. **Star Space Battle Building Set**  
-   - Review: A fun educational toy for kids who like space ships, missions, and creative building.  
-   - Rating: ★★★★★ (4.6)  
-   - Score: 0.0000
-4. **Compact Air Fryer Oven**  
-   - Review: Great for quick healthy meals and fits well in a small apartment kitchen.  
-   - Rating: ★★★★☆ (4.5)  
-   - Score: 0.0000
-5. **Travel Neck Pillow with Memory Foam**  
-   - Review: Makes long flights more comfortable and supports the neck without taking much luggage space.  
-   - Rating: ★★★★☆ (4.3)  
-   - Score: 0.0000
 
 ### something to keep water cold all day
 
@@ -529,22 +417,6 @@ This report was generated from the currently available corpus. If no processed p
    - Review: Blocks engine noise on long flights and has comfortable ear pads for all-day listening.  
    - Rating: ★★★★★ (4.7)  
    - Score: 6.0766
-2. **Insulated Stainless Steel Water Bottle 1 Liter**  
-   - Review: Keeps water cold all day during hikes and fits easily into a backpack side pocket.  
-   - Rating: ★★★★★ (4.8)  
-   - Score: 0.0000
-3. **Star Space Battle Building Set**  
-   - Review: A fun educational toy for kids who like space ships, missions, and creative building.  
-   - Rating: ★★★★★ (4.6)  
-   - Score: 0.0000
-4. **Compact Air Fryer Oven**  
-   - Review: Great for quick healthy meals and fits well in a small apartment kitchen.  
-   - Rating: ★★★★☆ (4.5)  
-   - Score: 0.0000
-5. **Travel Neck Pillow with Memory Foam**  
-   - Review: Makes long flights more comfortable and supports the neck without taking much luggage space.  
-   - Rating: ★★★★☆ (4.3)  
-   - Score: 0.0000
 
 **Semantic Search**
 
@@ -552,22 +424,6 @@ This report was generated from the currently available corpus. If no processed p
    - Review: Blocks engine noise on long flights and has comfortable ear pads for all-day listening.  
    - Rating: ★★★★★ (4.7)  
    - Score: 0.3237
-2. **Insulated Stainless Steel Water Bottle 1 Liter**  
-   - Review: Keeps water cold all day during hikes and fits easily into a backpack side pocket.  
-   - Rating: ★★★★★ (4.8)  
-   - Score: 0.0000
-3. **Star Space Battle Building Set**  
-   - Review: A fun educational toy for kids who like space ships, missions, and creative building.  
-   - Rating: ★★★★★ (4.6)  
-   - Score: 0.0000
-4. **Compact Air Fryer Oven**  
-   - Review: Great for quick healthy meals and fits well in a small apartment kitchen.  
-   - Rating: ★★★★☆ (4.5)  
-   - Score: 0.0000
-5. **Travel Neck Pillow with Memory Foam**  
-   - Review: Makes long flights more comfortable and supports the neck without taking much luggage space.  
-   - Rating: ★★★★☆ (4.3)  
-   - Score: 0.0000
 
 **Comments**
 

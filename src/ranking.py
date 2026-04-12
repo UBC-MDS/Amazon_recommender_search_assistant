@@ -30,7 +30,7 @@ def _safe_min_max(values: list[float]) -> list[float]:
     minimum = min(values)
     maximum = max(values)
     if maximum == minimum:
-        return [1.0 for _ in values]
+        return [0.0 for _ in values]
     return [(value - minimum) / (maximum - minimum) for value in values]
 
 
@@ -85,7 +85,7 @@ class BM25Retriever:
                 score += idf * (numerator / denominator)
             scores.append(score)
 
-        ranked = sorted(enumerate(scores), key=lambda item: item[1], reverse=True)[:top_k]
+        ranked = [item for item in sorted(enumerate(scores), key=lambda item: item[1], reverse=True) if item[1] > 0.0][:top_k]
         return [SearchResult(document=self.documents[index], score=float(score), method="BM25") for index, score in ranked]
 
 
@@ -146,7 +146,7 @@ class SemanticRetriever:
         query_norm = sqrt(sum(weight * weight for weight in query_vector.values()))
         scores = [self._cosine_similarity(query_vector, query_norm, document_vector, document_norm) for document_vector, document_norm in zip(self._doc_vectors, self._doc_norms)]
 
-        ranked = sorted(enumerate(scores), key=lambda item: item[1], reverse=True)[:top_k]
+        ranked = [item for item in sorted(enumerate(scores), key=lambda item: item[1], reverse=True) if item[1] > 0.0][:top_k]
         return [SearchResult(document=self.documents[index], score=float(score), method="Semantic") for index, score in ranked]
 
 
@@ -177,7 +177,8 @@ class HybridRetriever:
                 self.bm25_weight * bm25_normalized.get(record_id, 0.0)
                 + self.semantic_weight * semantic_normalized.get(record_id, 0.0)
             )
-            combined.append(SearchResult(document=document, score=combined_score, method="Hybrid"))
+            if combined_score > 0.0:
+                combined.append(SearchResult(document=document, score=combined_score, method="Hybrid"))
 
         return sorted(combined, key=lambda result: result.score, reverse=True)[:top_k]
 
