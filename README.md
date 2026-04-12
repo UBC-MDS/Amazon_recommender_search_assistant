@@ -60,10 +60,16 @@ It covers:
 - Side-by-side comparison for five selected queries
 - A short discussion of strengths, weaknesses, and cases that may need reranking or RAG
 
-Run the report generator after your processed corpus is available:
+Run the report generator after your processed corpus is available (defaults to the first matching parquet under `data/processed/`):
 
 ```bash
 python -m src.qualitative_eval
+```
+
+To pin a specific file:
+
+```bash
+python -m src.qualitative_eval --data-path data/processed/appliances_merged.parquet
 ```
 
 ## Step 5: Web App

@@ -1,6 +1,6 @@
 # Step 4: Qualitative Evaluation
 
-This report was generated from the currently available corpus. If no processed project corpus was found, the built-in demo corpus was used so the workflow remains runnable.
+**Data source:** `data/processed/appliances_clean.parquet` — **10** documents after loading.
 
 ## 4.1 Query Set
 
@@ -427,9 +427,8 @@ This report was generated from the currently available corpus. If no processed p
 
 **Comments**
 
-- BM25 is strongest when the query uses the same keywords that appear in the document text.
-- Semantic search is stronger for intent-driven phrasing and paraphrases.
-- Queries with constraints such as price, age, or use case may benefit from reranking or a hybrid approach.
+- **Agreement:** Both methods rank the same item first (**Noise Cancelling Wireless Headphones**). BM25 score 6.0766 vs semantic 0.3237.
+- **Top-5 overlap:** 1 distinct document(s) appear in both ranked lists (low agreement).
 
 ### something to keep water cold all day
 
@@ -481,9 +480,8 @@ This report was generated from the currently available corpus. If no processed p
 
 **Comments**
 
-- BM25 is strongest when the query uses the same keywords that appear in the document text.
-- Semantic search is stronger for intent-driven phrasing and paraphrases.
-- Queries with constraints such as price, age, or use case may benefit from reranking or a hybrid approach.
+- **Agreement:** Both methods rank the same item first (**Insulated Stainless Steel Water Bottle 1 Liter**). BM25 score 7.4703 vs semantic 0.3176.
+- **Top-5 overlap:** 5 distinct document(s) appear in both ranked lists (high agreement).
 
 ### toy for a child who likes space battles
 
@@ -535,9 +533,8 @@ This report was generated from the currently available corpus. If no processed p
 
 **Comments**
 
-- BM25 is strongest when the query uses the same keywords that appear in the document text.
-- Semantic search is stronger for intent-driven phrasing and paraphrases.
-- Queries with constraints such as price, age, or use case may benefit from reranking or a hybrid approach.
+- **Agreement:** Both methods rank the same item first (**Star Space Battle Building Set**). BM25 score 7.5602 vs semantic 0.2951.
+- **Top-5 overlap:** 5 distinct document(s) appear in both ranked lists (high agreement).
 
 ### best headphones for long flights under 200 dollars
 
@@ -589,9 +586,9 @@ This report was generated from the currently available corpus. If no processed p
 
 **Comments**
 
-- BM25 is strongest when the query uses the same keywords that appear in the document text.
-- Semantic search is stronger for intent-driven phrasing and paraphrases.
-- Queries with constraints such as price, age, or use case may benefit from reranking or a hybrid approach.
+- **Agreement:** Both methods rank the same item first (**Noise Cancelling Wireless Headphones**). BM25 score 5.8368 vs semantic 0.2030.
+- **Top-5 overlap:** 5 distinct document(s) appear in both ranked lists (high agreement).
+- **Constraint note:** Our indexed `search_text` does not include numeric **price** fields, so neither method truly optimizes for “under $X”; both approximate via words like “budget” or product copy if present. A reranker or metadata filter would help.
 
 ### what is a good educational toy for a 7-year-old interested in space
 
@@ -643,13 +640,13 @@ This report was generated from the currently available corpus. If no processed p
 
 **Comments**
 
-- BM25 is strongest when the query uses the same keywords that appear in the document text.
-- Semantic search is stronger for intent-driven phrasing and paraphrases.
-- Queries with constraints such as price, age, or use case may benefit from reranking or a hybrid approach.
+- **Agreement:** Both methods rank the same item first (**Educational Science Kit for Children**). BM25 score 16.7606 vs semantic 0.4743.
+- **Top-5 overlap:** 5 distinct document(s) appear in both ranked lists (high agreement).
 
 ## 4.4 Summarize Insights
 
-- BM25 is generally strongest for short keyword queries with obvious lexical overlap.
-- Semantic retrieval handles broader intent better, but can surface loosely related results when the query is too vague.
-- Both methods can struggle when the query contains multiple constraints such as price, audience, and usage scenario.
-- Hybrid ranking or reranking would likely improve the hardest queries.
+- **BM25:** Best when the user query contains tokens that literally appear in titles or reviews (easy keyword queries). It can over-promote incidental keyword overlap (e.g., shared words across unrelated appliances).
+- **Semantic search:** Best when the query is phrased by intent (“block airplane noise”) rather than product names. It can still return plausible-but-wrong items when many products share broad semantics in a small corpus.
+- **Where BM25 tends to fail:** Synonyms and paraphrases that do not share stems with the document text; semantic search often recovers these.
+- **Where semantic tends to fail:** Very specific SKU-like strings, rare brand tokens, or when every document looks moderately similar in embedding space; BM25 can be sharper.
+- **Hard for both:** Multi-constraint questions (price + audience + scenario) without explicit features in the indexed text; hybrid fusion, metadata filters, or a reranker are natural next steps.
