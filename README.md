@@ -28,9 +28,10 @@ We download a working subset (~20K reviews) using DuckDB and store it as parquet
 ## Data Processing
 
 1. Stream review and metadata files from the McAuley Lab servers using DuckDB
-2. Convert to parquet format locally for fast repeated queries
-3. Join reviews with metadata on `parent_asin`
-4. Drop rows with missing review text or product title
+2. Inspect the first 200 entries in the EDA notebook to understand schema, sample text, and missing values
+3. Convert to parquet format locally for fast repeated queries
+4. Join reviews with metadata on `parent_asin`
+5. Drop rows with missing review text or product title
 
 Preprocessing details and justifications are documented in `notebooks/milestone1_exploration.ipynb`.
 
