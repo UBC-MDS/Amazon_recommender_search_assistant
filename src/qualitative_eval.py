@@ -50,6 +50,26 @@ def _result_ids(results: list[SearchResult]) -> list[str]:
 
 def _comparison_comments(query: str, bm25_results: list[SearchResult], semantic_results: list[SearchResult], top_k: int) -> list[str]:
     """Per-query observations derived from ranked lists (no external ground truth)."""
+    def _first_unique_titles(results: list[SearchResult], keep_ids: set[str], limit: int = 2) -> tuple[list[str], bool]:
+        titles: list[str] = []
+        seen: set[str] = set()
+        had_duplicates = False
+        for r in results:
+            rid = str(r.document.get("record_id", ""))
+            if rid not in keep_ids:
+                continue
+            title = str(r.document.get("title", "")).strip()
+            if not title:
+                continue
+            if title in seen:
+                had_duplicates = True
+                continue
+            seen.add(title)
+            titles.append(title)
+            if len(titles) >= limit:
+                break
+        return titles, had_duplicates
+
     bullets: list[str] = []
     if not bm25_results and not semantic_results:
         return ["- Neither method returned results for this query."]
@@ -81,19 +101,21 @@ def _comparison_comments(query: str, bm25_results: list[SearchResult], semantic_
     only_b = b_set - s_set
     only_s = s_set - b_set
     if only_b:
-        extras = [r.document.get("title", "") for r in bm25_results if str(r.document.get("record_id", "")) in only_b][:2]
+        extras, had_dupes = _first_unique_titles(bm25_results, only_b)
         titles = ", ".join(f"**{t}**" for t in extras if t)
         if titles:
+            dup_note = " (duplicate titles collapsed)" if had_dupes else ""
             bullets.append(
-                f"- **BM25-only (in top-{top_k} for BM25, not semantic):** {titles}. "
+                f"- **BM25-only (in top-{top_k} for BM25, not semantic):** {titles}{dup_note}. "
                 "Typical when rare tokens from the query match product text strongly while embeddings treat the overall intent as a weaker match."
             )
     if only_s:
-        extras = [r.document.get("title", "") for r in semantic_results if str(r.document.get("record_id", "")) in only_s][:2]
+        extras, had_dupes = _first_unique_titles(semantic_results, only_s)
         titles = ", ".join(f"**{t}**" for t in extras if t)
         if titles:
+            dup_note = " (duplicate titles collapsed)" if had_dupes else ""
             bullets.append(
-                f"- **Semantic-only (in top-{top_k} for semantic, not BM25):** {titles}. "
+                f"- **Semantic-only (in top-{top_k} for semantic, not BM25):** {titles}{dup_note}. "
                 "Shows cases where paraphrase or intent aligns in vector space without the exact query keywords."
             )
 
@@ -108,7 +130,7 @@ def _comparison_comments(query: str, bm25_results: list[SearchResult], semantic_
         spread = semantic_results[0].score - semantic_results[-1].score
         if spread < 0.05:
             bullets.append(
-                "- **Semantic scores:** Top scores are very close, so small embedding differences reorder items; ties/near-ties are common on short corpora."
+                "- **Semantic scores:** Top scores are very close, so small embedding differences reorder items; ties/near-ties are common when many listings are semantically similar."
             )
 
     if not bullets:
@@ -160,6 +182,7 @@ def generate_report(output_path: Path | None = None, data_path: Path | str | Non
     documents, effective_data_path = _resolve_eval_corpus(data_path)
     bm25 = BM25Retriever(documents)
     semantic = SemanticRetriever(documents)
+    corpus_scale_note = "a large catalog" if len(documents) >= 10_000 else "this dataset"
 
     output_path = output_path or Path(__file__).resolve().parents[1] / "results" / "milestone1_discussion.md"
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -223,7 +246,7 @@ def generate_report(output_path: Path | None = None, data_path: Path | str | Non
     )
     lines.append(
         "- **Semantic search:** Best when the query is phrased by intent (“quiet operation at night”) rather than exact product names. "
-        "It can still return plausible-but-wrong items when many products share broad semantics in a small corpus."
+        f"It can still return plausible-but-wrong items when many products share broad semantics in {corpus_scale_note}."
     )
     lines.append(
         "- **Where BM25 tends to fail:** Synonyms and paraphrases that do not share stems with the document text; semantic search often recovers these."
