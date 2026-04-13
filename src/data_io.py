@@ -123,10 +123,10 @@ def _to_document_records(rows: Iterable[dict[str, Any]], source: str) -> list[Do
     title_col = pick("title", "product_title", "name")
     text_col = pick("review_text", "text", "content", "description")
     rating_col = pick("rating", "overall", "stars")
-    category_col = pick("category", "categories")
+    category_col = pick("category", "categories", "main_category")
     price_col = pick("price")
-    description_col = pick("description")
-    features_col = pick("features", "feature")
+    description_col = pick("description", "product_description")
+    features_col = pick("features", "feature", "product_features")
     record_id_col = pick("record_id", "parent_asin", "asin", "id")
 
     records: list[DocumentRecord] = []

@@ -38,13 +38,13 @@ Preprocessing details and justifications are documented in `notebooks/milestone1
 ## Retrieval Methods
 
 ### BM25 (keyword search)
-Lexical retrieval using a lightweight in-repo BM25 implementation. Documents are tokenized with lowercasing and basic punctuation removal. Returns top-k results ranked by BM25 score. Implementation in `src/bm25.py`.
+Lexical retrieval using `rank-bm25` (`BM25Okapi`) through our retriever layer. Documents and queries are tokenized with lowercasing and basic punctuation removal. Returns top-k results ranked by BM25 score. Main implementation is in `src/ranking.py` with API helpers in `src/bm25.py`.
 
 Persistence:
 - Tokenized corpus and BM25 index are saved to `data/processed/bm25_index.pkl`.
 
 ### Semantic Search (embedding-based)
-Uses `sentence-transformers` (`all-MiniLM-L6-v2`) when available, with a TF-IDF cosine-similarity fallback in this workspace. Implementation in `src/semantic.py`.
+Uses `sentence-transformers` (`all-MiniLM-L6-v2`) when available, with a TF-IDF cosine-similarity fallback in this workspace. Main implementation is in `src/ranking.py` with API helpers in `src/semantic.py`.
 
 Persistence:
 - When sentence-transformers is available, a FAISS index and metadata are saved under `data/processed/semantic_faiss/`.
