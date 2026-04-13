@@ -137,6 +137,13 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+Alternative (conda + environment file):
+
+```bash
+conda env create -f environment.yml
+conda activate dsci575-project
+```
+
 ### 3. Set up environment variables
 
 Create a `.env` file in the project root:
