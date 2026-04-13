@@ -12,6 +12,7 @@ import pickle
 import re
 
 import numpy as np
+from rank_bm25 import BM25Okapi
 
 from .data_io import normalize_text
 
@@ -40,7 +41,7 @@ def _safe_min_max(values: list[float]) -> list[float]:
 
 
 class BM25Retriever:
-    """Small BM25 implementation that does not depend on external ranking packages."""
+    """BM25 retriever backed by rank_bm25."""
 
     def __init__(self, documents: list[dict[str, Any]], text_field: str = "search_text", k1: float = 1.5, b: float = 0.75):
         self.documents = documents
@@ -51,6 +52,7 @@ class BM25Retriever:
         self._doc_lengths: list[int] = []
         self._doc_freq: dict[str, int] = {}
         self._avg_doc_length = 0.0
+        self._bm25: BM25Okapi | None = None
         self.fit()
 
     def fit(self) -> "BM25Retriever":
@@ -62,6 +64,9 @@ class BM25Retriever:
         for tokens in self._doc_tokens:
             for token in set(tokens):
                 self._doc_freq[token] = self._doc_freq.get(token, 0) + 1
+
+        # rank_bm25 handles IDF and BM25 scoring internals.
+        self._bm25 = BM25Okapi(self._doc_tokens, k1=self.k1, b=self.b)
 
         return self
 
@@ -75,22 +80,12 @@ class BM25Retriever:
             return []
 
         query_tokens = tokenize(query)
-        scores: list[float] = []
-        for doc_index, tokens in enumerate(self._doc_tokens):
-            score = 0.0
-            doc_length = self._doc_lengths[doc_index] or 1
-            token_counts = {token: tokens.count(token) for token in set(tokens)}
-            for token in query_tokens:
-                frequency = token_counts.get(token, 0)
-                if frequency == 0:
-                    continue
-                idf = self._idf(token)
-                numerator = frequency * (self.k1 + 1.0)
-                denominator = frequency + self.k1 * (1.0 - self.b + self.b * doc_length / (self._avg_doc_length or 1.0))
-                score += idf * (numerator / denominator)
-            scores.append(score)
+        if not query_tokens or self._bm25 is None:
+            return []
 
-        ranked = [item for item in sorted(enumerate(scores), key=lambda item: item[1], reverse=True) if item[1] > 0.0][:top_k]
+        scores = np.asarray(self._bm25.get_scores(query_tokens), dtype=float)
+        ranked_indices = np.argsort(scores)[::-1]
+        ranked = [(int(index), float(scores[index])) for index in ranked_indices if scores[index] > 0.0][:top_k]
         return [SearchResult(document=self.documents[index], score=float(score), method="BM25") for index, score in ranked]
 
     def save_index(self, output_path: str | Path) -> Path:
@@ -106,6 +101,7 @@ class BM25Retriever:
             "doc_lengths": self._doc_lengths,
             "doc_freq": self._doc_freq,
             "avg_doc_length": self._avg_doc_length,
+            "bm25_model": self._bm25,
         }
         with path.open("wb") as handle:
             pickle.dump(payload, handle)
@@ -124,9 +120,12 @@ class BM25Retriever:
         retriever.k1 = payload["k1"]
         retriever.b = payload["b"]
         retriever._doc_tokens = payload["doc_tokens"]
-        retriever._doc_lengths = payload["doc_lengths"]
-        retriever._doc_freq = payload["doc_freq"]
-        retriever._avg_doc_length = payload["avg_doc_length"]
+        retriever._doc_lengths = payload.get("doc_lengths", [len(tokens) for tokens in retriever._doc_tokens])
+        retriever._doc_freq = payload.get("doc_freq", {})
+        retriever._avg_doc_length = payload.get("avg_doc_length", 0.0)
+        retriever._bm25 = payload.get("bm25_model")
+        if retriever._bm25 is None:
+            retriever._bm25 = BM25Okapi(retriever._doc_tokens, k1=retriever.k1, b=retriever.b)
         return retriever
 
 

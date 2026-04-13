@@ -9,24 +9,24 @@ from .ranking import BM25Retriever, SemanticRetriever, SearchResult, ensure_sear
 
 
 QUERY_SET = [
-    ("Easy", "wireless bluetooth headphones"),
-    ("Easy", "stainless steel water bottle 1 liter"),
-    ("Easy", "kids lego star wars set"),
-    ("Medium", "headphones that block airplane noise"),
-    ("Medium", "something to keep water cold all day"),
-    ("Medium", "toy for a child who likes space battles"),
-    ("Complex", "best headphones for long flights under 200 dollars"),
-    ("Complex", "what is a good educational toy for a 7-year-old interested in space"),
-    ("Complex", "useful kitchen appliance for quick healthy meals in a small apartment"),
-    ("Complex", "portable speaker for outdoor use with long battery life"),
+    ("Easy", "energy efficient dishwasher"),
+    ("Easy", "refrigerator water filter replacement"),
+    ("Easy", "portable countertop ice maker"),
+    ("Medium", "dishwasher that runs quietly at night"),
+    ("Medium", "small washing machine for apartment laundry"),
+    ("Medium", "fridge filter that improves water taste"),
+    ("Complex", "best compact dishwasher for a small apartment with low noise"),
+    ("Complex", "nugget ice maker for a home bar that makes ice quickly"),
+    ("Complex", "how to reduce washer vibration and noise during spin cycle"),
+    ("Complex", "best refrigerator water filter under 50 dollars"),
 ]
 
 COMPARISON_QUERIES = [
-    "headphones that block airplane noise",
-    "something to keep water cold all day",
-    "toy for a child who likes space battles",
-    "best headphones for long flights under 200 dollars",
-    "what is a good educational toy for a 7-year-old interested in space",
+    "dishwasher that runs quietly at night",
+    "small washing machine for apartment laundry",
+    "fridge filter that improves water taste",
+    "nugget ice maker for a home bar that makes ice quickly",
+    "best refrigerator water filter under 50 dollars",
 ]
 
 
@@ -138,8 +138,26 @@ def _corpus_banner(data_path: Path | str | None, document_count: int) -> str:
     )
 
 
+def _resolve_eval_corpus(data_path: Path | str | None) -> tuple[list[dict[str, object]], Path | None]:
+    """Return documents and the effective source path used for evaluation."""
+    if data_path is not None:
+        path = Path(data_path)
+        return ensure_search_text(load_documents(data_path=path)), path
+
+    discovered = discover_data_file()
+    documents = ensure_search_text(load_documents())
+
+    # If the default clean file is very small, prefer merged parquet for richer qualitative comparisons.
+    if discovered is not None and discovered.name == "appliances_clean.parquet" and len(documents) < 20:
+        merged_candidate = discovered.parent / "appliances_merged.parquet"
+        if merged_candidate.exists():
+            return ensure_search_text(load_documents(data_path=merged_candidate)), merged_candidate
+
+    return documents, discovered
+
+
 def generate_report(output_path: Path | None = None, data_path: Path | str | None = None, top_k: int = 5) -> Path:
-    documents = ensure_search_text(load_documents(data_path=data_path))
+    documents, effective_data_path = _resolve_eval_corpus(data_path)
     bm25 = BM25Retriever(documents)
     semantic = SemanticRetriever(documents)
 
@@ -149,7 +167,7 @@ def generate_report(output_path: Path | None = None, data_path: Path | str | Non
     lines: list[str] = []
     lines.append("# Step 4: Qualitative Evaluation")
     lines.append("")
-    lines.append(_corpus_banner(data_path, len(documents)))
+    lines.append(_corpus_banner(effective_data_path, len(documents)))
     lines.append("")
     lines.append("## 4.1 Query Set")
     lines.append("")
@@ -204,7 +222,7 @@ def generate_report(output_path: Path | None = None, data_path: Path | str | Non
         "It can over-promote incidental keyword overlap (e.g., shared words across unrelated appliances)."
     )
     lines.append(
-        "- **Semantic search:** Best when the query is phrased by intent (“block airplane noise”) rather than product names. "
+        "- **Semantic search:** Best when the query is phrased by intent (“quiet operation at night”) rather than exact product names. "
         "It can still return plausible-but-wrong items when many products share broad semantics in a small corpus."
     )
     lines.append(
