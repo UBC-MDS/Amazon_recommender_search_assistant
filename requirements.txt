@@ -9,3 +9,5 @@ matplotlib
 streamlit
 python-dotenv
 tqdm
+huggingface_hub
+ollama
