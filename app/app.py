@@ -15,7 +15,9 @@ if str(ROOT) not in sys.path:
 
 from src.data_io import format_rating_stars, load_documents, truncate_text  # noqa: E402
 from src.feedback import append_feedback  # noqa: E402
+from src.hybrid_rag_pipeline import FusionConfig, build_default_hybrid_rag_pipeline  # noqa: E402
 from src.llm_pipeline import run_rag_chat  # noqa: E402
+from src.rag_pipeline import build_default_rag_pipeline  # noqa: E402
 from src.ranking import BM25Retriever, HybridRetriever, SemanticRetriever, ensure_search_text  # noqa: E402
 
 
@@ -45,6 +47,56 @@ def _build_indexes(data_path: str | None = None):
 @st.cache_resource(show_spinner=False)
 def load_indexes(data_path: str | None = None):
     return _build_indexes(data_path)
+
+
+@st.cache_resource(show_spinner=False)
+def load_semantic_rag_pipeline(
+    data_path: str | None,
+    provider: str,
+    model: str,
+    temperature: float,
+    max_new_tokens: int,
+    hf_token: str | None,
+    ollama_host: str | None,
+):
+    return build_default_rag_pipeline(
+        data_path=data_path,
+        provider=provider,
+        model=model,
+        temperature=temperature,
+        max_new_tokens=max_new_tokens,
+        hf_token=hf_token,
+        ollama_host=ollama_host,
+    )
+
+
+@st.cache_resource(show_spinner=False)
+def load_hybrid_rag_pipeline(
+    data_path: str | None,
+    provider: str,
+    model: str,
+    temperature: float,
+    max_new_tokens: int,
+    hf_token: str | None,
+    ollama_host: str | None,
+    fusion_mode: str,
+    bm25_weight: float,
+    semantic_weight: float,
+):
+    return build_default_hybrid_rag_pipeline(
+        data_path=data_path,
+        provider=provider,
+        model=model,
+        temperature=temperature,
+        max_new_tokens=max_new_tokens,
+        hf_token=hf_token,
+        ollama_host=ollama_host,
+        fusion=FusionConfig(
+            mode=fusion_mode,
+            bm25_weight=bm25_weight,
+            semantic_weight=semantic_weight,
+        ),
+    )
 
 
 def _render_result(result, rank: int, query: str, mode: str, feedback_path: Path) -> None:
@@ -147,6 +199,22 @@ def main() -> None:
 
     temperature = st.slider("Temperature", min_value=0.0, max_value=1.0, value=0.2, step=0.05)
     max_tokens = st.slider("Max generated tokens", min_value=64, max_value=1024, value=350, step=32)
+    prompt_variant = st.selectbox("Prompt variant", ["strict", "concise", "analyst"], index=0)
+
+    st.subheader("RAG Pipeline")
+    rag_pipeline_mode = st.radio(
+        "Generation backend",
+        ["Direct Context RAG", "Semantic RAG Pipeline", "Hybrid RAG Pipeline"],
+        horizontal=True,
+    )
+
+    fusion_mode = "rrf"
+    bm25_weight = 0.4
+    semantic_weight = 0.6
+    if rag_pipeline_mode == "Hybrid RAG Pipeline":
+        fusion_mode = st.selectbox("Hybrid fusion", ["rrf", "merge-dedup", "simple-merge"], index=0)
+        bm25_weight = st.slider("BM25 weight", min_value=0.0, max_value=1.0, value=0.4, step=0.05)
+        semantic_weight = st.slider("Semantic weight", min_value=0.0, max_value=1.0, value=0.6, step=0.05)
 
     if not query:
         st.info("Enter a query to see the top results.")
@@ -167,29 +235,64 @@ def main() -> None:
     if st.button("Generate RAG answer", type="primary"):
         with st.spinner("Generating answer with retrieved context..."):
             try:
-                rag_response = run_rag_chat(
-                    question=query,
-                    contexts=results,
-                    provider=llm_provider,
-                    model=model_name,
-                    temperature=temperature,
-                    max_new_tokens=max_tokens,
-                    hf_token=(hf_token or None),
-                    ollama_host=(ollama_host or None),
-                )
+                if rag_pipeline_mode == "Semantic RAG Pipeline":
+                    semantic_pipeline = load_semantic_rag_pipeline(
+                        data_path_input or None,
+                        llm_provider,
+                        model_name,
+                        temperature,
+                        max_tokens,
+                        (hf_token or None),
+                        (ollama_host or None),
+                    )
+                    pipeline_result = semantic_pipeline.answer(query=query, k=top_k, prompt_variant=prompt_variant)
+                    rag_answer = pipeline_result.answer
+                    rag_contexts = pipeline_result.retrieved_results
+                    rag_tool_calls = None
+                elif rag_pipeline_mode == "Hybrid RAG Pipeline":
+                    hybrid_pipeline = load_hybrid_rag_pipeline(
+                        data_path_input or None,
+                        llm_provider,
+                        model_name,
+                        temperature,
+                        max_tokens,
+                        (hf_token or None),
+                        (ollama_host or None),
+                        fusion_mode,
+                        bm25_weight,
+                        semantic_weight,
+                    )
+                    pipeline_result = hybrid_pipeline.answer(query=query, k=top_k, prompt_variant=prompt_variant)
+                    rag_answer = pipeline_result.answer
+                    rag_contexts = pipeline_result.retrieved_results
+                    rag_tool_calls = None
+                else:
+                    rag_response = run_rag_chat(
+                        question=query,
+                        contexts=results,
+                        provider=llm_provider,
+                        model=model_name,
+                        temperature=temperature,
+                        max_new_tokens=max_tokens,
+                        hf_token=(hf_token or None),
+                        ollama_host=(ollama_host or None),
+                    )
+                    rag_answer = rag_response.answer
+                    rag_contexts = rag_response.contexts
+                    rag_tool_calls = rag_response.tool_calls
             except Exception as exc:
                 st.error(f"RAG generation failed: {exc}")
                 return
 
         st.markdown("### RAG Answer")
-        st.write(rag_response.answer or "No answer returned by the model.")
+        st.write(rag_answer or "No answer returned by the model.")
 
         with st.expander("Retrieved context used"):
-            _render_sources(rag_response.contexts)
+            _render_sources(rag_contexts)
 
-        if rag_response.tool_calls:
+        if rag_tool_calls:
             with st.expander("Model tool calls"):
-                st.json(rag_response.tool_calls)
+                st.json(rag_tool_calls)
 
 
 if __name__ == "__main__":
