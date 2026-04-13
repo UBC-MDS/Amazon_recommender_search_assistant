@@ -121,3 +121,48 @@ The module also includes:
 
 - `build_default_rag_pipeline(...)` project-level factory
 - `analyze_k_values(...)` helper for retrieval-depth analysis
+
+## Step 3 - Hybrid RAG: Semantic Search + BM25
+
+### 3.1 BM25 Retriever
+
+We reused and wrapped the Milestone 1 BM25 implementation (`src/ranking.py`) into a Step 3 retriever interface in `src/hybrid_rag_pipeline.py`:
+
+- `BM25DocumentRetriever.retrieve(query, k)`
+- Input: query string
+- Output: top-k relevant documents (with indices and scores)
+
+### 3.2 Semantic Retriever
+
+We reused the semantic retriever from Step 2 and integrated it directly into the hybrid retriever.
+
+### 3.3 Combining BM25 + Semantic Results
+
+We implemented a custom `HybridDocumentRetriever` (non-LangChain) in `src/hybrid_rag_pipeline.py` with three combination modes:
+
+1. `simple-merge`: concatenate top-k from both retrievers
+2. `merge-dedup`: merge then remove duplicates
+3. `rrf`: Reciprocal Rank Fusion re-ranking (default)
+
+Default fusion setup:
+
+- Mode: `rrf`
+- Weights: BM25 = `0.4`, Semantic = `0.6`
+- Rank constant: `rrf_k = 60`
+
+Rationale: RRF is robust to score-scale mismatch between BM25 and embedding similarity and gives a clean unified ranking.
+
+### 3.4 Hybrid RAG Pipeline
+
+We added a complete hybrid pipeline in `src/hybrid_rag_pipeline.py`:
+
+1. Hybrid retrieval (`HybridDocumentRetriever`)
+2. Context building (`HybridRAGPipeline.build_context`)
+3. Prompt template (`HybridRAGPipeline.build_prompt`, prompt variants from Step 2)
+4. LLM generation (`HybridRAGPipeline.answer`)
+
+Factory function:
+
+- `build_default_hybrid_rag_pipeline(...)`
+
+This provides a second full RAG path where Step 2 semantic retrieval is replaced by hybrid retrieval.

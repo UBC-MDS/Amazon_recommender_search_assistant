@@ -94,6 +94,54 @@ print(result.retrieved_indices)
 print(result.answer)
 ```
 
+## Step 3: Hybrid RAG (BM25 + Semantic)
+
+The Step 3 hybrid implementation is in `src/hybrid_rag_pipeline.py`.
+
+### Hybrid retrieval options
+
+- `simple-merge`: concatenate BM25 and semantic top-k results
+- `merge-dedup`: merge and remove duplicates
+- `rrf` (default): Reciprocal Rank Fusion re-ranking
+
+Default fusion weights are BM25 `0.4` and semantic `0.6`.
+
+### Hybrid workflow
+
+```mermaid
+flowchart LR
+    A[User Query] --> B1[BM25 Retriever]
+    A --> B2[Semantic Retriever]
+    B1 --> C[Hybrid Fusion RRF]
+    B2 --> C
+    C --> D[Top-k Hybrid Context]
+    D --> E[Prompt Template]
+    E --> F[Open-Source LLM]
+    F --> G[Hybrid RAG Answer]
+```
+
+### Quick usage
+
+```python
+from src.hybrid_rag_pipeline import FusionConfig, build_default_hybrid_rag_pipeline
+
+pipeline = build_default_hybrid_rag_pipeline(
+    provider="huggingface",
+    model="Qwen/Qwen3.5-2B",
+    default_k=5,
+    fusion=FusionConfig(mode="rrf", bm25_weight=0.4, semantic_weight=0.6),
+)
+
+result = pipeline.answer(
+    query="dishwasher that runs quietly at night",
+    k=5,
+    prompt_variant="strict",
+)
+
+print(result.retrieved_indices)
+print(result.answer)
+```
+
 ## Step 4: Qualitative Evaluation
 
 The qualitative evaluation workflow lives in `src/qualitative_eval.py` and writes the step-4 report to `results/milestone1_discussion.md`.
@@ -150,6 +198,7 @@ DSCI_575_project_ojasv31_pat0216/
 |   |-- bm25.py
 |   |-- semantic.py
 |   |-- rag_pipeline.py
+|   |-- hybrid_rag_pipeline.py
 |   |-- llm_pipeline.py
 |   |-- retrieval_metrics.py
 |   |-- data_io.py
