@@ -50,6 +50,50 @@ Uses `sentence-transformers` (`all-MiniLM-L6-v2`) when available, with a TF-IDF 
 Persistence:
 - When sentence-transformers is available, a FAISS index and metadata are saved under `data/processed/semantic_faiss/`.
 
+## Step 2: Semantic RAG Pipeline
+
+The Step 2 RAG implementation is in `src/rag_pipeline.py`.
+
+It includes:
+
+- Semantic retrieval with top-k support (`retrieve`, `retrieve_indices`)
+- Structured context builder (`build_context`)
+- Prompt template variants (`strict`, `concise`, `analyst`)
+- End-to-end generation flow (`answer`) with open-source LLM backends
+
+### Workflow Diagram
+
+```mermaid
+flowchart LR
+    A[User Query] --> B[Semantic Retriever]
+    B --> C[Top-k Documents k=5]
+    C --> D[Context Builder]
+    D --> E[Prompt Template]
+    E --> F[Open-Source LLM]
+    F --> G[RAG Answer with Citations]
+```
+
+### Quick usage
+
+```python
+from src.rag_pipeline import build_default_rag_pipeline
+
+pipeline = build_default_rag_pipeline(
+    provider="huggingface",
+    model="Qwen/Qwen3.5-2B",
+    default_k=5,
+)
+
+result = pipeline.answer(
+    query="quiet dishwasher for a small apartment",
+    k=5,
+    prompt_variant="strict",
+)
+
+print(result.retrieved_indices)
+print(result.answer)
+```
+
 ## Step 4: Qualitative Evaluation
 
 The qualitative evaluation workflow lives in `src/qualitative_eval.py` and writes the step-4 report to `results/milestone1_discussion.md`.
@@ -105,6 +149,8 @@ DSCI_575_project_ojasv31_pat0216/
 |-- src/
 |   |-- bm25.py
 |   |-- semantic.py
+|   |-- rag_pipeline.py
+|   |-- llm_pipeline.py
 |   |-- retrieval_metrics.py
 |   |-- data_io.py
 |   |-- ranking.py
@@ -115,6 +161,7 @@ DSCI_575_project_ojasv31_pat0216/
 |
 |-- results/
 |   |-- milestone1_discussion.md
+|   |-- milestone2_discussions.md
 |
 |-- app/
     |-- app.py
