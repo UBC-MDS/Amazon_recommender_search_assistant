@@ -1,7 +1,6 @@
 .env
-data/raw/*.jsonl.gz
-data/raw/*.parquet
-data/processed/*.parquet
+data/raw/
+data/processed/
 __pycache__/
 *.pyc
 .ipynb_checkpoints/

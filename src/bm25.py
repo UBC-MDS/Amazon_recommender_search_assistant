@@ -1,13 +1,23 @@
 """BM25 retrieval module."""
 
+from __future__ import annotations
 
-def search_bm25(query: str, corpus: list[str], top_k: int = 5) -> list[str]:
-    """Return top-k documents using BM25 retrieval.
+from .ranking import BM25Retriever, SearchResult
 
-    This is a placeholder function for milestone scaffolding.
-    """
+
+def search_bm25(query: str, corpus: list[str], top_k: int = 5) -> list[SearchResult]:
+    """Return top-k ranked BM25 results with scores."""
     if not query or not corpus:
         return []
 
-    # TODO: Implement BM25 ranking and return ranked documents.
-    return corpus[:top_k]
+    documents = [
+        {"record_id": str(index), "search_text": text, "title": text, "review_text": text}
+        for index, text in enumerate(corpus)
+    ]
+    retriever = BM25Retriever(documents)
+    return retriever.search(query, top_k=top_k)
+
+
+def search_bm25_text(query: str, corpus: list[str], top_k: int = 5) -> list[str]:
+    """Compatibility helper that returns only ranked document text."""
+    return [result.document["search_text"] for result in search_bm25(query, corpus, top_k=top_k)]
