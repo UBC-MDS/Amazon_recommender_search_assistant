@@ -1,6 +1,6 @@
 # Step 4: Qualitative Evaluation
 
-**Data source:** `data/processed/appliances_clean.parquet` — **200** documents after loading.
+**Data source:** `data/processed/appliances_products.parquet` — **94282** documents after loading.
 
 ## 4.1 Query Set
 
@@ -25,49 +25,49 @@
 
 **BM25 Top 5**
 
-1. **Electactic Ice Maker Countertop Portable Ice Maker Machine Self-Cleaning 30lbs/5Mins/24Hrs 2 Mode Ice Machine Counter Ice Maker with Scoop&Basket for Home/Office/Bar/RV Use**  
-   - Review: I like the ice cube shapes,takes a while to make.I make them then store them in a zip lock and put them in the freezer.  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 7.5733
-2. **hOmelabs Upright Freezer - 2.1 Cubic Feet Compact Reversible Single Door Vertical Freezer with Child Door Lock - Table Top Mini Freezing Machine with Removable Shelves for Office Dorm or Apartment**  
-   - Review: I just needed a little extra freezer space, this fit the bill perfectly! It actually holds a lot more than I expected. Delivery was very fast and setting it up was a breeze. Switched the door to open…  
+1. **Windster Hood H30SS Range Hood**  
+   - Review: Beautiful hood. Lots of compliments!  
    - Rating: ★★★★★ (5.0)  
-   - Score: 7.5267
-3. **Northair Low temperature Chest Freezer - 3.5 Cu Ft with 2 Removable Baskets - Reach In Freezer Chest - 14℉ to -40℉**  
-   - Review: The freezer works well, is quiet and is good for a small space. It has a small dent on the corner but nothing to drastic. Thinker foam in the packaging could prevent that. I would give it more stars…  
+   - Score: 13.7483
+2. **Samsung DW80F600UTW Energy Star 24 In. Dishwasher, White**  
+   - Review: Consider this disposable, motor failed at 4 years 6 weeks. Samsung refused to repair under warranty stating it is only warrantied for 1 year. I certainly will never own another Samsung dishwasher.  
+   - Rating: ★☆☆☆☆ (1.0)  
+   - Score: 13.3706
+3. **Whirlpool WDF310PAAD 24" Stainless Look Full Console Dishwasher - Energy Star**  
+   - Review: This dishwasher came with my new house and overall, I am very pleased with it. The design is sleek and the controls and features are easy to use. It's quieter than I expected, probably the quietest o…  
+   - Rating: ★★☆☆☆ (2.5)  
+   - Score: 13.3445
+4. **Whirlpool WDT790SAYW Gold 24" White Fully Integrated Dishwasher - Energy Star**  
+   - Review: DONT DO IT. Talk about an $800. disappointment, bought it at Blonders in Bristol Pa. Dishes always dirty. Don't pay more than $400. for a dishwasher. More $$$ won't make the dishes cleaner. [SEP] Our…  
+   - Rating: ★☆☆☆☆ (1.0)  
+   - Score: 13.1228
+5. **Windster 36-Inch HI Series Residential Stainless Steel Island Range Hood with Tempered Glass Canopy**  
+   - Review: Bought one of these from Best Buy in 2015. Worked great until mid 2018, then LED bulbs started going out. Windster wants $35 for each replacement bulb!  
    - Rating: ★★☆☆☆ (2.0)  
-   - Score: 6.0765
-4. **Essential Values 18 Pack Compatible Replacement Filters (90 Dryer Loads Total) for Bettervent Indoor Dryer Vent**  
-   - Review: Little on the thin side  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 3.3624
-5. **Appliance Art Instant Stainless Magnetic Dishwasher Door Cover Sheet, Vinyl Decorative Panel Decal With Stainless Steel Texture For An Instant, Easy Update (23.5 x 26 Inches, Easily Trimmable)**  
-   - Review: Looks like new!!!  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 3.3039
+   - Score: 13.0785
 
 **Semantic Top 5**
 
-1. **Miele : Dishwasher Conditioner 8.5 oz (06848160 / 09042920)**  
-   - Review: I have been trying to find something that cleans my 6 year old dish washer and in the past it was run the machine empty. Although we have never noticed any deterioration in the wonderful cleaning of…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.5907
-2. **Portable Countertop Dishwashers, NOVETE Compact Dishwashers with 5 L Built-in Water Tank & Inlet Hose, 5 Washing Programs, Baby Care, Air-Dry Function and LED Light for Small Apartments, Dorms and RVs**  
-   - Review: Not worth the price. Takes up too much space, putting water in for the wash cycle is difficult AND requires a space to drain the "wash water" into unless willing to hook it up to your kitchen sink, w…  
-   - Rating: ★★☆☆☆ (2.0)  
-   - Score: 0.5771
-3. **WonderWash Portable Washing Machine for Apartment & Tiny Spaces - Manual Hand Clothes Washer with Retro Design - Clean Laundry Anywhere with Our Countertop, Non-Electric, Small Washer - Blue**  
-   - Review: Love the convenience of doing laundry inside my apartment, but do have a problem attaching the drain pipe when ready to drain the tub. Trial and error, I'm getting there. I have done several loads an…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 0.5172
-4. **Brynnl Silicone Stove Counter Gap Cover, 2 Pack Kitchen Stove Edge Gap Cover with 4 6-inch Fixing Straps- 25 Inches Easy Clean Stove Gap Filler for Kitchen Counter, Oven, Stovetop(Black)**  
-   - Review: Before silicon counter gap covers came out I had thinner Medal ones I had to paint black, and they didn’t clean well!<br />And Those made noise, and the paint would rub off, and I had to paint them a…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.4870
-5. **Appliance Art Instant Stainless Magnetic Dishwasher Door Cover Sheet, Vinyl Decorative Panel Decal With Stainless Steel Texture For An Instant, Easy Update (23.5 x 26 Inches, Easily Trimmable)**  
-   - Review: Looks like new!!!  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.4862
+1. **Edgewater Parts 8194001, AP3775412, PS972325 Link Balance Compatible With Whirlpool, KitchenAid dishwasher (Fits Models: 665, KUD, GU3, GU2)**  
+   - Review: Works great [SEP] Easy repair for the dishwasher door hinge. Parts worked perfectly for my 15 year old machine.  
+   - Rating: ★★★★☆ (3.9)  
+   - Score: 0.3708
+2. **Edgewater Parts 8268383 Chopper Blade Compatible With Whirlpool Dishwasher Fits Model# (KUD, GU1, DU1, GU2, DUL, DUC)**  
+   - Review: Purchased 9 months ago. Dishwasher has been working poorly for about a month now and this part went bad. Spring rusted away. You can see the rust on the plate.. but the plate seems to held up fine. I…  
+   - Rating: ★★★★☆ (4.1)  
+   - Score: 0.3690
+3. **Edgewater Parts W10872255, W11175771 AP6339872 Water Inlet Valve Compatible With Whirlpool, Kitchen Aid Dishwasher (Fits Models: 662, 665, 7WD, ADB, CDB And More)**  
+   - Review: Great product  
+   - Rating: ★★★★★ (4.6)  
+   - Score: 0.3562
+4. **Whirlpool WDF310PAAD 24" Stainless Look Full Console Dishwasher - Energy Star**  
+   - Review: This dishwasher came with my new house and overall, I am very pleased with it. The design is sleek and the controls and features are easy to use. It's quieter than I expected, probably the quietest o…  
+   - Rating: ★★☆☆☆ (2.5)  
+   - Score: 0.3401
+5. **GE GDF510PGJBB 24" Black Full Console Dishwasher - Energy Star**  
+   - Review: not worth the price!  
+   - Rating: ★☆☆☆☆ (1.0)  
+   - Score: 0.2974
 
 ### refrigerator water filter replacement
 
@@ -75,49 +75,49 @@
 
 **BM25 Top 5**
 
-1. **GLACIER FRESH XWF Replacement for GE XWF Refrigerator Water Filter Pack of 3**  
-   - Review: Easy to install. Use for a GE refrigerator.  
+1. **Clear Choice Taste Filter Replacement for GE GSWF WR17X11608 Filter Compatible with EFF-6023A WF298 WF281 WD-GSWF Refrigerator Water Filter, NSF/ANSI 42, Box of 6, Made in the USA**  
+   - Review: Working just fine.  
    - Rating: ★★★★★ (5.0)  
-   - Score: 5.1047
-2. **K&J Replacement Samsung Compatible Refrigerator Water Filter for DA2900020B, RF263BEAESR, and RF28HMEDBSR - Samsung HAF-CIN/EXP and 46-9101 Refrigerator Water Filter, NSF 42 Certified (1-Pack)**  
-   - Review: Working perfectly well very satisfied  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 5.0888
-3. **Two Pack Fresh Up White 2260518B Compatible with Whirlpool Water Filter Cap for Refrigerators Affordable Alternative Generic**  
-   - Review: Absolutely great!! Got my ice cubes and water back in refrigerator cause of these !  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 5.0278
-4. **Waterdrop DA29-00020B NSF 53&42 Certified Refrigerator Water Filter, Replacement for Samsung DA29-00020B, DA29-00020A, HAF-CIN/EXP, 46-9101, WDS-F27, 1 Filter**  
-   - Review: I didn't expect “Waterdrop” to last as long or longer than the more advertised and/or expensive brands, but it does! My water has NO additional flavor - just pure water! AND one Waterdrop filter last…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 4.9588
-5. **AQUA CREST DA29-00020B Replacement for Samsung HAF-CIN/EXP, DA29-00020B-1, RF28HMEDBSR, RF263BEAESR, RF4287HARS, HAF-CIN, DA97-08006A-1, RF28K9380SR, RF28HFEDTSR, Refrigerator Water Filter, 1 Filter**  
-   - Review: Good price and seems to do the job except it leaves behind a slightly metallic taste to the water. 1 filter lasts us about 3-4 months for moderate usage in a 2-person household. That seems really fas…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 4.8716
+   - Score: 13.6648
+2. **Clear Choice Taste Filter Replacement for Maytag UKF7003 FILTER7 Filter Compatible with EFF-6014A HDX-FMM-1 FMM-1 MYRF-100 Refrigerator Water Filter, NSF/ANSI 42, Box of 2, Made in the USA**  
+   - Review: Works great. Water taste fine. Price is right.  
+   - Rating: ★★★★★ (4.7)  
+   - Score: 13.6182
+3. **Wildberries EDR4RXD1 Water Filter For Whirlpool Refrigerator Replacement for Water Filtration,Replacement Whirlpool Refrigerator Water Filter 4,UKF8001 Refrigerator Water Filter Replacement,Pack of 2**  
+   - Review: Works just fine [SEP] Tight seal. Length shorter than original but these are not the manufacture ones… so a small difference in length, MEH. BUT, no short step on the filter. Crisp and clean. Time wi…  
+   - Rating: ★★★★☆ (4.4)  
+   - Score: 13.6176
+4. **Clear Choice Taste Filter Replacement for GE GSWF WR17X11608 Filter Compatible with EFF-6023A WF298 WF281 WD-GSWF Refrigerator Water Filter, NSF/ANSI 42, Box of 1, Made in the USA**  
+   - Review: I have ordered these before and gotten the correct size. This one doesn't fit my fridge  
+   - Rating: ★★★☆☆ (2.6)  
+   - Score: 13.6166
+5. **Clear Choice Taste Filter Replacement for LG 5231JA2006A LT600 Filter Compatible with SGF-LA50 SGF-LB60 RWF1051 WSL-2 Refrigerator Water Filter, NSF/ANSI 42, Box of 2, Made in the USA**  
+   - Review: These work perfectly as replacement of more expensive OEM replacement filter [SEP] Great product [SEP] Fit just fine. [SEP] Ok [SEP] It fits.  
+   - Rating: ★★★★☆ (4.4)  
+   - Score: 13.5404
 
 **Semantic Top 5**
 
-1. **SAMSUNG Genuine Filters for Refrigerator Water and Ice, Carbon Block Filtration for Clean, Clear Drinking Water, DA29-00020B-3P, 3 Pack**  
-   - Review: I use one of these filters every 6 months, so buying 2 for $70+ is a bargain compared to $55 each at Lowes.  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.7055
-2. **Waterfall Filter - Refrigerator Water Filter Comptaible with Samsung DA29-00020B , DA29-00020A, HAF-CIN/EXP, HAF-CIN, DA97-08006A, Kenmore 469101, RF28HMEDBSR, RF4287HARS**  
-   - Review: I have been buying the Samsung filters at Lowe's for $50 plus tax. They last 6 months. I started researching replacement filters and tried a couple before this brand. I have purchased these about 4 t…  
+1. **Refrigerator water filter (1 pack)**  
+   - Review: It fix perfect in my refrigerator and it filter the water very good.  
    - Rating: ★★★★☆ (4.0)  
-   - Score: 0.6919
-3. **K&J Replacement Samsung Compatible Refrigerator Water Filter for DA2900020B, RF263BEAESR, and RF28HMEDBSR - Samsung HAF-CIN/EXP and 46-9101 Refrigerator Water Filter, NSF 42 Certified (1-Pack)**  
-   - Review: Working perfectly well very satisfied  
+   - Score: 0.6936
+2. **Refrigerator Water Filter 2 PACK**  
+   - Review: Replace current water filter on refrigerator. Very good price.  
    - Rating: ★★★★★ (5.0)  
-   - Score: 0.6723
-4. **Filterlogic UKF8001 Water Filter, Replacement for EveryDrop Filter 4, EDR4RXD1, Maytag UKF8001P, UKF8001AXX, Whirlpool 4396395, 469006, FMM-2, Puriclean II (Pack of 4)**  
-   - Review: I wasn't sure whether these were worth it or not, given the cost compared to the original branded filters.<br /><br />I can happily report that these are a great value and work every bit as good as t…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.6662
-5. **Frigidaire WF3CB Puresource3 Refrigerator Water Filter , White, 1 Count (Pack of 1)**  
-   - Review: This works in my Frigidaire Model J51-23, so what's not to love. It is exactly the same filter as the one that came with the fridge. Also, it was easy to install. I removed my old one by pressing in…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.6618
+   - Score: 0.6677
+3. **water filter**  
+   - Review: Appreciate being to able to purchase individually. [SEP] Perfect replacement for my refrigerator. Great savings [SEP] The price is very good but the clear flavor lasts only 30 days!  
+   - Rating: ★★★★★ (4.7)  
+   - Score: 0.6644
+4. **water filter**  
+   - Review: These fit my LG refrigerator great. [SEP] Works as expected [SEP] Price is great; delivery was fast [SEP] Just like the LG filters but a lot less expensive. [SEP] Arrive fast. Easy to install. No pro…  
+   - Rating: ★★★★☆ (4.4)  
+   - Score: 0.6189
+5. **Maytag UKF8001P PUR FILTER for Refrigerator and Ice Water Filter (2-Pack)**  
+   - Review: Just got them. Perfect fit. What a difference on water pressure coming out. [SEP] Exactly what I was looking for to replace the water filter in my Amana refrigerator. [SEP] Thanks , just what I neede…  
+   - Rating: ★★★★★ (4.6)  
+   - Score: 0.6161
 
 ### portable countertop ice maker
 
@@ -125,49 +125,49 @@
 
 **BM25 Top 5**
 
-1. **Portable Ice Maker Machine Countertop, TOBEELEC 2.1L Electric Ice Maker with Touch LCD Display, Self-Cleaning Function, 9 Ice Cubes Ready in 7 Mins, 26lbs/24H, Ice Basket & Scoop for Home, Bar, Party**  
-   - Review: Love it but can’t replace because of company is out of business so I brought different one and good so far  
-   - Rating: ★★★☆☆ (3.0)  
-   - Score: 13.7964
-2. **R.W.FLAME Protable Nugget Ice Maker Countertop, Pebble/Pellet Ice Maker Machine with Auto Self-Cleaning,11000Pcs/35Lbs/24Hrs, Ice Scoop and Basket,Ice Machine for Home Office Bar Party,Black**  
-   - Review: This does make new ice pretty fast and takes up very little counter space. The only reason for 4 out 5 stars is that the ice tends to melt kind of fast. I've double checked to make sure everything is…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 13.5869
-3. **IKT Ice Maker Countertop, 27lbs 24Hrs 2 Size(S/L), 9 Cubes Ready in 5.5mins, Self-Cleaning Electric Portable Ice Maker with Ice Scoop and Basket, Perfect for Home/Kitchen/Office/Bar, Gray**  
-   - Review: There are times when the ice maker on the refrigerator can't keep up with our ice needs. Usually that's when we're entertaining or going out and taking the cooler somewhere. This counter top ice make…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 13.0874
-4. **Silonn Ice Makers Countertop, 9 Cubes Ready in 6 Mins, 26lbs in 24Hrs, Self-Cleaning Ice Machine with Ice Scoop and Basket, 2 Sizes of Bullet Ice for Home Kitchen Office Bar Party**  
-   - Review: Family love it and use for cold drinks !!  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 12.7600
-5. **GE Profile Opal | Countertop Nugget Ice Maker with Side Tank | Portable Ice Machine with Bluetooth Connectivity | Smart Home Kitchen Essentials | Stainless Steel Finish | Up to 24 lbs. of Ice Per Day**  
-   - Review: First machine lasted 6 months. Was replaced under warranty and that machine lasted about 7 months. The ice is great but who wants a $500 machine that doesn’t even last 6 months. Highly disappointed!  
-   - Rating: ★☆☆☆☆ (1.0)  
-   - Score: 12.6626
+1. **Portable Ice Maker Machine for Countertop**  
+   - Review: Works great has small n large ice cudes. Isn't really noisy stops making it when it get full of ice. Doesn't make a mess like some do with water evaporating. Recommend this 2 any age wanting or just…  
+   - Rating: ★★★★☆ (4.2)  
+   - Score: 26.0132
+2. **FEANOR Self Cleaning Ice Makers Countertop Machine 9 Cubes Ready in 6-8 Minutes Portable Mini Electric Compact Ice Maker NuggetPerfect for Home/Kitchen/Bar, Tools Included**  
+   - Review: Makes ice fast [SEP] Ice maker is working nicely  
+   - Rating: ★★★★☆ (4.5)  
+   - Score: 23.8386
+3. **FEANOR Compact Countertop Ice Maker with Self-Cleaning Function, Portable Electric Ice Makers Machine 9 Cubes Ready in 6-8 Minutes Mini Ice Machine Perfect for Home/Kitchen/Bar, Tools Inccluded**  
+   - Review: I GOT THIS FOR MY MOM. SHE HASN'T HAD THIS ICE MAKER FOR A YEAR YET AND IT STOPPED. DON'T WASTE YOUR MONEY!  
+   - Rating: ★★★★☆ (4.5)  
+   - Score: 23.4626
+4. **FEANOR Home Electric Mini Countertop Ice Maker Machine with Self Cleaning Function, Portable Compact Ice Cube Maker 9 Cubes Ready in 6 Minutes**  
+   - Review: I just love this ice maker, it works great always have good ice cubes for drinks and most of the time I need a refill and there is still ice in my glass. I recommend this product highly [SEP] The ice…  
+   - Rating: ★★★★☆ (4.5)  
+   - Score: 23.2045
+5. **FEANOR Self Cleaning Ice Makers Countertop Machine 9 Cubes Ready in 6-8 Minutes Portable Mini Electric Compact Ice Maker Perfect for Home/Kitchen/Bar, Tools Included**  
+   - Review: Makes ice very fast!! [SEP] The ice is perfect and I was so pleased I bought one for a gift to a friend and she loves it too. [SEP] Since I wrote this review, the machine has stopped working complete…  
+   - Rating: ★★★★☆ (4.5)  
+   - Score: 23.0445
 
 **Semantic Top 5**
 
-1. **Portable Ice Maker Machine Countertop, TOBEELEC 2.1L Electric Ice Maker with Touch LCD Display, Self-Cleaning Function, 9 Ice Cubes Ready in 7 Mins, 26lbs/24H, Ice Basket & Scoop for Home, Bar, Party**  
-   - Review: Love it but can’t replace because of company is out of business so I brought different one and good so far  
-   - Rating: ★★★☆☆ (3.0)  
-   - Score: 0.7624
-2. **Electactic Ice Maker Countertop Portable Ice Maker Machine Self-Cleaning 30lbs/5Mins/24Hrs 2 Mode Ice Machine Counter Ice Maker with Scoop&Basket for Home/Office/Bar/RV Use**  
-   - Review: I like the ice cube shapes,takes a while to make.I make them then store them in a zip lock and put them in the freezer.  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 0.7289
-3. **R.W.FLAME Protable Nugget Ice Maker Countertop, Pebble/Pellet Ice Maker Machine with Auto Self-Cleaning,11000Pcs/35Lbs/24Hrs, Ice Scoop and Basket,Ice Machine for Home Office Bar Party,Black**  
-   - Review: This does make new ice pretty fast and takes up very little counter space. The only reason for 4 out 5 stars is that the ice tends to melt kind of fast. I've double checked to make sure everything is…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 0.7139
-4. **Igloo ICEB26BK Portable Electric Countertop 26-Pound Automatic Ice Maker, Black**  
-   - Review: Our refrigerator didn't come with an ice maker and trays are a pain and take up too much space. My uncle gifted me his old one to see if I could repair it but it was not meant to be. So I ordered thi…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.6801
-5. **Smad Portable Commercial Ice Maker Under Counter Built-in Ice Maker Machine with Freezer, Stainless Steel**  
-   - Review: Works great, but get a air freshener for the area it’s to be used. For the first day or two it made the whole house stink while running. Shut it off a couple days and turned back on still a oil odor…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.6790
+1. **Portable Ice Maker Machine for Countertop**  
+   - Review: Works great has small n large ice cudes. Isn't really noisy stops making it when it get full of ice. Doesn't make a mess like some do with water evaporating. Recommend this 2 any age wanting or just…  
+   - Rating: ★★★★☆ (4.2)  
+   - Score: 0.8643
+2. **Ice Maker for Countertop, Self-Cleaning Portable Ice Maker Machine, Makes 40lb Crunchy Pellet Ice per Day, Pebble Ice Maker with 2.4lb Ice Bin and Scoop for Home Kitchen Office Party(Silver)**  
+   - Review: This was a replacement for a different brand that failed. Sometimes you get it right and this is it!<br />Quality machine! [SEP] Bought as Christmas gift for husband, and he loves it.<br />He said th…  
+   - Rating: ★★★★☆ (3.7)  
+   - Score: 0.6181
+3. **DyBaxa Ice Makers Countertop, 9 Cubes/6 Mins Portable Ice Maker Machine, 26Lbs Ice/24Hrs Self-Cleaning Ice Cube Maker, 2 Size Bullet Ice Maker with Scoop Basket & 5Pcs Ice Bags-10Lbs, Kitchen Home RV**  
+   - Review: Great little machine and well worth the price. Followed the directions and had ice in no time. Use filtered water as the taste will only be as good as the water you use. First round of ice on small t…  
+   - Rating: ★★★★☆ (3.8)  
+   - Score: 0.6167
+4. **Ice Makers Countertop, Self-Cleaning Function, Portable Electric Ice Cube Maker Machine, 9 Ice Cubes Ready in 6 Mins, 26lbs 24Hrs with Ice Bags and Ice Scoop Basket for Home Kitchen Office Bar(Silver)**  
+   - Review: This little ice maker is a gem. My refrigerator died and it was gonna to take 3 weeks before the parts to fix it arrived. I order this ice maker and received it the next day. Within an hour of pluggi…  
+   - Rating: ★★★★☆ (4.1)  
+   - Score: 0.6126
+5. **Portable Automatic Ice Maker,33Lbs/24H Self-Cleaning Ice Maker Machine for Countertop,9 Ice Cubes S/L in 8mins Ice Maker Machine,2.6L Ice Cube Maker with Ice Scoop Basket**  
+   - Review: Been great so far. Only had it about a week but using it regularly and it seems to be working great  
+   - Rating: ★★★★☆ (3.9)  
+   - Score: 0.6078
 
 ### dishwasher that runs quietly at night
 
@@ -175,49 +175,49 @@
 
 **BM25 Top 5**
 
-1. **Vicks Humidity Monitor White**  
-   - Review: This VICKS HEALTHCHECK HUMIDITY AND TEMPERATURE MONITOR is a simple device that only does two things--display temperature (F. or C.) and relative humidity--but it does both really well. The 3-1/2" x…  
+1. **Enterpark Premium Quality Cost Effective Part for 4681EA2002H Replacement of Drain Pump for Dishwasher**  
+   - Review: I bought and installed both rinse and drain pumps at the same time even though it was only the drain pump that failed. Paid about $50 for both parts. Probably would have cost at least $500 to have a…  
+   - Rating: ★★★★☆ (4.5)  
+   - Score: 20.0283
+2. **Amana ADB1300AFB Built-In 24" Tall Tub Dishwasher, Black, 3 Cycles**  
+   - Review: I bought this dishwasher on ebay and I am really satisfied with it. Its cleans really well and its made in a way that makes it easy to fit a variety of things inside. Mine did not have insulation aro…  
+   - Rating: ★★★☆☆ (3.4)  
+   - Score: 17.4949
+3. **AEQ73110205 - OEM Upgraded Replacement for Sears Refrigerator Ice Maker Assembly Kit**  
+   - Review: I used u-tube to identiy this system for installation into my refrigerator. It went in easily with instruction during the computer instructions. It has worked perfecrly since installation. It is a qu…  
+   - Rating: ★★★★☆ (3.6)  
+   - Score: 17.2981
+4. **Maytag MDB6769PAB JetClean Plus 24" Black Fully Integrated Dishwasher - Energy Star**  
+   - Review: It didn't even last 2 years - unbelievable. I guess I will never buy Maytag again. [SEP] Dont buy this garbage. Control panel failed and was replaced under warranty. Part failed again 4 months later…  
+   - Rating: ★★★☆☆ (3.0)  
+   - Score: 17.2010
+5. **4681ED1004D - ClimaTek Dishwasher Motor Fits LG**  
+   - Review: Perfect fit our dishwasher and easy to replace. Go to YouTube for help, there are multiple steps to replace this pump, but all are very simple. Runs quietly.  
    - Rating: ★★★★★ (5.0)  
-   - Score: 7.1320
-2. **Appliance Art Instant Stainless Magnetic Dishwasher Door Cover Sheet, Vinyl Decorative Panel Decal With Stainless Steel Texture For An Instant, Easy Update (23.5 x 26 Inches, Easily Trimmable)**  
-   - Review: Looks like new!!!  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 5.2779
-3. **Miele : Dishwasher Conditioner 8.5 oz (06848160 / 09042920)**  
-   - Review: I have been trying to find something that cleans my 6 year old dish washer and in the past it was run the machine empty. Although we have never noticed any deterioration in the wonderful cleaning of…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 4.7894
-4. **8531233 WP8562043 Universal Dishwasher Silverware Basket - Fit for Kitchen-Aid dishwasher silverware basket,Whirlpool Utensil Rack Basket,Replaces 8531288,8562043, WP8531233VP, W10190415, PS11746119**  
-   - Review: Fits  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 4.7549
-5. **IKT Ice Maker Countertop, 27lbs 24Hrs 2 Size(S/L), 9 Cubes Ready in 5.5mins, Self-Cleaning Electric Portable Ice Maker with Ice Scoop and Basket, Perfect for Home/Kitchen/Office/Bar, Gray**  
-   - Review: There are times when the ice maker on the refrigerator can't keep up with our ice needs. Usually that's when we're entertaining or going out and taking the cooler somewhere. This counter top ice make…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 4.5267
+   - Score: 17.1552
 
 **Semantic Top 5**
 
-1. **Miele : Dishwasher Conditioner 8.5 oz (06848160 / 09042920)**  
-   - Review: I have been trying to find something that cleans my 6 year old dish washer and in the past it was run the machine empty. Although we have never noticed any deterioration in the wonderful cleaning of…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.4637
-2. **Portable Countertop Dishwashers, NOVETE Compact Dishwashers with 5 L Built-in Water Tank & Inlet Hose, 5 Washing Programs, Baby Care, Air-Dry Function and LED Light for Small Apartments, Dorms and RVs**  
-   - Review: Not worth the price. Takes up too much space, putting water in for the wash cycle is difficult AND requires a space to drain the "wash water" into unless willing to hook it up to your kitchen sink, w…  
-   - Rating: ★★☆☆☆ (2.0)  
-   - Score: 0.4354
-3. **WonderWash Portable Washing Machine for Apartment & Tiny Spaces - Manual Hand Clothes Washer with Retro Design - Clean Laundry Anywhere with Our Countertop, Non-Electric, Small Washer - Blue**  
-   - Review: Love the convenience of doing laundry inside my apartment, but do have a problem attaching the drain pipe when ready to drain the tub. Trial and error, I'm getting there. I have done several loads an…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 0.4107
-4. **COMFEE’ Washing Machine 2.4 Cu.ft LED Portable Washing Machine and Washer Lavadora Portátil Compact Laundry, 8 Models, Environmentally Friendly, Child Lock for RV, Dorm, Apartment Ivory White**  
-   - Review: but i havent had it long a year down the road i may change my mind and i love the blue trim i didnt realize it matches my shower curtain so well as its not solid but pretty swirls of purples and blue…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.4027
-5. **Vezfinel Refrigerator Door Handle Covers,Fridge Oven Dishwasher Protectoer,Catch Fingerprints&Smudges Kitchen Appliances Handmade Decoration (Gray Lattice)**  
-   - Review: Great, just what I was expecting. I've washed them once and they held up very well and they look nice.  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.3857
+1. **Edgewater Parts 8194001, AP3775412, PS972325 Link Balance Compatible With Whirlpool, KitchenAid dishwasher (Fits Models: 665, KUD, GU3, GU2)**  
+   - Review: Works great [SEP] Easy repair for the dishwasher door hinge. Parts worked perfectly for my 15 year old machine.  
+   - Rating: ★★★★☆ (3.9)  
+   - Score: 0.2436
+2. **Edgewater Parts 8268383 Chopper Blade Compatible With Whirlpool Dishwasher Fits Model# (KUD, GU1, DU1, GU2, DUL, DUC)**  
+   - Review: Purchased 9 months ago. Dishwasher has been working poorly for about a month now and this part went bad. Spring rusted away. You can see the rust on the plate.. but the plate seems to held up fine. I…  
+   - Rating: ★★★★☆ (4.1)  
+   - Score: 0.2424
+3. **Edgewater Parts W10872255, W11175771 AP6339872 Water Inlet Valve Compatible With Whirlpool, Kitchen Aid Dishwasher (Fits Models: 662, 665, 7WD, ADB, CDB And More)**  
+   - Review: Great product  
+   - Rating: ★★★★★ (4.6)  
+   - Score: 0.2340
+4. **Starry Night Dishwasher Cover Decorative Magnet Dishwasher Covers for The Front Dishwasher Door Magnet Cover Sticker for Dishwasher Magnetic Dishwasher Cover Panel Decals for Kitchen**  
+   - Review: These magnetic dishwasher covers are available in a<br />seemingly endless variety of colors and styles. Instead of seeing the flaws and battle scars the years have inflicted on my dishwasher, now I…  
+   - Rating: ★★★★☆ (4.3)  
+   - Score: 0.2179
+5. **Enterpark Premium Quality Cost Effective Part for 4681EA2002H Replacement of Drain Pump for Dishwasher**  
+   - Review: I bought and installed both rinse and drain pumps at the same time even though it was only the drain pump that failed. Paid about $50 for both parts. Probably would have cost at least $500 to have a…  
+   - Rating: ★★★★☆ (4.5)  
+   - Score: 0.2123
 
 ### small washing machine for apartment laundry
 
@@ -225,49 +225,49 @@
 
 **BM25 Top 5**
 
-1. **WonderWash Portable Washing Machine for Apartment & Tiny Spaces - Manual Hand Clothes Washer with Retro Design - Clean Laundry Anywhere with Our Countertop, Non-Electric, Small Washer - Blue**  
-   - Review: Love the convenience of doing laundry inside my apartment, but do have a problem attaching the drain pipe when ready to drain the tub. Trial and error, I'm getting there. I have done several loads an…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 22.1055
-2. **Portable Washing Machine - Foldable Mini Small Portable Washer Washing Machine With Drain Basket For Apartment, Laundry, Camping, RV, Travel, Underwear, Personal, Baby - (110V-200V) - Pink**  
-   - Review: This washes clothes just as good as any washing machine. Only issues I have is it has the smallest drain hose and takes forever to drain. The spin cycle is a joke. Don’t buy it for the spin cycle it…  
+1. **Upgrade Mini Portable Washing Machine by Wadoy, Folding Washing Machine Cleaner Semi-Automatic Small Laundry Tub, Lightweight Washer Laundry Washer for Travelling, Apartment, Gift for Friends/Family**  
+   - Review: The price was to much for the product  
+   - Rating: ★★★☆☆ (3.0)  
+   - Score: 27.7823
+2. **ZENY Portable Compact Full-Automatic Washing Machine Holds 8lbs Load Mini Laundry Washer Machine for Home Apartment**  
+   - Review: After having 2 full size front loading washing machines in the last 20 yrs, big, heavy and hard to maneuver with stairs, I decided to buy this machine in March 2019 for my upstairs apt. I am very ple…  
    - Rating: ★★★★★ (5.0)  
-   - Score: 18.7728
-3. **COMFEE’ Washing Machine 2.4 Cu.ft LED Portable Washing Machine and Washer Lavadora Portátil Compact Laundry, 8 Models, Environmentally Friendly, Child Lock for RV, Dorm, Apartment Ivory White**  
-   - Review: but i havent had it long a year down the road i may change my mind and i love the blue trim i didnt realize it matches my shower curtain so well as its not solid but pretty swirls of purples and blue…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 17.1460
-4. **Kids Clothes Stick-on Labels, No-Iron, Write-On, Washer & Dryer Safe, Pack of 100**  
-   - Review: My elderly father was recently in rehab for a few weeks. While he was there, both pairs of his pajama pants disappeared. He told the staff and a few days later he received 2 new pairs of pajama pants…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 11.4787
-5. **Panda Compact Portable Laundry Dryer, 2.6 cu.ft, 8.8lbs Capacity, White, PAN40SF**  
-   - Review: 1. The exhaust "hose" is ridiculous -- hard plastic, totally unusable; had to purchase a regular flexible kit at the hardware store.<br /><br />2. UPDATE MARCH 2013 -- Initial review in parens (Major…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 10.7750
+   - Score: 26.3221
+3. **2023 Portable washing Machine Folding Mini Washing Machine Small Washer for Underwear Socks Baby Clothes Suitable for Apartment Dorm Travelling, Green**  
+   - Review: Very convenient for small clothes  
+   - Rating: ★★★★☆ (3.6)  
+   - Score: 26.0984
+4. **Frestec Portable Washing Machine, 0.84 Cu.Ft. Full-Automatic Small Washer, 2 in 1 Compact Laundry Washer, 8 Wash Cycles 3 Water Level Selections, Perfect for Apartment, Home, Dorm**  
+   - Review: Love this washer, small but does the job.  
+   - Rating: ★★★★☆ (4.4)  
+   - Score: 25.6554
+5. **As Seen On TV 347034-BC00380150 Partable Wonder Washer**  
+   - Review: I gave this to my daughter because she cannot have a regular washer in her apartment. I didn't think too much of it at first but she wanted it. All I can say is she loves it! She even washes jeans in…  
+   - Rating: ★★★★☆ (3.9)  
+   - Score: 25.4439
 
 **Semantic Top 5**
 
-1. **WonderWash Portable Washing Machine for Apartment & Tiny Spaces - Manual Hand Clothes Washer with Retro Design - Clean Laundry Anywhere with Our Countertop, Non-Electric, Small Washer - Blue**  
-   - Review: Love the convenience of doing laundry inside my apartment, but do have a problem attaching the drain pipe when ready to drain the tub. Trial and error, I'm getting there. I have done several loads an…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 0.7596
-2. **Portable Washing Machine - Foldable Mini Small Portable Washer Washing Machine With Drain Basket For Apartment, Laundry, Camping, RV, Travel, Underwear, Personal, Baby - (110V-200V) - Pink**  
-   - Review: This washes clothes just as good as any washing machine. Only issues I have is it has the smallest drain hose and takes forever to drain. The spin cycle is a joke. Don’t buy it for the spin cycle it…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.7443
-3. **COMFEE’ Washing Machine 2.4 Cu.ft LED Portable Washing Machine and Washer Lavadora Portátil Compact Laundry, 8 Models, Environmentally Friendly, Child Lock for RV, Dorm, Apartment Ivory White**  
-   - Review: but i havent had it long a year down the road i may change my mind and i love the blue trim i didnt realize it matches my shower curtain so well as its not solid but pretty swirls of purples and blue…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.6333
-4. **COSTWAY Compact Laundry Dryer, 110V Electric Portable Clothes Dryer with Stainless Steel Tub, Control Panel Downside Easy Control for 4 Automatic Drying Mode, White**  
-   - Review: It arrived today, well packaged, and I've used it once. Very pleased with this compact, quiet dryer !  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.5830
-5. **Panda Portable Compact Laundry Dryer, 3.5 cu.ft, Black and White, PAN760SF**  
-   - Review: Dryer broke within a year. I contacted Pandas service dept. They wanted me to do my own trouble shooting and remove the back panel and do my own repairs! Then when I explained I'm disabled they charg…  
+1. **Upgrade Mini Portable Washing Machine by Wadoy, Folding Washing Machine Cleaner Semi-Automatic Small Laundry Tub, Lightweight Washer Laundry Washer for Travelling, Apartment, Gift for Friends/Family**  
+   - Review: The price was to much for the product  
+   - Rating: ★★★☆☆ (3.0)  
+   - Score: 0.4910
+2. **Portable Washing Machine,9L Large Capacity Small Washing Machine,Foldable Washing Machine Washing Small Pieces of Clothing, Baby Clothes,Underwear,Socks**  
+   - Review: I have been wanting to buy this mini washing machine for a long time. It is really great. It is super convenient for washing socks and other small items, and it saves water and electricity.  
+   - Rating: ★★★☆☆ (3.0)  
+   - Score: 0.4582
+3. **Portable Washing Machine,9L Large Capacity Small Washing Machine,Foldable Washing Machine with Spin-Dry Basket,Mini Washer for Washing Small Pieces of Clothing, Baby Clothes,Underwear,Socks -Purple**  
+   - Review: This little washing machine was not powerful. It was slow moving. It got hot and could barely wash one top.Nonoe should expect to clean any garment of any proportion or substance with this item. Mayb…  
+   - Rating: ★★★☆☆ (3.3)  
+   - Score: 0.4127
+4. **Mini Portable Washing Machine, Foldable Washing Machine with Spin-Dry Basket, Small Portable Washer and Dryer Combo for Apartments, Camping, RV, Travel Laundry Washing Small Pieces of Underwear, Socks**  
+   - Review: This product is a lot smaller than it looks. I don't know if mine was damaged upon arrival due to shipping or if it was a manufacturer defect. There is a leak somewhere, I can't really tell where. Th…  
    - Rating: ★☆☆☆☆ (1.0)  
-   - Score: 0.5719
+   - Score: 0.4095
+5. **2023 Portable washing Machine Folding Mini Washing Machine Small Washer for Underwear Socks Baby Clothes Suitable for Apartment Dorm Travelling, Green**  
+   - Review: Very convenient for small clothes  
+   - Rating: ★★★★☆ (3.6)  
+   - Score: 0.4026
 
 ### fridge filter that improves water taste
 
@@ -275,49 +275,49 @@
 
 **BM25 Top 5**
 
-1. **Capresso 4640.93 3-pack Charcoal Water Filters for Capresso CoffeeTeam TS and CoffeeTeam GS Coffee Maker**  
-   - Review: They work well.  
-   - Rating: ★★★☆☆ (3.0)  
-   - Score: 9.4428
-2. **Pureline DA29-00020B, Replacement for Samsung DA29-00020B, Kenmore 46-9101, 469101, 9101, 4609101000, Refrigerator Water Filter - Reduces Bad Taste & Odor**  
-   - Review: I was paying $49.00 per filter at another store for the Samsung brand. I can buy 4 for that price here.<br />Each filter lasts 6 months. My hubby drinks a lot of water from the frig system.  
+1. **Aqua Fresh WF289 Replacement for Samsung DA2900003 and DA29-00003B (Pack of 2)**  
+   - Review: After using the AquaFresh replacement filters for my Samsung fridge, I'd never pay the price Samsung wants for the same filter. These work great and save me $. [SEP] Both of them Leaked shortly after…  
+   - Rating: ★★★★★ (4.6)  
+   - Score: 23.1674
+2. **OMNIFilter R200 6-Pack**  
+   - Review: I have used this filter before, and was happy with it's performance. Local store that carried them, stopped carrying them, so I went looking elsewhere.  
    - Rating: ★★★★★ (5.0)  
-   - Score: 9.2734
-3. **GLACIER FRESH XWF Replacement for GE XWF Refrigerator Water Filter Pack of 3**  
-   - Review: Easy to install. Use for a GE refrigerator.  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 8.8814
-4. **K Cup Filters - Pack of 300 - Fits With All Reusable Coffee Pods - Compostable and Disposable Coffee Filters for Keurig Single Cup by Delibru**  
-   - Review: Used in one cup pod machine. It did the job very well coffee was good.  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 7.0664
-5. **Frigidaire WF3CB Puresource3 Refrigerator Water Filter , White, 1 Count (Pack of 1)**  
-   - Review: This works in my Frigidaire Model J51-23, so what's not to love. It is exactly the same filter as the one that came with the fridge. Also, it was easy to install. I removed my old one by pressing in…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 6.3329
+   - Score: 22.7871
+3. **Swift Green SGF-DA20B Samsung DA29-00020B Refrigerator Water Filter**  
+   - Review: Does what it needs to do  
+   - Rating: ★★★★☆ (4.1)  
+   - Score: 22.4595
+4. **GOLDTONE 12 Pack Water Filters For CAPRESSO Coffee Maker Activated Charcoal Filter Water Replacement Charcoal Water Filters For CAPRESSO Coffee Machines Cartridges Replaces 4440.90 Water Filters**  
+   - Review: Filters are the wrong size and shape. Will not fit Capresso coffeemaker [SEP] These filters are round but Capresso filters are oblong. No way to insert. [SEP] I don't recall what I paid, but I do rem…  
+   - Rating: ★★★★☆ (3.9)  
+   - Score: 22.0494
+5. **American Plumber Water Filter Taste and Odor Cartridges W5CIP478 (6-Pack)**  
+   - Review: But I did misread the directions; thought it said to change every 2 years; it's months. So, I now have a good supply. [SEP] This water filter does an excellent job of improving the taste and odor of…  
+   - Rating: ★★★★☆ (4.3)  
+   - Score: 21.2485
 
 **Semantic Top 5**
 
-1. **Frigidaire ULTRAWF PureSource Ultra Water and Ice Refrigerator Filter, Original, 1 Count**  
-   - Review: Very pleased with my filter for frigidaire water system. Very pleased as I didnt have to drive 30 miles each way to replace my filter.  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.6436
-2. **Frigidaire WF3CB Puresource3 Refrigerator Water Filter , White, 1 Count (Pack of 1)**  
-   - Review: This works in my Frigidaire Model J51-23, so what's not to love. It is exactly the same filter as the one that came with the fridge. Also, it was easy to install. I removed my old one by pressing in…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.6306
-3. **Whirlpool 4396841 PUR [Fast Fill] FILTER3 Refrigerator Water Filter (1-Pack)**  
-   - Review: This is my second refrigerater with a waterfilter on the bottom and I love it. The water tastes teriffic and you do not need to buy water in the store. I recomment Wirlpool refrigerator hightly with…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.6005
-4. **AQUACREST MWF NSF 401 Certified to Reduce 13 contaminants, Compatible with GE MWF, SmartWater, MWFP, MWFA, GWF, HDX FMG-1, WFC1201, RWF1060 Refrigerator Water Filter (Pack of 2)**  
-   - Review: We have had this product for a while and the water taste is great. I think it is good to rinse all filters before the first use to get best results.  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.5867
-5. **Waterfall Filter - Refrigerator Water Filter Comptaible with Samsung DA29-00020B , DA29-00020A, HAF-CIN/EXP, HAF-CIN, DA97-08006A, Kenmore 469101, RF28HMEDBSR, RF4287HARS**  
-   - Review: I have been buying the Samsung filters at Lowe's for $50 plus tax. They last 6 months. I started researching replacement filters and tried a couple before this brand. I have purchased these about 4 t…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 0.5856
+1. **water filter**  
+   - Review: Fits and works fine [SEP] Great value for the price! Good water flow and no leaking issues. [SEP] It fits! [SEP] Replaced the old one in my fridge. Works flawless [SEP] fast and good  
+   - Rating: ★★★★☆ (4.5)  
+   - Score: 0.3664
+2. **water filter**  
+   - Review: Fit perfect, easy to install. Lot less that mfgr model. [SEP] took just a few seconds to install and i was very impressed with the taste of the water [SEP] Can't tell no difference with the brand rep…  
+   - Rating: ★★★★☆ (4.5)  
+   - Score: 0.3575
+3. **Clear Choice CLCH101 Refrigerator Water Filter Replacement Compatible Maytag Filter For Cost-Effective Alternative to Factory Original**  
+   - Review: I read a lot of revievs and there where some bad ones but mostly good ones and im glad I took the chance not only is this filter a 3rd of the price but its made right here in the USA where as the res…  
+   - Rating: ★★★★☆ (4.5)  
+   - Score: 0.3395
+4. **TENGYE UpdateClassic MWF, 3.92.82.8, White**  
+   - Review: As advertised [SEP] Fits my refrigerator. [SEP] The filter was a perfect replacement for those replaced via GE directly. I was concerned that there would be a problem such as fit, but all seems OK. […  
+   - Rating: ★★★★★ (4.6)  
+   - Score: 0.3353
+5. **MWF Water Filter for GE Refrigerator, Crystala Filters Compatible with GE MWF SmartWater, MWFA, MWFP, GWF, GWFA, Kenmore 9991, 46-9991, HDX FMG-1, WFC1201 (1 Pack)**  
+   - Review: I installed this today and it is working just as good as the name brand water filter that I removed. It screwed on there without any problems at all. Its great to know that you can find a filter on a…  
+   - Rating: ★★★★★ (4.7)  
+   - Score: 0.3350
 
 ### best compact dishwasher for a small apartment with low noise
 
@@ -325,49 +325,49 @@
 
 **BM25 Top 5**
 
-1. **hOmelabs Upright Freezer - 2.1 Cubic Feet Compact Reversible Single Door Vertical Freezer with Child Door Lock - Table Top Mini Freezing Machine with Removable Shelves for Office Dorm or Apartment**  
-   - Review: I just needed a little extra freezer space, this fit the bill perfectly! It actually holds a lot more than I expected. Delivery was very fast and setting it up was a breeze. Switched the door to open…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 19.8560
-2. **WonderWash Portable Washing Machine for Apartment & Tiny Spaces - Manual Hand Clothes Washer with Retro Design - Clean Laundry Anywhere with Our Countertop, Non-Electric, Small Washer - Blue**  
-   - Review: Love the convenience of doing laundry inside my apartment, but do have a problem attaching the drain pipe when ready to drain the tub. Trial and error, I'm getting there. I have done several loads an…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 16.6374
-3. **Northair Low temperature Chest Freezer - 3.5 Cu Ft with 2 Removable Baskets - Reach In Freezer Chest - 14℉ to -40℉**  
-   - Review: The freezer works well, is quiet and is good for a small space. It has a small dent on the corner but nothing to drastic. Thinker foam in the packaging could prevent that. I would give it more stars…  
-   - Rating: ★★☆☆☆ (2.0)  
-   - Score: 14.2741
-4. **COSTWAY Compact Laundry Dryer, 110V Electric Portable Clothes Dryer with Stainless Steel Tub, Control Panel Downside Easy Control for 4 Automatic Drying Mode, White**  
-   - Review: It arrived today, well packaged, and I've used it once. Very pleased with this compact, quiet dryer !  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 13.8852
-5. **COOLLIFE Compact Countertop Ice Maker Machine with Water Dispenser,Produces 36 lbs Ice in 24 Hours, LED Display (1, 12)**  
-   - Review: After buying this ice machine just 15 months ago and using it 5 times per month it’s now leaking so bad I can’t use it anymore. The company has refused to replace it!  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 13.2912
+1. **3.2 CU. FT. Compact Refrigerator - 2 Door Mini Fridge Chiller and Freezer Compartment with Removable Glass Shelves - Small Drink Food Storage Cooler for Office, Dorm, Apartment, Bedroom (red)**  
+   - Review: My red fridge is perfect for my home theatre. It gets very cold, which is great for an ice old beverage. [SEP] For a new fridge it does make a little bit of a hum noise which I wasn’t expecting, but…  
+   - Rating: ★★★★☆ (4.1)  
+   - Score: 35.5822
+2. **Clarfey Mini Fridge with Freezer, Compact Refrigerator with Reversible Door, Adjustable Legs, Adjustable Thermostat Control, Small Fridge Perfect for Home/Dorm/Office/Apartment, 2.6 Cu.Ft.**  
+   - Review: It’s so quiet sometimes I open it just to see it’s working because I don’t ever hear it it’s great to keep water and small snacks for toddlers and it’s small enough that they can always get what they…  
+   - Rating: ★★★★☆ (4.4)  
+   - Score: 35.5244
+3. **COSTWAY Compact Refrigerator, 2.4 cu ft. Single Door Small Fridge with Auto Defrost, Adjustable Temperature 32℉ to 50℉, Reversible Door, Removable Glass Shelves, Mini Fridge for Bedroom, Apartment, Red**  
+   - Review: This refrigerator does not hold a consistent temperature and fluctuates out of range. Costaway is not responding to my request to return it. [SEP] good frost free with no freezer  
+   - Rating: ★★★★☆ (3.6)  
+   - Score: 35.1804
+4. **WANAI Classic Retro Compact Refrigerator - Single Door Mini Fridge with 7 Adjustable Thermostat Control Refrigerator, Small Refrigerator for Kitchen Dorm, Apartment, Bar and Office, 1.7 Cu Ft (Blue)**  
+   - Review: Definitely consider buying this for yourself or even as a gift. And if you have any questions or concerns, their team will help you promptly. 5/5  
+   - Rating: ★★★☆☆ (2.6)  
+   - Score: 35.0951
+5. **Deep Freezer Small Chest Freezer 3.5 Cu.Ft Mini Chest Freezer with 7 Temperature Settings, Compact Deep Freezer with Top Open Door, Adjustable Storage Basket, Low Noise, Energy Saving, Great or Home Kitchen Apartment Office, Black**  
+   - Review: I bought this for my mother, it fits for her. I plugged it in and it got cold fast. it's just to small for a family. One person works great for. [SEP] Works as expected. Showed up when promised. Show…  
+   - Rating: ★★★★☆ (4.2)  
+   - Score: 34.9164
 
 **Semantic Top 5**
 
-1. **WonderWash Portable Washing Machine for Apartment & Tiny Spaces - Manual Hand Clothes Washer with Retro Design - Clean Laundry Anywhere with Our Countertop, Non-Electric, Small Washer - Blue**  
-   - Review: Love the convenience of doing laundry inside my apartment, but do have a problem attaching the drain pipe when ready to drain the tub. Trial and error, I'm getting there. I have done several loads an…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 0.5090
-2. **Portable Countertop Dishwashers, NOVETE Compact Dishwashers with 5 L Built-in Water Tank & Inlet Hose, 5 Washing Programs, Baby Care, Air-Dry Function and LED Light for Small Apartments, Dorms and RVs**  
-   - Review: Not worth the price. Takes up too much space, putting water in for the wash cycle is difficult AND requires a space to drain the "wash water" into unless willing to hook it up to your kitchen sink, w…  
-   - Rating: ★★☆☆☆ (2.0)  
-   - Score: 0.5011
-3. **Brynnl Silicone Stove Counter Gap Cover, 2 Pack Kitchen Stove Edge Gap Cover with 4 6-inch Fixing Straps- 25 Inches Easy Clean Stove Gap Filler for Kitchen Counter, Oven, Stovetop(Black)**  
-   - Review: Before silicon counter gap covers came out I had thinner Medal ones I had to paint black, and they didn’t clean well!<br />And Those made noise, and the paint would rub off, and I had to paint them a…  
+1. **HEVILLO Compact Dryer, 110v Electric Portable Clothes Dryer With 3 Automatic Working Mode for Small Living Spaces, Apartment Houses, dorms, RVs - White**  
+   - Review: I wanted a small compact dryer for my rv and this one fit the Bill it was small and compact worked perfectly I love it it doesn’t take up a lot of space and I like that is fold down so it’s easy for…  
    - Rating: ★★★★★ (5.0)  
-   - Score: 0.4802
-4. **Miele : Dishwasher Conditioner 8.5 oz (06848160 / 09042920)**  
-   - Review: I have been trying to find something that cleans my 6 year old dish washer and in the past it was run the machine empty. Although we have never noticed any deterioration in the wonderful cleaning of…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.4383
-5. **Appliance Art Instant Stainless Magnetic Dishwasher Door Cover Sheet, Vinyl Decorative Panel Decal With Stainless Steel Texture For An Instant, Easy Update (23.5 x 26 Inches, Easily Trimmable)**  
-   - Review: Looks like new!!!  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.4360
+   - Score: 0.3271
+2. **1.1 Cubic Feet Mini Freezer Countertop, Single Door Compact Upright Freezer with Reversible Door, Removable Shelves, Small freezer for Home/Dorms/Apartment/Office(Black)**  
+   - Review: Excellent buy. [SEP] It works very well and compact  
+   - Rating: ★★★★☆ (4.3)  
+   - Score: 0.2834
+3. **Hjtg 5 cu ft Chest Freezer Compact Space Apartment Home Food Storage Compact Saving Energy Efficient Upright Single Door**  
+   - Review: Order was cancelled and price increased to $299. Its absolutely not worth it, you can buy Arctic King 7 QFT much better quality at the same price.  
+   - Rating: ★★☆☆☆ (1.8)  
+   - Score: 0.2813
+4. **WANAI Classic Retro Compact Refrigerator - Single Door Mini Fridge with 7 Adjustable Thermostat Control Refrigerator, Small Refrigerator for Kitchen Dorm, Apartment, Bar and Office, 1.7 Cu Ft (Blue)**  
+   - Review: Definitely consider buying this for yourself or even as a gift. And if you have any questions or concerns, their team will help you promptly. 5/5  
+   - Rating: ★★★☆☆ (2.6)  
+   - Score: 0.2778
+5. **Upright Freezer - Compact Reversible Single Door Table Top Mini Freezer - Free Standing Freezing Machine with Removable Shelf for Office Dorm/Living Room/Apartment (Black, 1.1 cu.ft)**  
+   - Review: I love my little freezer. My apartment one is too small. I just wish it could be a bit wider and an inch shorter. It can't fit on the counter.  
+   - Rating: ★★★☆☆ (3.3)  
+   - Score: 0.2581
 
 ### nugget ice maker for a home bar that makes ice quickly
 
@@ -375,49 +375,49 @@
 
 **BM25 Top 5**
 
-1. **R.W.FLAME Protable Nugget Ice Maker Countertop, Pebble/Pellet Ice Maker Machine with Auto Self-Cleaning,11000Pcs/35Lbs/24Hrs, Ice Scoop and Basket,Ice Machine for Home Office Bar Party,Black**  
-   - Review: This does make new ice pretty fast and takes up very little counter space. The only reason for 4 out 5 stars is that the ice tends to melt kind of fast. I've double checked to make sure everything is…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 29.7769
-2. **GE Profile Opal | Countertop Nugget Ice Maker with Side Tank | Portable Ice Machine with Bluetooth Connectivity | Smart Home Kitchen Essentials | Stainless Steel Finish | Up to 24 lbs. of Ice Per Day**  
-   - Review: If you love pellet ice then this is the unit for you. I put this in my bar and use it almost every day. It does put out some heat and is a little loud when it is making ice but I absolutely love it!  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 28.1196
-3. **GE Profile Opal | Countertop Nugget Ice Maker with Side Tank | Portable Ice Machine with Bluetooth Connectivity | Smart Home Kitchen Essentials | Stainless Steel Finish | Up to 24 lbs. of Ice Per Day**  
-   - Review: First machine lasted 6 months. Was replaced under warranty and that machine lasted about 7 months. The ice is great but who wants a $500 machine that doesn’t even last 6 months. Highly disappointed!  
+1. **Kndko Nugget Ice Maker with Handle,33lbs/Day,1.5 Hour a Basket, Self-Cleaning, One-Click Design, Portable Ice Maker Nugget for Party Bar Home,Red**  
+   - Review: The red is a pretty color and looks good on the counter. It's nice that it has three different size settings for the ice. [SEP] It’s nice and compact makes the ice in small nuggets which is very nice…  
+   - Rating: ★★★☆☆ (3.3)  
+   - Score: 55.1421
+2. **Nugget Ice Maker Countertop - 33lbs/24H, Silonn Pebble Ice Maker Machine with Self-Cleaning Function, Ice Makers for Home Kitchen Office**  
+   - Review: I’ve been using this ice maker for a couple weeks after getting it as a gift and I LOVE IT! I love ice that is similar to crushed or sonic ice and this totally fits that! I’ve been absolutely loving…  
+   - Rating: ★★★★☆ (4.1)  
+   - Score: 53.1932
+3. **OUTGAVA Nugget Ice Maker Countertop Compact Ice Making Machine with Auto-Cleaning Function, 44Lbs in 24 Hours,Portable Pellet Ice Maker Machine with Ice Scoop and Basket for Home/Office/Bar/Party**  
+   - Review: Purchased this ice machine because we wanted a machine that made sonic ice. I was going to purchase the opal but this machine was cheaper and thought I would give it a try before buying the more expe…  
+   - Rating: ★★★★☆ (3.6)  
+   - Score: 52.1551
+4. **Nugget Ice Maker Countertop, Crushed Chewable Ice Maker, Self Cleaning Ice Makers with One-Click Operation, 34Lbs/24H, Pebble Portable Ice Machine with Ice Scoop for Home Bar Camping RV**  
+   - Review: I have been loving this ice maker, its size and shape fit perfectly at my little bar. It does not fill the entire tray with ice within 7 mins though, more like 10-15 minutes. But that doesn't mean yo…  
+   - Rating: ★★★★☆ (4.3)  
+   - Score: 51.8671
+5. **Kndko Nugget Ice Maker Countertop,14,000pcs/45lbs/Day,Pebble with Self-Cleaning,Crushed Makers for Home Kitchen Bar Party,Bronze Stainless Steel,Nugget 14,000pcs/45lbs/Day,UC-KN-Z5820BN-BR**  
+   - Review: Performed all interventions in handbook but the machine would not work after the first run. Very difficult trying to communicate with seller as all replies/messages seemed automated. Overall very odd…  
    - Rating: ★☆☆☆☆ (1.0)  
-   - Score: 25.8741
-4. **Electactic Ice Maker Countertop Portable Ice Maker Machine Self-Cleaning 30lbs/5Mins/24Hrs 2 Mode Ice Machine Counter Ice Maker with Scoop&Basket for Home/Office/Bar/RV Use**  
-   - Review: I like the ice cube shapes,takes a while to make.I make them then store them in a zip lock and put them in the freezer.  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 21.9640
-5. **IKT Ice Maker Countertop, 27lbs 24Hrs 2 Size(S/L), 9 Cubes Ready in 5.5mins, Self-Cleaning Electric Portable Ice Maker with Ice Scoop and Basket, Perfect for Home/Kitchen/Office/Bar, Gray**  
-   - Review: There are times when the ice maker on the refrigerator can't keep up with our ice needs. Usually that's when we're entertaining or going out and taking the cooler somewhere. This counter top ice make…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 21.4931
+   - Score: 51.6105
 
 **Semantic Top 5**
 
-1. **R.W.FLAME Protable Nugget Ice Maker Countertop, Pebble/Pellet Ice Maker Machine with Auto Self-Cleaning,11000Pcs/35Lbs/24Hrs, Ice Scoop and Basket,Ice Machine for Home Office Bar Party,Black**  
-   - Review: This does make new ice pretty fast and takes up very little counter space. The only reason for 4 out 5 stars is that the ice tends to melt kind of fast. I've double checked to make sure everything is…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 0.6818
-2. **Silonn Ice Makers Countertop, 9 Cubes Ready in 6 Mins, 26lbs in 24Hrs, Self-Cleaning Ice Machine with Ice Scoop and Basket, 2 Sizes of Bullet Ice for Home Kitchen Office Bar Party**  
-   - Review: Family love it and use for cold drinks !!  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.6713
-3. **GE Profile Opal | Countertop Nugget Ice Maker with Side Tank | Portable Ice Machine with Bluetooth Connectivity | Smart Home Kitchen Essentials | Stainless Steel Finish | Up to 24 lbs. of Ice Per Day**  
-   - Review: If you love pellet ice then this is the unit for you. I put this in my bar and use it almost every day. It does put out some heat and is a little loud when it is making ice but I absolutely love it!  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.6375
-4. **Portable Ice Maker Machine Countertop, TOBEELEC 2.1L Electric Ice Maker with Touch LCD Display, Self-Cleaning Function, 9 Ice Cubes Ready in 7 Mins, 26lbs/24H, Ice Basket & Scoop for Home, Bar, Party**  
-   - Review: Love it but can’t replace because of company is out of business so I brought different one and good so far  
-   - Rating: ★★★☆☆ (3.0)  
-   - Score: 0.6199
-5. **Smad Portable Commercial Ice Maker Under Counter Built-in Ice Maker Machine with Freezer, Stainless Steel**  
-   - Review: Works great, but get a air freshener for the area it’s to be used. For the first day or two it made the whole house stink while running. Shut it off a couple days and turned back on still a oil odor…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.6109
+1. **Nugget Ice Maker Countertop - 33lbs/24H, Silonn Pebble Ice Maker Machine with Self-Cleaning Function, Ice Makers for Home Kitchen Office**  
+   - Review: I’ve been using this ice maker for a couple weeks after getting it as a gift and I LOVE IT! I love ice that is similar to crushed or sonic ice and this totally fits that! I’ve been absolutely loving…  
+   - Rating: ★★★★☆ (4.1)  
+   - Score: 0.7228
+2. **Silonn Nugget Ice Maker Countertop - Pebble Ice Maker Machine with Self-Cleaning Function, 33lbs/24H, Ice Makers for Home Kitchen Office, Black**  
+   - Review: [[VIDEOID:5a3ce3bfb79bdc8fc31f7480c3e01579]] It was extremely hot here in California this last 2 weeks and my fridge stopped making ice. So I ordered this ice maker and followed the instructions and…  
+   - Rating: ★★★★☆ (4.4)  
+   - Score: 0.6896
+3. **Nugget Ice Maker Countertop, FREE VILLAGE 44Lbs/24H Portable Ice Maker for Soft & Chewable Nugget Pellet Ice, Self-Cleaning, Ice Machine with Ice Scoop & Basket for Home Office Bar Party RV (Black)**  
+   - Review: Let it sit for 24 hrs after opening it. Cleaned it as instructed. Unit does not make ice at all. Had it for almost a week now, still waiting for my return label [SEP] Less than 1 month stopped workin…  
+   - Rating: ★★★☆☆ (2.7)  
+   - Score: 0.6755
+4. **Kndko Nugget Ice Maker with Handle,33lbs/Day,1.5 Hour a Basket, Self-Cleaning, One-Click Design, Portable Ice Maker Nugget for Party Bar Home,Red**  
+   - Review: The red is a pretty color and looks good on the counter. It's nice that it has three different size settings for the ice. [SEP] It’s nice and compact makes the ice in small nuggets which is very nice…  
+   - Rating: ★★★☆☆ (3.3)  
+   - Score: 0.6666
+5. **Silonn Countertop Nugget Ice Maker, Self-Cleaning Pellet Ice Maker Makes up to 44 lbs. of Ice Per Day, Fast Ice Maker for Home Office Bar Party (SLIM08)**  
+   - Review: I was so excited when it arrived Tuesday. I read all the instructions and waited the necessary 24 hours required before using to allow the freon to settle. Wash it out and got it ready. I added the w…  
+   - Rating: ★★★☆☆ (3.1)  
+   - Score: 0.6597
 
 ### how to reduce washer vibration and noise during spin cycle
 
@@ -425,49 +425,49 @@
 
 **BM25 Top 5**
 
-1. **Anti Vibration Pads with Tank Tread Grip, 4 Pads + Level - Washer & Dryer Pedestals Fit All Machines - Noise Dampening, Protects Laundry Room Floor - Anti Vibrasion Pads for Washing Machine**  
-   - Review: Put the pads under the feet of the washer and leveled it. Simply didn't work. The washer still shakes a lot and moves quite a bit during a cycle.  
-   - Rating: ★☆☆☆☆ (1.0)  
-   - Score: 28.8111
-2. **Portable Washing Machine - Foldable Mini Small Portable Washer Washing Machine With Drain Basket For Apartment, Laundry, Camping, RV, Travel, Underwear, Personal, Baby - (110V-200V) - Pink**  
-   - Review: This washes clothes just as good as any washing machine. Only issues I have is it has the smallest drain hose and takes forever to drain. The spin cycle is a joke. Don’t buy it for the spin cycle it…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 17.4877
-3. **COMFEE’ Washing Machine 2.4 Cu.ft LED Portable Washing Machine and Washer Lavadora Portátil Compact Laundry, 8 Models, Environmentally Friendly, Child Lock for RV, Dorm, Apartment Ivory White**  
-   - Review: but i havent had it long a year down the road i may change my mind and i love the blue trim i didnt realize it matches my shower curtain so well as its not solid but pretty swirls of purples and blue…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 12.9259
-4. **IKT Ice Maker Countertop, 27lbs 24Hrs 2 Size(S/L), 9 Cubes Ready in 5.5mins, Self-Cleaning Electric Portable Ice Maker with Ice Scoop and Basket, Perfect for Home/Kitchen/Office/Bar, Gray**  
-   - Review: There are times when the ice maker on the refrigerator can't keep up with our ice needs. Usually that's when we're entertaining or going out and taking the cooler somewhere. This counter top ice make…  
+1. **W10528947 Maytag Washer Drive Hub Kit W10396887 Easy to Install MVWX655DW1 WTW5000DW1 MVWC565FW1 MVWX655DW2 WTW5000DW0 WTW5000DW2 WTW5000DW3 MVWC415EW1 MVWC415EW2 MVWC555DW1 MVWC565FW0 MVWX655DW0**  
+   - Review: Same quality as the original part, that being said, this is a weekpoint of the design. [SEP] Either the plastic is TOO soft because it strips the teeth inside or something is wrong with the torque on…  
+   - Rating: ★★★★★ (4.6)  
+   - Score: 41.2232
+2. **ActFun Anti Vibration Pads, Anti Walk Foot Mat Non Slip Stabilizer Shock Absorber with Self Adhesive Fixation for Washing Machine, Washer, Dryer, Floor Protecting, Sound Absorbing and Reducing, 4PCS**  
+   - Review: Excellent. Reduce shaking from our rather noisy washer by 90 %. Highly recommended.. only isdue is that they should add adhesive to inner cup section to adhere to machine feet for previously installe…  
+   - Rating: ★★★★☆ (4.1)  
+   - Score: 40.6394
+3. **Eyech Set of 4 Anti Vibration Anti Walking Washer Pads Washing Machine Rubber Foot Pads for Prevent Washer and Dryer From Walking and Reduce Noise Fits All Models**  
+   - Review: Over the years I've used a couple of other anti vibration pads for our LG Tromm front load washer. None of them have ever had the incredible result these have provided right from the first load. Can'…  
+   - Rating: ★★★★☆ (4.4)  
+   - Score: 40.5939
+4. **Anti Vibration Pads for Washing Machine, Rubber Feet, Stop Moving Shaking Walking Jumping, Anti-Vibration Machine Pads, 4 Pcs Suction Stabilized, Reduce Noise, Raise Appliance Feet Support**  
+   - Review: It works perfect. Now the washing machine no longer walks off the edge of the platform anymore, save us lots of trouble. [SEP] Does help a little. Does absorb some vibration. But our front-loading wa…  
+   - Rating: ★★★☆☆ (3.3)  
+   - Score: 40.5617
+5. **Silent Feet - Anti-Vibration Pads for Washing Machines and Dryers**  
+   - Review: The Silent Feet Anti-Vibration Pads claim to "absorb vibrations caused by appliances and limit vibration transmission to the structure of your home." I agree with only the second part of that stateme…  
    - Rating: ★★★★☆ (4.0)  
-   - Score: 12.3028
-5. **CRC SmartWasher BenchtopPRO Bioremidiating Parts Washer, 1000872**  
-   - Review: This SmartWasher Benchtop pro cleaning system is probably one of the best tool cleaners I have seen, and used.<br />It is a genius idea to use micro organisms to eat away all the oil thats mixed in w…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 10.6058
+   - Score: 39.2971
 
 **Semantic Top 5**
 
-1. **Anti Vibration Pads with Tank Tread Grip, 4 Pads + Level - Washer & Dryer Pedestals Fit All Machines - Noise Dampening, Protects Laundry Room Floor - Anti Vibrasion Pads for Washing Machine**  
-   - Review: Put the pads under the feet of the washer and leveled it. Simply didn't work. The washer still shakes a lot and moves quite a bit during a cycle.  
-   - Rating: ★☆☆☆☆ (1.0)  
-   - Score: 0.5555
-2. **Portable Washing Machine - Foldable Mini Small Portable Washer Washing Machine With Drain Basket For Apartment, Laundry, Camping, RV, Travel, Underwear, Personal, Baby - (110V-200V) - Pink**  
-   - Review: This washes clothes just as good as any washing machine. Only issues I have is it has the smallest drain hose and takes forever to drain. The spin cycle is a joke. Don’t buy it for the spin cycle it…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.4503
-3. **WonderWash Portable Washing Machine for Apartment & Tiny Spaces - Manual Hand Clothes Washer with Retro Design - Clean Laundry Anywhere with Our Countertop, Non-Electric, Small Washer - Blue**  
-   - Review: Love the convenience of doing laundry inside my apartment, but do have a problem attaching the drain pipe when ready to drain the tub. Trial and error, I'm getting there. I have done several loads an…  
+1. **Steady Spin Washing Machine Stabilizer - Eliminate Vibration and Noise for Washing Machines and Dryers, Anti Vibration**  
+   - Review: It’s great makes my machines vibrate less  
+   - Rating: ★★★★☆ (4.3)  
+   - Score: 0.3741
+2. **Silent Feet - Anti-Vibration Pads for Washing Machines and Dryers**  
+   - Review: The Silent Feet Anti-Vibration Pads claim to "absorb vibrations caused by appliances and limit vibration transmission to the structure of your home." I agree with only the second part of that stateme…  
    - Rating: ★★★★☆ (4.0)  
-   - Score: 0.4037
-4. **COMFEE’ Washing Machine 2.4 Cu.ft LED Portable Washing Machine and Washer Lavadora Portátil Compact Laundry, 8 Models, Environmentally Friendly, Child Lock for RV, Dorm, Apartment Ivory White**  
-   - Review: but i havent had it long a year down the road i may change my mind and i love the blue trim i didnt realize it matches my shower curtain so well as its not solid but pretty swirls of purples and blue…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.3760
-5. **Panda Compact Portable Laundry Dryer, 2.6 cu.ft, 8.8lbs Capacity, White, PAN40SF**  
-   - Review: 1. The exhaust "hose" is ridiculous -- hard plastic, totally unusable; had to purchase a regular flexible kit at the hardware store.<br /><br />2. UPDATE MARCH 2013 -- Initial review in parens (Major…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 0.2933
+   - Score: 0.3580
+3. **Washing Machine Stabilizer Pads, Anti Vibration Pads，Washing Machine Foot Pads, Non Slip Shock and Noise Cancelling Mat for Washer and Dryer Machine Support Protects Pedestals Set of 4**  
+   - Review: Our LG washing machine has a clean out panel that is too low to access with the water tray it sits in. Can't open panel. These feet boost it up high enough to open panel. Problem solved!  
+   - Rating: ★★★★★ (4.6)  
+   - Score: 0.3549
+4. **XaliTools Anti Vibration Pads Washing Machine Base Foot Pads, Non Slip Heighten Shock Shaking and Noise Cancelling Mat for Washer Dryer Support Protects Pedestals Feet Stabilizer Absorber(4 PCS)**  
+   - Review: I bought to use with my treadmill, but later realized the front two legs are built differently. So this one just sits on the two remaining legs and i thought it would break. But it's still holding it…  
+   - Rating: ★★★★☆ (3.8)  
+   - Score: 0.3405
+5. **Heavy Duty Universal Antivibration Washer and Dryer Stabilizer Pads I Rubber Silent Feet Noise Reducing I Shock Absorbing for Anti Vibration Sound Dampening Glory (8-Pack)**  
+   - Review: Exelente and good product, recommended. [SEP] My washer/dryer sit on a tile floor (over crawl space) and every time I ran a load of laundry, even on low spin, the adjoining walls-any anything hanging…  
+   - Rating: ★★★★★ (4.8)  
+   - Score: 0.3397
 
 ### best refrigerator water filter under 50 dollars
 
@@ -475,49 +475,49 @@
 
 **BM25 Top 5**
 
-1. **GE XWFE Refrigerator Water Filter | Certified to Reduce Lead, Sulfur, and 50+ Other Impurities | Replace Every 6 Months for Best Results | Pack of 1**  
-   - Review: wow, is this a rip off or what? after I cleaned out the dogs water bowl, this black residue was left from the filter. and several glasses of ice water were the same, black grainy residue.  
-   - Rating: ★☆☆☆☆ (1.0)  
-   - Score: 12.2599
-2. **(50 Pack) Disposable Gas Burner Liners, Aluminum Foil Square Stove Burner Covers, Range Protectors, Stove Top Covers for Gas Burners, Foil Liners to Catch Grease & Food Spills 8.5x8.5**  
-   - Review: The ones I have where looking ruff so no I can throw the old ones away and jass the place up with new ones...... living the dream.  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 7.3264
-3. **Whirlpool 4396841 PUR [Fast Fill] FILTER3 Refrigerator Water Filter (1-Pack)**  
-   - Review: This is my second refrigerater with a waterfilter on the bottom and I love it. The water tastes teriffic and you do not need to buy water in the store. I recomment Wirlpool refrigerator hightly with…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 7.2586
-4. **4P Refrigerator Water Drip Tray Catcher,Water Drip Splash Guard Catcher Absorbent Mat Pads for Ge,Whirlpool,Samsung Refrigerator Water & Ice Dispenser,Kitchen Gadgets Accessories,White Grey,Big…**  
-   - Review: I have always been annoyed with the dripping of the refrigerator water dispenser. I am frequently having to clean the white mineral stains. This is a great idea! It doesn't quite fit my refrigerator,…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 6.0459
-5. **NewAir Beer Froster Mini Beer Fridge, 46 Can Capacity Freestanding Beverage Refrigerator and Cooler in Stainless Steel, Chills to 23F, Frost Free Glass Shelves - NBF046SS00**  
-   - Review: I love having a refrigerator just for beer! We have half size refrigerator for drinks, but that gets full pretty quickly with water bottles, sodas, and juice. Now we can put the beer and malt beverag…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 5.7244
+1. **Replacement for WF-50 Refrigerator Water Filter - Compatible with Maytag WF-50 Fridge Water Filter Cartridge**  
+   - Review: Even though it is listed as a replacement for the WF-50 which is the same filter used in our Amana refrigerator, it did not work. The way it is manufactured, the center portion of the filter will not…  
+   - Rating: ★★★☆☆ (3.2)  
+   - Score: 15.3846
+2. **4 Gallon Water Filter Purifier Bottle Ceramic PH Mineral for Cooler Dispenser**  
+   - Review: I bought this product in July 2017 and have enjoyed it ever since. This produce replaces the minerals in water that gives it its flavor. This has given me the drive to increase my water intake to nea…  
+   - Rating: ★★☆☆☆ (2.5)  
+   - Score: 15.2068
+3. **GLACIER FRESH DA97-17376B HAF-QIN Water Filter Replacement for Samsung HAF-QIN/EXP, DA97-08006C, RF23M8070SG, RF23M8070SR, RF23M8090SG, RF23M8090SR, RF23M8570SR, RF23M8590SG (2 Pack)**  
+   - Review: I finally got tired of waiting for Samsung to fill my order and went with this inexpensive filter. I get great flow and the water tastes great.<br /><br />Thanks! [SEP] This water filter is surprisin…  
+   - Rating: ★★★★☆ (4.5)  
+   - Score: 14.9559
+4. **3-Pack Replacement for WF-50 Refrigerator Water Filter - Compatible with Maytag WF-50 Fridge Water Filter Cartridge**  
+   - Review: Worked great for my needs.  
+   - Rating: ★★★★☆ (4.3)  
+   - Score: 14.7831
+5. **Waterspecialist ADQ73613401 Refrigerator Water Filter, Replacement for LG LT800P, Kenmore 9490, LSXS26326S, LMXC23746S, WF-LT800P, 469490, LMXC23746D, ADQ73613402, 46-9490**  
+   - Review: Just like the expensive store brand. [SEP] Perfect fit for my lg fridge, easy to install, great price for sure. [SEP] The price of this off brand model initially had me second guessing my choice but…  
+   - Rating: ★★★★☆ (4.1)  
+   - Score: 14.7455
 
 **Semantic Top 5**
 
-1. **SAMSUNG Genuine Filters for Refrigerator Water and Ice, Carbon Block Filtration for Clean, Clear Drinking Water, DA29-00020B-3P, 3 Pack**  
-   - Review: I use one of these filters every 6 months, so buying 2 for $70+ is a bargain compared to $55 each at Lowes.  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.6711
-2. **Filterlogic UKF8001 Water Filter, Replacement for EveryDrop Filter 4, EDR4RXD1, Maytag UKF8001P, UKF8001AXX, Whirlpool 4396395, 469006, FMM-2, Puriclean II (Pack of 4)**  
-   - Review: I wasn't sure whether these were worth it or not, given the cost compared to the original branded filters.<br /><br />I can happily report that these are a great value and work every bit as good as t…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.6269
-3. **Waterfall Filter - Refrigerator Water Filter Comptaible with Samsung DA29-00020B , DA29-00020A, HAF-CIN/EXP, HAF-CIN, DA97-08006A, Kenmore 469101, RF28HMEDBSR, RF4287HARS**  
-   - Review: I have been buying the Samsung filters at Lowe's for $50 plus tax. They last 6 months. I started researching replacement filters and tried a couple before this brand. I have purchased these about 4 t…  
+1. **Refrigerator water filter (1 pack)**  
+   - Review: It fix perfect in my refrigerator and it filter the water very good.  
    - Rating: ★★★★☆ (4.0)  
-   - Score: 0.6190
-4. **Frigidaire WF3CB Puresource3 Refrigerator Water Filter , White, 1 Count (Pack of 1)**  
-   - Review: This works in my Frigidaire Model J51-23, so what's not to love. It is exactly the same filter as the one that came with the fridge. Also, it was easy to install. I removed my old one by pressing in…  
+   - Score: 0.3617
+2. **Refrigerator Water Filter 2 PACK**  
+   - Review: Replace current water filter on refrigerator. Very good price.  
    - Rating: ★★★★★ (5.0)  
-   - Score: 0.5930
-5. **EcoPure EPINL30 5 Year in-Line Refrigerator Filter-Universal Includes Both 1/4" Compression and Push to Connect Fittings , White**  
-   - Review: I do not know if it will be worth the money spent but the taste in the water did change. This filter is is guaranteed for 5 years so time will tell.  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.5916
+   - Score: 0.3482
+3. **water filter**  
+   - Review: Appreciate being to able to purchase individually. [SEP] Perfect replacement for my refrigerator. Great savings [SEP] The price is very good but the clear flavor lasts only 30 days!  
+   - Rating: ★★★★★ (4.7)  
+   - Score: 0.3352
+4. **water filter**  
+   - Review: These fit my LG refrigerator great. [SEP] Works as expected [SEP] Price is great; delivery was fast [SEP] Just like the LG filters but a lot less expensive. [SEP] Arrive fast. Easy to install. No pro…  
+   - Rating: ★★★★☆ (4.4)  
+   - Score: 0.3227
+5. **Maytag UKF8001P PUR FILTER for Refrigerator and Ice Water Filter (2-Pack)**  
+   - Review: Just got them. Perfect fit. What a difference on water pressure coming out. [SEP] Exactly what I was looking for to replace the water filter in my Amana refrigerator. [SEP] Thanks , just what I neede…  
+   - Rating: ★★★★★ (4.6)  
+   - Score: 0.3213
 
 ## 4.3 Compare Results
 
@@ -525,277 +525,280 @@
 
 **BM25**
 
-1. **Vicks Humidity Monitor White**  
-   - Review: This VICKS HEALTHCHECK HUMIDITY AND TEMPERATURE MONITOR is a simple device that only does two things--display temperature (F. or C.) and relative humidity--but it does both really well. The 3-1/2" x…  
+1. **Enterpark Premium Quality Cost Effective Part for 4681EA2002H Replacement of Drain Pump for Dishwasher**  
+   - Review: I bought and installed both rinse and drain pumps at the same time even though it was only the drain pump that failed. Paid about $50 for both parts. Probably would have cost at least $500 to have a…  
+   - Rating: ★★★★☆ (4.5)  
+   - Score: 20.0283
+2. **Amana ADB1300AFB Built-In 24" Tall Tub Dishwasher, Black, 3 Cycles**  
+   - Review: I bought this dishwasher on ebay and I am really satisfied with it. Its cleans really well and its made in a way that makes it easy to fit a variety of things inside. Mine did not have insulation aro…  
+   - Rating: ★★★☆☆ (3.4)  
+   - Score: 17.4949
+3. **AEQ73110205 - OEM Upgraded Replacement for Sears Refrigerator Ice Maker Assembly Kit**  
+   - Review: I used u-tube to identiy this system for installation into my refrigerator. It went in easily with instruction during the computer instructions. It has worked perfecrly since installation. It is a qu…  
+   - Rating: ★★★★☆ (3.6)  
+   - Score: 17.2981
+4. **Maytag MDB6769PAB JetClean Plus 24" Black Fully Integrated Dishwasher - Energy Star**  
+   - Review: It didn't even last 2 years - unbelievable. I guess I will never buy Maytag again. [SEP] Dont buy this garbage. Control panel failed and was replaced under warranty. Part failed again 4 months later…  
+   - Rating: ★★★☆☆ (3.0)  
+   - Score: 17.2010
+5. **4681ED1004D - ClimaTek Dishwasher Motor Fits LG**  
+   - Review: Perfect fit our dishwasher and easy to replace. Go to YouTube for help, there are multiple steps to replace this pump, but all are very simple. Runs quietly.  
    - Rating: ★★★★★ (5.0)  
-   - Score: 7.1320
-2. **Appliance Art Instant Stainless Magnetic Dishwasher Door Cover Sheet, Vinyl Decorative Panel Decal With Stainless Steel Texture For An Instant, Easy Update (23.5 x 26 Inches, Easily Trimmable)**  
-   - Review: Looks like new!!!  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 5.2779
-3. **Miele : Dishwasher Conditioner 8.5 oz (06848160 / 09042920)**  
-   - Review: I have been trying to find something that cleans my 6 year old dish washer and in the past it was run the machine empty. Although we have never noticed any deterioration in the wonderful cleaning of…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 4.7894
-4. **8531233 WP8562043 Universal Dishwasher Silverware Basket - Fit for Kitchen-Aid dishwasher silverware basket,Whirlpool Utensil Rack Basket,Replaces 8531288,8562043, WP8531233VP, W10190415, PS11746119**  
-   - Review: Fits  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 4.7549
-5. **IKT Ice Maker Countertop, 27lbs 24Hrs 2 Size(S/L), 9 Cubes Ready in 5.5mins, Self-Cleaning Electric Portable Ice Maker with Ice Scoop and Basket, Perfect for Home/Kitchen/Office/Bar, Gray**  
-   - Review: There are times when the ice maker on the refrigerator can't keep up with our ice needs. Usually that's when we're entertaining or going out and taking the cooler somewhere. This counter top ice make…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 4.5267
+   - Score: 17.1552
 
 **Semantic Search**
 
-1. **Miele : Dishwasher Conditioner 8.5 oz (06848160 / 09042920)**  
-   - Review: I have been trying to find something that cleans my 6 year old dish washer and in the past it was run the machine empty. Although we have never noticed any deterioration in the wonderful cleaning of…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.4637
-2. **Portable Countertop Dishwashers, NOVETE Compact Dishwashers with 5 L Built-in Water Tank & Inlet Hose, 5 Washing Programs, Baby Care, Air-Dry Function and LED Light for Small Apartments, Dorms and RVs**  
-   - Review: Not worth the price. Takes up too much space, putting water in for the wash cycle is difficult AND requires a space to drain the "wash water" into unless willing to hook it up to your kitchen sink, w…  
-   - Rating: ★★☆☆☆ (2.0)  
-   - Score: 0.4354
-3. **WonderWash Portable Washing Machine for Apartment & Tiny Spaces - Manual Hand Clothes Washer with Retro Design - Clean Laundry Anywhere with Our Countertop, Non-Electric, Small Washer - Blue**  
-   - Review: Love the convenience of doing laundry inside my apartment, but do have a problem attaching the drain pipe when ready to drain the tub. Trial and error, I'm getting there. I have done several loads an…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 0.4107
-4. **COMFEE’ Washing Machine 2.4 Cu.ft LED Portable Washing Machine and Washer Lavadora Portátil Compact Laundry, 8 Models, Environmentally Friendly, Child Lock for RV, Dorm, Apartment Ivory White**  
-   - Review: but i havent had it long a year down the road i may change my mind and i love the blue trim i didnt realize it matches my shower curtain so well as its not solid but pretty swirls of purples and blue…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.4027
-5. **Vezfinel Refrigerator Door Handle Covers,Fridge Oven Dishwasher Protectoer,Catch Fingerprints&Smudges Kitchen Appliances Handmade Decoration (Gray Lattice)**  
-   - Review: Great, just what I was expecting. I've washed them once and they held up very well and they look nice.  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.3857
+1. **Edgewater Parts 8194001, AP3775412, PS972325 Link Balance Compatible With Whirlpool, KitchenAid dishwasher (Fits Models: 665, KUD, GU3, GU2)**  
+   - Review: Works great [SEP] Easy repair for the dishwasher door hinge. Parts worked perfectly for my 15 year old machine.  
+   - Rating: ★★★★☆ (3.9)  
+   - Score: 0.2436
+2. **Edgewater Parts 8268383 Chopper Blade Compatible With Whirlpool Dishwasher Fits Model# (KUD, GU1, DU1, GU2, DUL, DUC)**  
+   - Review: Purchased 9 months ago. Dishwasher has been working poorly for about a month now and this part went bad. Spring rusted away. You can see the rust on the plate.. but the plate seems to held up fine. I…  
+   - Rating: ★★★★☆ (4.1)  
+   - Score: 0.2424
+3. **Edgewater Parts W10872255, W11175771 AP6339872 Water Inlet Valve Compatible With Whirlpool, Kitchen Aid Dishwasher (Fits Models: 662, 665, 7WD, ADB, CDB And More)**  
+   - Review: Great product  
+   - Rating: ★★★★★ (4.6)  
+   - Score: 0.2340
+4. **Starry Night Dishwasher Cover Decorative Magnet Dishwasher Covers for The Front Dishwasher Door Magnet Cover Sticker for Dishwasher Magnetic Dishwasher Cover Panel Decals for Kitchen**  
+   - Review: These magnetic dishwasher covers are available in a<br />seemingly endless variety of colors and styles. Instead of seeing the flaws and battle scars the years have inflicted on my dishwasher, now I…  
+   - Rating: ★★★★☆ (4.3)  
+   - Score: 0.2179
+5. **Enterpark Premium Quality Cost Effective Part for 4681EA2002H Replacement of Drain Pump for Dishwasher**  
+   - Review: I bought and installed both rinse and drain pumps at the same time even though it was only the drain pump that failed. Paid about $50 for both parts. Probably would have cost at least $500 to have a…  
+   - Rating: ★★★★☆ (4.5)  
+   - Score: 0.2123
 
 **Comments**
 
-- **Disagreement at rank 1:** BM25 prefers **Vicks Humidity Monitor White** (score 7.1320); semantic prefers **Miele : Dishwasher Conditioner 8.5 oz (06848160 / 09042920)** (score 0.4637). Lexical overlap can differ from embedding similarity when wording is indirect.
+- **Disagreement at rank 1:** BM25 prefers **Enterpark Premium Quality Cost Effective Part for 4681EA2002H Replacement of Drain Pump for Dishwasher** (score 20.0283); semantic prefers **Edgewater Parts 8194001, AP3775412, PS972325 Link Balance Compatible With Whirlpool, KitchenAid dishwasher (Fits Models: 665, KUD, GU3, GU2)** (score 0.2436). Lexical overlap can differ from embedding similarity when wording is indirect.
 - **Top-5 overlap:** 1 distinct document(s) appear in both ranked lists (low agreement).
-- **BM25-only (in top-5 for BM25, not semantic):** **Vicks Humidity Monitor White**, **Appliance Art Instant Stainless Magnetic Dishwasher Door Cover Sheet, Vinyl Decorative Panel Decal With Stainless Steel Texture For An Instant, Easy Update (23.5 x 26 Inches, Easily Trimmable)**. Typical when rare tokens from the query match product text strongly while embeddings treat the overall intent as a weaker match.
-- **Semantic-only (in top-5 for semantic, not BM25):** **Portable Countertop Dishwashers, NOVETE Compact Dishwashers with 5 L Built-in Water Tank & Inlet Hose, 5 Washing Programs, Baby Care, Air-Dry Function and LED Light for Small Apartments, Dorms and RVs**, **WonderWash Portable Washing Machine for Apartment & Tiny Spaces - Manual Hand Clothes Washer with Retro Design - Clean Laundry Anywhere with Our Countertop, Non-Electric, Small Washer - Blue**. Shows cases where paraphrase or intent aligns in vector space without the exact query keywords.
+- **BM25-only (in top-5 for BM25, not semantic):** **Amana ADB1300AFB Built-In 24" Tall Tub Dishwasher, Black, 3 Cycles**, **AEQ73110205 - OEM Upgraded Replacement for Sears Refrigerator Ice Maker Assembly Kit**. Typical when rare tokens from the query match product text strongly while embeddings treat the overall intent as a weaker match.
+- **Semantic-only (in top-5 for semantic, not BM25):** **Edgewater Parts 8194001, AP3775412, PS972325 Link Balance Compatible With Whirlpool, KitchenAid dishwasher (Fits Models: 665, KUD, GU3, GU2)**, **Edgewater Parts 8268383 Chopper Blade Compatible With Whirlpool Dishwasher Fits Model# (KUD, GU1, DU1, GU2, DUL, DUC)**. Shows cases where paraphrase or intent aligns in vector space without the exact query keywords.
+- **Semantic scores:** Top scores are very close, so small embedding differences reorder items; ties/near-ties are common on short corpora.
 
 ### small washing machine for apartment laundry
 
 **BM25**
 
-1. **WonderWash Portable Washing Machine for Apartment & Tiny Spaces - Manual Hand Clothes Washer with Retro Design - Clean Laundry Anywhere with Our Countertop, Non-Electric, Small Washer - Blue**  
-   - Review: Love the convenience of doing laundry inside my apartment, but do have a problem attaching the drain pipe when ready to drain the tub. Trial and error, I'm getting there. I have done several loads an…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 22.1055
-2. **Portable Washing Machine - Foldable Mini Small Portable Washer Washing Machine With Drain Basket For Apartment, Laundry, Camping, RV, Travel, Underwear, Personal, Baby - (110V-200V) - Pink**  
-   - Review: This washes clothes just as good as any washing machine. Only issues I have is it has the smallest drain hose and takes forever to drain. The spin cycle is a joke. Don’t buy it for the spin cycle it…  
+1. **Upgrade Mini Portable Washing Machine by Wadoy, Folding Washing Machine Cleaner Semi-Automatic Small Laundry Tub, Lightweight Washer Laundry Washer for Travelling, Apartment, Gift for Friends/Family**  
+   - Review: The price was to much for the product  
+   - Rating: ★★★☆☆ (3.0)  
+   - Score: 27.7823
+2. **ZENY Portable Compact Full-Automatic Washing Machine Holds 8lbs Load Mini Laundry Washer Machine for Home Apartment**  
+   - Review: After having 2 full size front loading washing machines in the last 20 yrs, big, heavy and hard to maneuver with stairs, I decided to buy this machine in March 2019 for my upstairs apt. I am very ple…  
    - Rating: ★★★★★ (5.0)  
-   - Score: 18.7728
-3. **COMFEE’ Washing Machine 2.4 Cu.ft LED Portable Washing Machine and Washer Lavadora Portátil Compact Laundry, 8 Models, Environmentally Friendly, Child Lock for RV, Dorm, Apartment Ivory White**  
-   - Review: but i havent had it long a year down the road i may change my mind and i love the blue trim i didnt realize it matches my shower curtain so well as its not solid but pretty swirls of purples and blue…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 17.1460
-4. **Kids Clothes Stick-on Labels, No-Iron, Write-On, Washer & Dryer Safe, Pack of 100**  
-   - Review: My elderly father was recently in rehab for a few weeks. While he was there, both pairs of his pajama pants disappeared. He told the staff and a few days later he received 2 new pairs of pajama pants…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 11.4787
-5. **Panda Compact Portable Laundry Dryer, 2.6 cu.ft, 8.8lbs Capacity, White, PAN40SF**  
-   - Review: 1. The exhaust "hose" is ridiculous -- hard plastic, totally unusable; had to purchase a regular flexible kit at the hardware store.<br /><br />2. UPDATE MARCH 2013 -- Initial review in parens (Major…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 10.7750
+   - Score: 26.3221
+3. **2023 Portable washing Machine Folding Mini Washing Machine Small Washer for Underwear Socks Baby Clothes Suitable for Apartment Dorm Travelling, Green**  
+   - Review: Very convenient for small clothes  
+   - Rating: ★★★★☆ (3.6)  
+   - Score: 26.0984
+4. **Frestec Portable Washing Machine, 0.84 Cu.Ft. Full-Automatic Small Washer, 2 in 1 Compact Laundry Washer, 8 Wash Cycles 3 Water Level Selections, Perfect for Apartment, Home, Dorm**  
+   - Review: Love this washer, small but does the job.  
+   - Rating: ★★★★☆ (4.4)  
+   - Score: 25.6554
+5. **As Seen On TV 347034-BC00380150 Partable Wonder Washer**  
+   - Review: I gave this to my daughter because she cannot have a regular washer in her apartment. I didn't think too much of it at first but she wanted it. All I can say is she loves it! She even washes jeans in…  
+   - Rating: ★★★★☆ (3.9)  
+   - Score: 25.4439
 
 **Semantic Search**
 
-1. **WonderWash Portable Washing Machine for Apartment & Tiny Spaces - Manual Hand Clothes Washer with Retro Design - Clean Laundry Anywhere with Our Countertop, Non-Electric, Small Washer - Blue**  
-   - Review: Love the convenience of doing laundry inside my apartment, but do have a problem attaching the drain pipe when ready to drain the tub. Trial and error, I'm getting there. I have done several loads an…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 0.7596
-2. **Portable Washing Machine - Foldable Mini Small Portable Washer Washing Machine With Drain Basket For Apartment, Laundry, Camping, RV, Travel, Underwear, Personal, Baby - (110V-200V) - Pink**  
-   - Review: This washes clothes just as good as any washing machine. Only issues I have is it has the smallest drain hose and takes forever to drain. The spin cycle is a joke. Don’t buy it for the spin cycle it…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.7443
-3. **COMFEE’ Washing Machine 2.4 Cu.ft LED Portable Washing Machine and Washer Lavadora Portátil Compact Laundry, 8 Models, Environmentally Friendly, Child Lock for RV, Dorm, Apartment Ivory White**  
-   - Review: but i havent had it long a year down the road i may change my mind and i love the blue trim i didnt realize it matches my shower curtain so well as its not solid but pretty swirls of purples and blue…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.6333
-4. **COSTWAY Compact Laundry Dryer, 110V Electric Portable Clothes Dryer with Stainless Steel Tub, Control Panel Downside Easy Control for 4 Automatic Drying Mode, White**  
-   - Review: It arrived today, well packaged, and I've used it once. Very pleased with this compact, quiet dryer !  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.5830
-5. **Panda Portable Compact Laundry Dryer, 3.5 cu.ft, Black and White, PAN760SF**  
-   - Review: Dryer broke within a year. I contacted Pandas service dept. They wanted me to do my own trouble shooting and remove the back panel and do my own repairs! Then when I explained I'm disabled they charg…  
+1. **Upgrade Mini Portable Washing Machine by Wadoy, Folding Washing Machine Cleaner Semi-Automatic Small Laundry Tub, Lightweight Washer Laundry Washer for Travelling, Apartment, Gift for Friends/Family**  
+   - Review: The price was to much for the product  
+   - Rating: ★★★☆☆ (3.0)  
+   - Score: 0.4910
+2. **Portable Washing Machine,9L Large Capacity Small Washing Machine,Foldable Washing Machine Washing Small Pieces of Clothing, Baby Clothes,Underwear,Socks**  
+   - Review: I have been wanting to buy this mini washing machine for a long time. It is really great. It is super convenient for washing socks and other small items, and it saves water and electricity.  
+   - Rating: ★★★☆☆ (3.0)  
+   - Score: 0.4582
+3. **Portable Washing Machine,9L Large Capacity Small Washing Machine,Foldable Washing Machine with Spin-Dry Basket,Mini Washer for Washing Small Pieces of Clothing, Baby Clothes,Underwear,Socks -Purple**  
+   - Review: This little washing machine was not powerful. It was slow moving. It got hot and could barely wash one top.Nonoe should expect to clean any garment of any proportion or substance with this item. Mayb…  
+   - Rating: ★★★☆☆ (3.3)  
+   - Score: 0.4127
+4. **Mini Portable Washing Machine, Foldable Washing Machine with Spin-Dry Basket, Small Portable Washer and Dryer Combo for Apartments, Camping, RV, Travel Laundry Washing Small Pieces of Underwear, Socks**  
+   - Review: This product is a lot smaller than it looks. I don't know if mine was damaged upon arrival due to shipping or if it was a manufacturer defect. There is a leak somewhere, I can't really tell where. Th…  
    - Rating: ★☆☆☆☆ (1.0)  
-   - Score: 0.5719
+   - Score: 0.4095
+5. **2023 Portable washing Machine Folding Mini Washing Machine Small Washer for Underwear Socks Baby Clothes Suitable for Apartment Dorm Travelling, Green**  
+   - Review: Very convenient for small clothes  
+   - Rating: ★★★★☆ (3.6)  
+   - Score: 0.4026
 
 **Comments**
 
-- **Agreement:** Both methods rank the same item first (**WonderWash Portable Washing Machine for Apartment & Tiny Spaces - Manual Hand Clothes Washer with Retro Design - Clean Laundry Anywhere with Our Countertop, Non-Electric, Small Washer - Blue**). BM25 score 22.1055 vs semantic 0.7596.
-- **Top-5 overlap:** 3 distinct document(s) appear in both ranked lists (high agreement).
-- **BM25-only (in top-5 for BM25, not semantic):** **Kids Clothes Stick-on Labels, No-Iron, Write-On, Washer & Dryer Safe, Pack of 100**, **Panda Compact Portable Laundry Dryer, 2.6 cu.ft, 8.8lbs Capacity, White, PAN40SF**. Typical when rare tokens from the query match product text strongly while embeddings treat the overall intent as a weaker match.
-- **Semantic-only (in top-5 for semantic, not BM25):** **COSTWAY Compact Laundry Dryer, 110V Electric Portable Clothes Dryer with Stainless Steel Tub, Control Panel Downside Easy Control for 4 Automatic Drying Mode, White**, **Panda Portable Compact Laundry Dryer, 3.5 cu.ft, Black and White, PAN760SF**. Shows cases where paraphrase or intent aligns in vector space without the exact query keywords.
+- **Agreement:** Both methods rank the same item first (**Upgrade Mini Portable Washing Machine by Wadoy, Folding Washing Machine Cleaner Semi-Automatic Small Laundry Tub, Lightweight Washer Laundry Washer for Travelling, Apartment, Gift for Friends/Family**). BM25 score 27.7823 vs semantic 0.4910.
+- **Top-5 overlap:** 2 distinct document(s) appear in both ranked lists (moderate agreement).
+- **BM25-only (in top-5 for BM25, not semantic):** **ZENY Portable Compact Full-Automatic Washing Machine Holds 8lbs Load Mini Laundry Washer Machine for Home Apartment**, **Frestec Portable Washing Machine, 0.84 Cu.Ft. Full-Automatic Small Washer, 2 in 1 Compact Laundry Washer, 8 Wash Cycles 3 Water Level Selections, Perfect for Apartment, Home, Dorm**. Typical when rare tokens from the query match product text strongly while embeddings treat the overall intent as a weaker match.
+- **Semantic-only (in top-5 for semantic, not BM25):** **Portable Washing Machine,9L Large Capacity Small Washing Machine,Foldable Washing Machine Washing Small Pieces of Clothing, Baby Clothes,Underwear,Socks**, **Portable Washing Machine,9L Large Capacity Small Washing Machine,Foldable Washing Machine with Spin-Dry Basket,Mini Washer for Washing Small Pieces of Clothing, Baby Clothes,Underwear,Socks -Purple**. Shows cases where paraphrase or intent aligns in vector space without the exact query keywords.
 
 ### fridge filter that improves water taste
 
 **BM25**
 
-1. **Capresso 4640.93 3-pack Charcoal Water Filters for Capresso CoffeeTeam TS and CoffeeTeam GS Coffee Maker**  
-   - Review: They work well.  
-   - Rating: ★★★☆☆ (3.0)  
-   - Score: 9.4428
-2. **Pureline DA29-00020B, Replacement for Samsung DA29-00020B, Kenmore 46-9101, 469101, 9101, 4609101000, Refrigerator Water Filter - Reduces Bad Taste & Odor**  
-   - Review: I was paying $49.00 per filter at another store for the Samsung brand. I can buy 4 for that price here.<br />Each filter lasts 6 months. My hubby drinks a lot of water from the frig system.  
+1. **Aqua Fresh WF289 Replacement for Samsung DA2900003 and DA29-00003B (Pack of 2)**  
+   - Review: After using the AquaFresh replacement filters for my Samsung fridge, I'd never pay the price Samsung wants for the same filter. These work great and save me $. [SEP] Both of them Leaked shortly after…  
+   - Rating: ★★★★★ (4.6)  
+   - Score: 23.1674
+2. **OMNIFilter R200 6-Pack**  
+   - Review: I have used this filter before, and was happy with it's performance. Local store that carried them, stopped carrying them, so I went looking elsewhere.  
    - Rating: ★★★★★ (5.0)  
-   - Score: 9.2734
-3. **GLACIER FRESH XWF Replacement for GE XWF Refrigerator Water Filter Pack of 3**  
-   - Review: Easy to install. Use for a GE refrigerator.  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 8.8814
-4. **K Cup Filters - Pack of 300 - Fits With All Reusable Coffee Pods - Compostable and Disposable Coffee Filters for Keurig Single Cup by Delibru**  
-   - Review: Used in one cup pod machine. It did the job very well coffee was good.  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 7.0664
-5. **Frigidaire WF3CB Puresource3 Refrigerator Water Filter , White, 1 Count (Pack of 1)**  
-   - Review: This works in my Frigidaire Model J51-23, so what's not to love. It is exactly the same filter as the one that came with the fridge. Also, it was easy to install. I removed my old one by pressing in…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 6.3329
+   - Score: 22.7871
+3. **Swift Green SGF-DA20B Samsung DA29-00020B Refrigerator Water Filter**  
+   - Review: Does what it needs to do  
+   - Rating: ★★★★☆ (4.1)  
+   - Score: 22.4595
+4. **GOLDTONE 12 Pack Water Filters For CAPRESSO Coffee Maker Activated Charcoal Filter Water Replacement Charcoal Water Filters For CAPRESSO Coffee Machines Cartridges Replaces 4440.90 Water Filters**  
+   - Review: Filters are the wrong size and shape. Will not fit Capresso coffeemaker [SEP] These filters are round but Capresso filters are oblong. No way to insert. [SEP] I don't recall what I paid, but I do rem…  
+   - Rating: ★★★★☆ (3.9)  
+   - Score: 22.0494
+5. **American Plumber Water Filter Taste and Odor Cartridges W5CIP478 (6-Pack)**  
+   - Review: But I did misread the directions; thought it said to change every 2 years; it's months. So, I now have a good supply. [SEP] This water filter does an excellent job of improving the taste and odor of…  
+   - Rating: ★★★★☆ (4.3)  
+   - Score: 21.2485
 
 **Semantic Search**
 
-1. **Frigidaire ULTRAWF PureSource Ultra Water and Ice Refrigerator Filter, Original, 1 Count**  
-   - Review: Very pleased with my filter for frigidaire water system. Very pleased as I didnt have to drive 30 miles each way to replace my filter.  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.6436
-2. **Frigidaire WF3CB Puresource3 Refrigerator Water Filter , White, 1 Count (Pack of 1)**  
-   - Review: This works in my Frigidaire Model J51-23, so what's not to love. It is exactly the same filter as the one that came with the fridge. Also, it was easy to install. I removed my old one by pressing in…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.6306
-3. **Whirlpool 4396841 PUR [Fast Fill] FILTER3 Refrigerator Water Filter (1-Pack)**  
-   - Review: This is my second refrigerater with a waterfilter on the bottom and I love it. The water tastes teriffic and you do not need to buy water in the store. I recomment Wirlpool refrigerator hightly with…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.6005
-4. **AQUACREST MWF NSF 401 Certified to Reduce 13 contaminants, Compatible with GE MWF, SmartWater, MWFP, MWFA, GWF, HDX FMG-1, WFC1201, RWF1060 Refrigerator Water Filter (Pack of 2)**  
-   - Review: We have had this product for a while and the water taste is great. I think it is good to rinse all filters before the first use to get best results.  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.5867
-5. **Waterfall Filter - Refrigerator Water Filter Comptaible with Samsung DA29-00020B , DA29-00020A, HAF-CIN/EXP, HAF-CIN, DA97-08006A, Kenmore 469101, RF28HMEDBSR, RF4287HARS**  
-   - Review: I have been buying the Samsung filters at Lowe's for $50 plus tax. They last 6 months. I started researching replacement filters and tried a couple before this brand. I have purchased these about 4 t…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 0.5856
+1. **water filter**  
+   - Review: Fits and works fine [SEP] Great value for the price! Good water flow and no leaking issues. [SEP] It fits! [SEP] Replaced the old one in my fridge. Works flawless [SEP] fast and good  
+   - Rating: ★★★★☆ (4.5)  
+   - Score: 0.3664
+2. **water filter**  
+   - Review: Fit perfect, easy to install. Lot less that mfgr model. [SEP] took just a few seconds to install and i was very impressed with the taste of the water [SEP] Can't tell no difference with the brand rep…  
+   - Rating: ★★★★☆ (4.5)  
+   - Score: 0.3575
+3. **Clear Choice CLCH101 Refrigerator Water Filter Replacement Compatible Maytag Filter For Cost-Effective Alternative to Factory Original**  
+   - Review: I read a lot of revievs and there where some bad ones but mostly good ones and im glad I took the chance not only is this filter a 3rd of the price but its made right here in the USA where as the res…  
+   - Rating: ★★★★☆ (4.5)  
+   - Score: 0.3395
+4. **TENGYE UpdateClassic MWF, 3.92.82.8, White**  
+   - Review: As advertised [SEP] Fits my refrigerator. [SEP] The filter was a perfect replacement for those replaced via GE directly. I was concerned that there would be a problem such as fit, but all seems OK. […  
+   - Rating: ★★★★★ (4.6)  
+   - Score: 0.3353
+5. **MWF Water Filter for GE Refrigerator, Crystala Filters Compatible with GE MWF SmartWater, MWFA, MWFP, GWF, GWFA, Kenmore 9991, 46-9991, HDX FMG-1, WFC1201 (1 Pack)**  
+   - Review: I installed this today and it is working just as good as the name brand water filter that I removed. It screwed on there without any problems at all. Its great to know that you can find a filter on a…  
+   - Rating: ★★★★★ (4.7)  
+   - Score: 0.3350
 
 **Comments**
 
-- **Disagreement at rank 1:** BM25 prefers **Capresso 4640.93 3-pack Charcoal Water Filters for Capresso CoffeeTeam TS and CoffeeTeam GS Coffee Maker** (score 9.4428); semantic prefers **Frigidaire ULTRAWF PureSource Ultra Water and Ice Refrigerator Filter, Original, 1 Count** (score 0.6436). Lexical overlap can differ from embedding similarity when wording is indirect.
-- **Top-5 overlap:** 1 distinct document(s) appear in both ranked lists (low agreement).
-- **BM25-only (in top-5 for BM25, not semantic):** **Capresso 4640.93 3-pack Charcoal Water Filters for Capresso CoffeeTeam TS and CoffeeTeam GS Coffee Maker**, **Pureline DA29-00020B, Replacement for Samsung DA29-00020B, Kenmore 46-9101, 469101, 9101, 4609101000, Refrigerator Water Filter - Reduces Bad Taste & Odor**. Typical when rare tokens from the query match product text strongly while embeddings treat the overall intent as a weaker match.
-- **Semantic-only (in top-5 for semantic, not BM25):** **Frigidaire ULTRAWF PureSource Ultra Water and Ice Refrigerator Filter, Original, 1 Count**, **Whirlpool 4396841 PUR [Fast Fill] FILTER3 Refrigerator Water Filter (1-Pack)**. Shows cases where paraphrase or intent aligns in vector space without the exact query keywords.
+- **Disagreement at rank 1:** BM25 prefers **Aqua Fresh WF289 Replacement for Samsung DA2900003 and DA29-00003B (Pack of 2)** (score 23.1674); semantic prefers **water filter** (score 0.3664). Lexical overlap can differ from embedding similarity when wording is indirect.
+- **Top-5 overlap:** 0 distinct document(s) appear in both ranked lists (low agreement).
+- **BM25-only (in top-5 for BM25, not semantic):** **Aqua Fresh WF289 Replacement for Samsung DA2900003 and DA29-00003B (Pack of 2)**, **OMNIFilter R200 6-Pack**. Typical when rare tokens from the query match product text strongly while embeddings treat the overall intent as a weaker match.
+- **Semantic-only (in top-5 for semantic, not BM25):** **water filter**, **water filter**. Shows cases where paraphrase or intent aligns in vector space without the exact query keywords.
+- **Semantic scores:** Top scores are very close, so small embedding differences reorder items; ties/near-ties are common on short corpora.
 
 ### nugget ice maker for a home bar that makes ice quickly
 
 **BM25**
 
-1. **R.W.FLAME Protable Nugget Ice Maker Countertop, Pebble/Pellet Ice Maker Machine with Auto Self-Cleaning,11000Pcs/35Lbs/24Hrs, Ice Scoop and Basket,Ice Machine for Home Office Bar Party,Black**  
-   - Review: This does make new ice pretty fast and takes up very little counter space. The only reason for 4 out 5 stars is that the ice tends to melt kind of fast. I've double checked to make sure everything is…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 29.7769
-2. **GE Profile Opal | Countertop Nugget Ice Maker with Side Tank | Portable Ice Machine with Bluetooth Connectivity | Smart Home Kitchen Essentials | Stainless Steel Finish | Up to 24 lbs. of Ice Per Day**  
-   - Review: If you love pellet ice then this is the unit for you. I put this in my bar and use it almost every day. It does put out some heat and is a little loud when it is making ice but I absolutely love it!  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 28.1196
-3. **GE Profile Opal | Countertop Nugget Ice Maker with Side Tank | Portable Ice Machine with Bluetooth Connectivity | Smart Home Kitchen Essentials | Stainless Steel Finish | Up to 24 lbs. of Ice Per Day**  
-   - Review: First machine lasted 6 months. Was replaced under warranty and that machine lasted about 7 months. The ice is great but who wants a $500 machine that doesn’t even last 6 months. Highly disappointed!  
+1. **Kndko Nugget Ice Maker with Handle,33lbs/Day,1.5 Hour a Basket, Self-Cleaning, One-Click Design, Portable Ice Maker Nugget for Party Bar Home,Red**  
+   - Review: The red is a pretty color and looks good on the counter. It's nice that it has three different size settings for the ice. [SEP] It’s nice and compact makes the ice in small nuggets which is very nice…  
+   - Rating: ★★★☆☆ (3.3)  
+   - Score: 55.1421
+2. **Nugget Ice Maker Countertop - 33lbs/24H, Silonn Pebble Ice Maker Machine with Self-Cleaning Function, Ice Makers for Home Kitchen Office**  
+   - Review: I’ve been using this ice maker for a couple weeks after getting it as a gift and I LOVE IT! I love ice that is similar to crushed or sonic ice and this totally fits that! I’ve been absolutely loving…  
+   - Rating: ★★★★☆ (4.1)  
+   - Score: 53.1932
+3. **OUTGAVA Nugget Ice Maker Countertop Compact Ice Making Machine with Auto-Cleaning Function, 44Lbs in 24 Hours,Portable Pellet Ice Maker Machine with Ice Scoop and Basket for Home/Office/Bar/Party**  
+   - Review: Purchased this ice machine because we wanted a machine that made sonic ice. I was going to purchase the opal but this machine was cheaper and thought I would give it a try before buying the more expe…  
+   - Rating: ★★★★☆ (3.6)  
+   - Score: 52.1551
+4. **Nugget Ice Maker Countertop, Crushed Chewable Ice Maker, Self Cleaning Ice Makers with One-Click Operation, 34Lbs/24H, Pebble Portable Ice Machine with Ice Scoop for Home Bar Camping RV**  
+   - Review: I have been loving this ice maker, its size and shape fit perfectly at my little bar. It does not fill the entire tray with ice within 7 mins though, more like 10-15 minutes. But that doesn't mean yo…  
+   - Rating: ★★★★☆ (4.3)  
+   - Score: 51.8671
+5. **Kndko Nugget Ice Maker Countertop,14,000pcs/45lbs/Day,Pebble with Self-Cleaning,Crushed Makers for Home Kitchen Bar Party,Bronze Stainless Steel,Nugget 14,000pcs/45lbs/Day,UC-KN-Z5820BN-BR**  
+   - Review: Performed all interventions in handbook but the machine would not work after the first run. Very difficult trying to communicate with seller as all replies/messages seemed automated. Overall very odd…  
    - Rating: ★☆☆☆☆ (1.0)  
-   - Score: 25.8741
-4. **Electactic Ice Maker Countertop Portable Ice Maker Machine Self-Cleaning 30lbs/5Mins/24Hrs 2 Mode Ice Machine Counter Ice Maker with Scoop&Basket for Home/Office/Bar/RV Use**  
-   - Review: I like the ice cube shapes,takes a while to make.I make them then store them in a zip lock and put them in the freezer.  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 21.9640
-5. **IKT Ice Maker Countertop, 27lbs 24Hrs 2 Size(S/L), 9 Cubes Ready in 5.5mins, Self-Cleaning Electric Portable Ice Maker with Ice Scoop and Basket, Perfect for Home/Kitchen/Office/Bar, Gray**  
-   - Review: There are times when the ice maker on the refrigerator can't keep up with our ice needs. Usually that's when we're entertaining or going out and taking the cooler somewhere. This counter top ice make…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 21.4931
+   - Score: 51.6105
 
 **Semantic Search**
 
-1. **R.W.FLAME Protable Nugget Ice Maker Countertop, Pebble/Pellet Ice Maker Machine with Auto Self-Cleaning,11000Pcs/35Lbs/24Hrs, Ice Scoop and Basket,Ice Machine for Home Office Bar Party,Black**  
-   - Review: This does make new ice pretty fast and takes up very little counter space. The only reason for 4 out 5 stars is that the ice tends to melt kind of fast. I've double checked to make sure everything is…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 0.6818
-2. **Silonn Ice Makers Countertop, 9 Cubes Ready in 6 Mins, 26lbs in 24Hrs, Self-Cleaning Ice Machine with Ice Scoop and Basket, 2 Sizes of Bullet Ice for Home Kitchen Office Bar Party**  
-   - Review: Family love it and use for cold drinks !!  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.6713
-3. **GE Profile Opal | Countertop Nugget Ice Maker with Side Tank | Portable Ice Machine with Bluetooth Connectivity | Smart Home Kitchen Essentials | Stainless Steel Finish | Up to 24 lbs. of Ice Per Day**  
-   - Review: If you love pellet ice then this is the unit for you. I put this in my bar and use it almost every day. It does put out some heat and is a little loud when it is making ice but I absolutely love it!  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.6375
-4. **Portable Ice Maker Machine Countertop, TOBEELEC 2.1L Electric Ice Maker with Touch LCD Display, Self-Cleaning Function, 9 Ice Cubes Ready in 7 Mins, 26lbs/24H, Ice Basket & Scoop for Home, Bar, Party**  
-   - Review: Love it but can’t replace because of company is out of business so I brought different one and good so far  
-   - Rating: ★★★☆☆ (3.0)  
-   - Score: 0.6199
-5. **Smad Portable Commercial Ice Maker Under Counter Built-in Ice Maker Machine with Freezer, Stainless Steel**  
-   - Review: Works great, but get a air freshener for the area it’s to be used. For the first day or two it made the whole house stink while running. Shut it off a couple days and turned back on still a oil odor…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.6109
+1. **Nugget Ice Maker Countertop - 33lbs/24H, Silonn Pebble Ice Maker Machine with Self-Cleaning Function, Ice Makers for Home Kitchen Office**  
+   - Review: I’ve been using this ice maker for a couple weeks after getting it as a gift and I LOVE IT! I love ice that is similar to crushed or sonic ice and this totally fits that! I’ve been absolutely loving…  
+   - Rating: ★★★★☆ (4.1)  
+   - Score: 0.7228
+2. **Silonn Nugget Ice Maker Countertop - Pebble Ice Maker Machine with Self-Cleaning Function, 33lbs/24H, Ice Makers for Home Kitchen Office, Black**  
+   - Review: [[VIDEOID:5a3ce3bfb79bdc8fc31f7480c3e01579]] It was extremely hot here in California this last 2 weeks and my fridge stopped making ice. So I ordered this ice maker and followed the instructions and…  
+   - Rating: ★★★★☆ (4.4)  
+   - Score: 0.6896
+3. **Nugget Ice Maker Countertop, FREE VILLAGE 44Lbs/24H Portable Ice Maker for Soft & Chewable Nugget Pellet Ice, Self-Cleaning, Ice Machine with Ice Scoop & Basket for Home Office Bar Party RV (Black)**  
+   - Review: Let it sit for 24 hrs after opening it. Cleaned it as instructed. Unit does not make ice at all. Had it for almost a week now, still waiting for my return label [SEP] Less than 1 month stopped workin…  
+   - Rating: ★★★☆☆ (2.7)  
+   - Score: 0.6755
+4. **Kndko Nugget Ice Maker with Handle,33lbs/Day,1.5 Hour a Basket, Self-Cleaning, One-Click Design, Portable Ice Maker Nugget for Party Bar Home,Red**  
+   - Review: The red is a pretty color and looks good on the counter. It's nice that it has three different size settings for the ice. [SEP] It’s nice and compact makes the ice in small nuggets which is very nice…  
+   - Rating: ★★★☆☆ (3.3)  
+   - Score: 0.6666
+5. **Silonn Countertop Nugget Ice Maker, Self-Cleaning Pellet Ice Maker Makes up to 44 lbs. of Ice Per Day, Fast Ice Maker for Home Office Bar Party (SLIM08)**  
+   - Review: I was so excited when it arrived Tuesday. I read all the instructions and waited the necessary 24 hours required before using to allow the freon to settle. Wash it out and got it ready. I added the w…  
+   - Rating: ★★★☆☆ (3.1)  
+   - Score: 0.6597
 
 **Comments**
 
-- **Agreement:** Both methods rank the same item first (**R.W.FLAME Protable Nugget Ice Maker Countertop, Pebble/Pellet Ice Maker Machine with Auto Self-Cleaning,11000Pcs/35Lbs/24Hrs, Ice Scoop and Basket,Ice Machine for Home Office Bar Party,Black**). BM25 score 29.7769 vs semantic 0.6818.
+- **Disagreement at rank 1:** BM25 prefers **Kndko Nugget Ice Maker with Handle,33lbs/Day,1.5 Hour a Basket, Self-Cleaning, One-Click Design, Portable Ice Maker Nugget for Party Bar Home,Red** (score 55.1421); semantic prefers **Nugget Ice Maker Countertop - 33lbs/24H, Silonn Pebble Ice Maker Machine with Self-Cleaning Function, Ice Makers for Home Kitchen Office** (score 0.7228). Lexical overlap can differ from embedding similarity when wording is indirect.
 - **Top-5 overlap:** 2 distinct document(s) appear in both ranked lists (moderate agreement).
-- **BM25-only (in top-5 for BM25, not semantic):** **Electactic Ice Maker Countertop Portable Ice Maker Machine Self-Cleaning 30lbs/5Mins/24Hrs 2 Mode Ice Machine Counter Ice Maker with Scoop&Basket for Home/Office/Bar/RV Use**, **IKT Ice Maker Countertop, 27lbs 24Hrs 2 Size(S/L), 9 Cubes Ready in 5.5mins, Self-Cleaning Electric Portable Ice Maker with Ice Scoop and Basket, Perfect for Home/Kitchen/Office/Bar, Gray**. Typical when rare tokens from the query match product text strongly while embeddings treat the overall intent as a weaker match.
-- **Semantic-only (in top-5 for semantic, not BM25):** **Silonn Ice Makers Countertop, 9 Cubes Ready in 6 Mins, 26lbs in 24Hrs, Self-Cleaning Ice Machine with Ice Scoop and Basket, 2 Sizes of Bullet Ice for Home Kitchen Office Bar Party**, **Portable Ice Maker Machine Countertop, TOBEELEC 2.1L Electric Ice Maker with Touch LCD Display, Self-Cleaning Function, 9 Ice Cubes Ready in 7 Mins, 26lbs/24H, Ice Basket & Scoop for Home, Bar, Party**. Shows cases where paraphrase or intent aligns in vector space without the exact query keywords.
+- **BM25-only (in top-5 for BM25, not semantic):** **OUTGAVA Nugget Ice Maker Countertop Compact Ice Making Machine with Auto-Cleaning Function, 44Lbs in 24 Hours,Portable Pellet Ice Maker Machine with Ice Scoop and Basket for Home/Office/Bar/Party**, **Nugget Ice Maker Countertop, Crushed Chewable Ice Maker, Self Cleaning Ice Makers with One-Click Operation, 34Lbs/24H, Pebble Portable Ice Machine with Ice Scoop for Home Bar Camping RV**. Typical when rare tokens from the query match product text strongly while embeddings treat the overall intent as a weaker match.
+- **Semantic-only (in top-5 for semantic, not BM25):** **Silonn Nugget Ice Maker Countertop - Pebble Ice Maker Machine with Self-Cleaning Function, 33lbs/24H, Ice Makers for Home Kitchen Office, Black**, **Nugget Ice Maker Countertop, FREE VILLAGE 44Lbs/24H Portable Ice Maker for Soft & Chewable Nugget Pellet Ice, Self-Cleaning, Ice Machine with Ice Scoop & Basket for Home Office Bar Party RV (Black)**. Shows cases where paraphrase or intent aligns in vector space without the exact query keywords.
 
 ### best refrigerator water filter under 50 dollars
 
 **BM25**
 
-1. **GE XWFE Refrigerator Water Filter | Certified to Reduce Lead, Sulfur, and 50+ Other Impurities | Replace Every 6 Months for Best Results | Pack of 1**  
-   - Review: wow, is this a rip off or what? after I cleaned out the dogs water bowl, this black residue was left from the filter. and several glasses of ice water were the same, black grainy residue.  
-   - Rating: ★☆☆☆☆ (1.0)  
-   - Score: 12.2599
-2. **(50 Pack) Disposable Gas Burner Liners, Aluminum Foil Square Stove Burner Covers, Range Protectors, Stove Top Covers for Gas Burners, Foil Liners to Catch Grease & Food Spills 8.5x8.5**  
-   - Review: The ones I have where looking ruff so no I can throw the old ones away and jass the place up with new ones...... living the dream.  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 7.3264
-3. **Whirlpool 4396841 PUR [Fast Fill] FILTER3 Refrigerator Water Filter (1-Pack)**  
-   - Review: This is my second refrigerater with a waterfilter on the bottom and I love it. The water tastes teriffic and you do not need to buy water in the store. I recomment Wirlpool refrigerator hightly with…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 7.2586
-4. **4P Refrigerator Water Drip Tray Catcher,Water Drip Splash Guard Catcher Absorbent Mat Pads for Ge,Whirlpool,Samsung Refrigerator Water & Ice Dispenser,Kitchen Gadgets Accessories,White Grey,Big…**  
-   - Review: I have always been annoyed with the dripping of the refrigerator water dispenser. I am frequently having to clean the white mineral stains. This is a great idea! It doesn't quite fit my refrigerator,…  
-   - Rating: ★★★★☆ (4.0)  
-   - Score: 6.0459
-5. **NewAir Beer Froster Mini Beer Fridge, 46 Can Capacity Freestanding Beverage Refrigerator and Cooler in Stainless Steel, Chills to 23F, Frost Free Glass Shelves - NBF046SS00**  
-   - Review: I love having a refrigerator just for beer! We have half size refrigerator for drinks, but that gets full pretty quickly with water bottles, sodas, and juice. Now we can put the beer and malt beverag…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 5.7244
+1. **Replacement for WF-50 Refrigerator Water Filter - Compatible with Maytag WF-50 Fridge Water Filter Cartridge**  
+   - Review: Even though it is listed as a replacement for the WF-50 which is the same filter used in our Amana refrigerator, it did not work. The way it is manufactured, the center portion of the filter will not…  
+   - Rating: ★★★☆☆ (3.2)  
+   - Score: 15.3846
+2. **4 Gallon Water Filter Purifier Bottle Ceramic PH Mineral for Cooler Dispenser**  
+   - Review: I bought this product in July 2017 and have enjoyed it ever since. This produce replaces the minerals in water that gives it its flavor. This has given me the drive to increase my water intake to nea…  
+   - Rating: ★★☆☆☆ (2.5)  
+   - Score: 15.2068
+3. **GLACIER FRESH DA97-17376B HAF-QIN Water Filter Replacement for Samsung HAF-QIN/EXP, DA97-08006C, RF23M8070SG, RF23M8070SR, RF23M8090SG, RF23M8090SR, RF23M8570SR, RF23M8590SG (2 Pack)**  
+   - Review: I finally got tired of waiting for Samsung to fill my order and went with this inexpensive filter. I get great flow and the water tastes great.<br /><br />Thanks! [SEP] This water filter is surprisin…  
+   - Rating: ★★★★☆ (4.5)  
+   - Score: 14.9559
+4. **3-Pack Replacement for WF-50 Refrigerator Water Filter - Compatible with Maytag WF-50 Fridge Water Filter Cartridge**  
+   - Review: Worked great for my needs.  
+   - Rating: ★★★★☆ (4.3)  
+   - Score: 14.7831
+5. **Waterspecialist ADQ73613401 Refrigerator Water Filter, Replacement for LG LT800P, Kenmore 9490, LSXS26326S, LMXC23746S, WF-LT800P, 469490, LMXC23746D, ADQ73613402, 46-9490**  
+   - Review: Just like the expensive store brand. [SEP] Perfect fit for my lg fridge, easy to install, great price for sure. [SEP] The price of this off brand model initially had me second guessing my choice but…  
+   - Rating: ★★★★☆ (4.1)  
+   - Score: 14.7455
 
 **Semantic Search**
 
-1. **SAMSUNG Genuine Filters for Refrigerator Water and Ice, Carbon Block Filtration for Clean, Clear Drinking Water, DA29-00020B-3P, 3 Pack**  
-   - Review: I use one of these filters every 6 months, so buying 2 for $70+ is a bargain compared to $55 each at Lowes.  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.6711
-2. **Filterlogic UKF8001 Water Filter, Replacement for EveryDrop Filter 4, EDR4RXD1, Maytag UKF8001P, UKF8001AXX, Whirlpool 4396395, 469006, FMM-2, Puriclean II (Pack of 4)**  
-   - Review: I wasn't sure whether these were worth it or not, given the cost compared to the original branded filters.<br /><br />I can happily report that these are a great value and work every bit as good as t…  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.6269
-3. **Waterfall Filter - Refrigerator Water Filter Comptaible with Samsung DA29-00020B , DA29-00020A, HAF-CIN/EXP, HAF-CIN, DA97-08006A, Kenmore 469101, RF28HMEDBSR, RF4287HARS**  
-   - Review: I have been buying the Samsung filters at Lowe's for $50 plus tax. They last 6 months. I started researching replacement filters and tried a couple before this brand. I have purchased these about 4 t…  
+1. **Refrigerator water filter (1 pack)**  
+   - Review: It fix perfect in my refrigerator and it filter the water very good.  
    - Rating: ★★★★☆ (4.0)  
-   - Score: 0.6190
-4. **Frigidaire WF3CB Puresource3 Refrigerator Water Filter , White, 1 Count (Pack of 1)**  
-   - Review: This works in my Frigidaire Model J51-23, so what's not to love. It is exactly the same filter as the one that came with the fridge. Also, it was easy to install. I removed my old one by pressing in…  
+   - Score: 0.3617
+2. **Refrigerator Water Filter 2 PACK**  
+   - Review: Replace current water filter on refrigerator. Very good price.  
    - Rating: ★★★★★ (5.0)  
-   - Score: 0.5930
-5. **EcoPure EPINL30 5 Year in-Line Refrigerator Filter-Universal Includes Both 1/4" Compression and Push to Connect Fittings , White**  
-   - Review: I do not know if it will be worth the money spent but the taste in the water did change. This filter is is guaranteed for 5 years so time will tell.  
-   - Rating: ★★★★★ (5.0)  
-   - Score: 0.5916
+   - Score: 0.3482
+3. **water filter**  
+   - Review: Appreciate being to able to purchase individually. [SEP] Perfect replacement for my refrigerator. Great savings [SEP] The price is very good but the clear flavor lasts only 30 days!  
+   - Rating: ★★★★★ (4.7)  
+   - Score: 0.3352
+4. **water filter**  
+   - Review: These fit my LG refrigerator great. [SEP] Works as expected [SEP] Price is great; delivery was fast [SEP] Just like the LG filters but a lot less expensive. [SEP] Arrive fast. Easy to install. No pro…  
+   - Rating: ★★★★☆ (4.4)  
+   - Score: 0.3227
+5. **Maytag UKF8001P PUR FILTER for Refrigerator and Ice Water Filter (2-Pack)**  
+   - Review: Just got them. Perfect fit. What a difference on water pressure coming out. [SEP] Exactly what I was looking for to replace the water filter in my Amana refrigerator. [SEP] Thanks , just what I neede…  
+   - Rating: ★★★★★ (4.6)  
+   - Score: 0.3213
 
 **Comments**
 
-- **Disagreement at rank 1:** BM25 prefers **GE XWFE Refrigerator Water Filter | Certified to Reduce Lead, Sulfur, and 50+ Other Impurities | Replace Every 6 Months for Best Results | Pack of 1** (score 12.2599); semantic prefers **SAMSUNG Genuine Filters for Refrigerator Water and Ice, Carbon Block Filtration for Clean, Clear Drinking Water, DA29-00020B-3P, 3 Pack** (score 0.6711). Lexical overlap can differ from embedding similarity when wording is indirect.
+- **Disagreement at rank 1:** BM25 prefers **Replacement for WF-50 Refrigerator Water Filter - Compatible with Maytag WF-50 Fridge Water Filter Cartridge** (score 15.3846); semantic prefers **Refrigerator water filter (1 pack)** (score 0.3617). Lexical overlap can differ from embedding similarity when wording is indirect.
 - **Top-5 overlap:** 0 distinct document(s) appear in both ranked lists (low agreement).
-- **BM25-only (in top-5 for BM25, not semantic):** **GE XWFE Refrigerator Water Filter | Certified to Reduce Lead, Sulfur, and 50+ Other Impurities | Replace Every 6 Months for Best Results | Pack of 1**, **(50 Pack) Disposable Gas Burner Liners, Aluminum Foil Square Stove Burner Covers, Range Protectors, Stove Top Covers for Gas Burners, Foil Liners to Catch Grease & Food Spills 8.5x8.5**. Typical when rare tokens from the query match product text strongly while embeddings treat the overall intent as a weaker match.
-- **Semantic-only (in top-5 for semantic, not BM25):** **SAMSUNG Genuine Filters for Refrigerator Water and Ice, Carbon Block Filtration for Clean, Clear Drinking Water, DA29-00020B-3P, 3 Pack**, **Filterlogic UKF8001 Water Filter, Replacement for EveryDrop Filter 4, EDR4RXD1, Maytag UKF8001P, UKF8001AXX, Whirlpool 4396395, 469006, FMM-2, Puriclean II (Pack of 4)**. Shows cases where paraphrase or intent aligns in vector space without the exact query keywords.
+- **BM25-only (in top-5 for BM25, not semantic):** **Replacement for WF-50 Refrigerator Water Filter - Compatible with Maytag WF-50 Fridge Water Filter Cartridge**, **4 Gallon Water Filter Purifier Bottle Ceramic PH Mineral for Cooler Dispenser**. Typical when rare tokens from the query match product text strongly while embeddings treat the overall intent as a weaker match.
+- **Semantic-only (in top-5 for semantic, not BM25):** **Refrigerator water filter (1 pack)**, **Refrigerator Water Filter 2 PACK**. Shows cases where paraphrase or intent aligns in vector space without the exact query keywords.
 - **Constraint note:** Our indexed `search_text` does not include numeric **price** fields, so neither method truly optimizes for “under $X”; both approximate via words like “budget” or product copy if present. A reranker or metadata filter would help.
+- **Semantic scores:** Top scores are very close, so small embedding differences reorder items; ties/near-ties are common on short corpora.
 
 ## 4.4 Summarize Insights
 

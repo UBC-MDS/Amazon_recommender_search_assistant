@@ -23,15 +23,16 @@ We use the **Appliances** category from the Amazon Reviews 2023 dataset (McAuley
 - **Reviews:** `text`, `rating`, `verified_purchase`, `helpful_vote`
 - **Join key:** `parent_asin`
 
-We download a working subset (~20K reviews) using DuckDB and store it as parquet in `data/processed/`. Raw `.jsonl.gz` files go in `data/raw/` and are not committed.
+For EDA we work with a smaller subset; for the retrieval pipeline we download the full Appliances category using DuckDB and store it as parquet in `data/processed/`. Raw files go in `data/raw/` and are not committed.
 
 ## Data Processing
 
 1. Stream review and metadata files from the McAuley Lab servers using DuckDB
 2. Inspect the first 200 entries in the EDA notebook to understand schema, sample text, and missing values
-3. Convert to parquet format locally for fast repeated queries
+3. Convert full dataset to parquet format locally for fast repeated queries
 4. Join reviews with metadata on `parent_asin`
 5. Drop rows with missing review text or product title
+6. Aggregate to product-level documents (top 5 reviews per product by helpfulness)
 
 Preprocessing details and justifications are documented in `notebooks/milestone1_exploration.ipynb`.
 
@@ -109,6 +110,7 @@ DSCI_575_project_ojasv31_pat0216/
 |   |-- ranking.py
 |   |-- feedback.py
 |   |-- qualitative_eval.py
+|   |-- download_full.py
 |   |-- utils.py
 |
 |-- results/
@@ -145,7 +147,15 @@ HF_TOKEN=your_huggingface_token_here
 
 ### 4. Run the EDA notebook
 
-Open and run `notebooks/milestone1_exploration.ipynb` to download and preprocess the data. This will populate `data/processed/` with the cleaned parquet files needed by the retrieval scripts and the app.
+Open and run `notebooks/milestone1_exploration.ipynb` to explore a subset of the data and understand the schema.
+
+### 4.1 Download the full dataset (required for retrieval)
+
+```bash
+python -m src.download_full
+```
+
+This streams the full Appliances category (~2.1M reviews, ~94K products) via DuckDB and produces `data/processed/appliances_products.parquet` with product-level documents.
 
 ### 5. Run the app
 

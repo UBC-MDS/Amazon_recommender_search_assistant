@@ -167,6 +167,7 @@ def discover_data_file(data_dir: Path | None = None) -> Path | None:
         return None
 
     preferred_names = [
+        "appliances_products.parquet",
         "appliances_clean.parquet",
         "appliances_merged.parquet",
         "clean.parquet",
