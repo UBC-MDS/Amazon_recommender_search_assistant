@@ -150,10 +150,28 @@ class SemanticRetriever:
     def fit(self) -> "SemanticRetriever":
         try:
             from sentence_transformers import SentenceTransformer
+            import numpy as np
 
             self._model = SentenceTransformer(self._model_name)
-            embeddings = self._model.encode(self._texts, normalize_embeddings=True)
-            self._embeddings = [list(vector) for vector in embeddings.tolist()]
+            # encode in batches to avoid OOM on large corpora
+            batch_size = 512
+            all_embeddings = []
+            for start in range(0, len(self._texts), batch_size):
+                batch = self._texts[start : start + batch_size]
+                embs = self._model.encode(batch, normalize_embeddings=True)
+                all_embeddings.append(embs)
+            embeddings = np.vstack(all_embeddings).astype("float32")
+            self._embeddings = [list(row) for row in embeddings.tolist()]
+
+            # build FAISS index for fast search
+            try:
+                import faiss
+                dim = embeddings.shape[1]
+                self._faiss_index = faiss.IndexFlatIP(dim)
+                self._faiss_index.add(embeddings)
+            except Exception:
+                self._faiss_index = None
+
             self._backend = "sentence-transformers"
             return self
         except Exception:
@@ -243,16 +261,23 @@ class SemanticRetriever:
         index_path = directory / "index.faiss"
         metadata_path = directory / "metadata.json"
 
-        matrix = np.asarray(self._embeddings, dtype="float32")
-        faiss.normalize_L2(matrix)
-        index = faiss.IndexFlatIP(matrix.shape[1])
-        index.add(matrix)
-        faiss.write_index(index, str(index_path))
+        # reuse the FAISS index built during fit() if available
+        if self._faiss_index is not None:
+            faiss.write_index(self._faiss_index, str(index_path))
+        else:
+            matrix = np.asarray(self._embeddings, dtype="float32")
+            faiss.normalize_L2(matrix)
+            index = faiss.IndexFlatIP(matrix.shape[1])
+            index.add(matrix)
+            faiss.write_index(index, str(index_path))
 
+        # store lightweight metadata (record IDs only, not full docs)
+        record_ids = [d.get("record_id", str(i)) for i, d in enumerate(self.documents)]
         metadata = {
-            "documents": self.documents,
+            "record_ids": record_ids,
             "text_field": self.text_field,
             "model_name": self._model_name,
+            "n_documents": len(self.documents),
         }
         metadata_path.write_text(json.dumps(metadata), encoding="utf-8")
         return directory
@@ -268,8 +293,15 @@ class SemanticRetriever:
         metadata_path = directory / "metadata.json"
         metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
 
+        # load documents: try from metadata (legacy) or from data_io
+        if "documents" in metadata:
+            documents = metadata["documents"]
+        else:
+            from .data_io import load_documents
+            documents = ensure_search_text(load_documents())
+
         retriever = cls.__new__(cls)
-        retriever.documents = metadata["documents"]
+        retriever.documents = documents
         retriever.text_field = metadata.get("text_field", "search_text")
         retriever._texts = [normalize_text(document.get(retriever.text_field, "")) for document in retriever.documents]
         retriever._backend = "faiss"
