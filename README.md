@@ -6,7 +6,15 @@
 
 ## About
 
-A retrieval-based product search system for the **Appliances** category of the [Amazon Reviews 2023](https://amazon-reviews-2023.github.io/) dataset. Given a natural language query (e.g. "energy efficient dishwasher under $500"), the system retrieves relevant products using BM25 keyword search and semantic embedding search, and presents them through a Streamlit web app.
+A retrieval-augmented generation (RAG) system for the **Appliances** category of the [Amazon Reviews 2023](https://amazon-reviews-2023.github.io/) dataset. Given a natural language query (e.g. "energy efficient dishwasher under $500"), the system retrieves relevant products using BM25 keyword search and semantic embedding search, generates grounded answers via an open-source LLM, and presents results through a Streamlit web app.
+
+## LLM Choice
+
+We use **Ollama** with the **`qwen2.5:3b`** model (Qwen 2.5, 3 billion parameters) as our default LLM for RAG generation.
+
+- **Why Qwen 2.5 3B:** Good balance between answer quality and inference speed on laptop hardware (M2 Air, 16 GB RAM). Runs at ~15-25 tokens/sec locally, which keeps the demo responsive.
+- **Why Ollama:** Runs fully offline with no API key needed, making it easy for TAs and collaborators to reproduce. No rate limits or token quotas.
+- **Alternative:** The pipeline also supports HuggingFace Inference API (`Qwen/Qwen3.5-2B`) if Ollama is unavailable -- select it in the app sidebar.
 
 ## Dataset
 
@@ -79,8 +87,8 @@ flowchart LR
 from src.rag_pipeline import build_default_rag_pipeline
 
 pipeline = build_default_rag_pipeline(
-    provider="huggingface",
-    model="Qwen/Qwen3.5-2B",
+    provider="ollama",
+    model="qwen2.5:3b",
     default_k=5,
 )
 
@@ -126,8 +134,8 @@ flowchart LR
 from src.hybrid_rag_pipeline import FusionConfig, build_default_hybrid_rag_pipeline
 
 pipeline = build_default_hybrid_rag_pipeline(
-    provider="huggingface",
-    model="Qwen/Qwen3.5-2B",
+    provider="ollama",
+    model="qwen2.5:3b",
     default_k=5,
     fusion=FusionConfig(mode="rrf", bm25_weight=0.4, semantic_weight=0.6),
 )
@@ -165,19 +173,14 @@ To pin a specific file:
 python -m src.qualitative_eval --data-path data/processed/appliances_merged.parquet
 ```
 
-## Step 5: Web App
+## Web App
 
-The Streamlit app is implemented in `app/app.py`.
+The Streamlit app is implemented in `app/app.py` with two tabs:
 
-Features:
+- **Search Only** (Milestone 1): keyword / semantic / hybrid retrieval with top-k results, ratings, scores, and feedback buttons
+- **RAG Mode** (Milestone 2): hybrid RAG pipeline that generates an LLM answer above the retrieved source documents
 
-- Search mode selector for BM25, Semantic, and Hybrid retrieval
-- Query input box
-- Top 3 result display with title, review snippet, rating, and retrieval score
-- Thumbs-up / thumbs-down feedback buttons
-- Local CSV feedback storage in `data/processed/feedback.csv`
-
-If no processed corpus is found, the app falls back to a small demo corpus so the interface still runs.
+LLM provider and model can be changed in the sidebar (defaults to Ollama `qwen2.5:3b`).
 
 ## Repository Structure
 
@@ -193,10 +196,12 @@ DSCI_575_project_ojasv31_pat0216/
 |
 |-- notebooks/
 |   |-- milestone1_exploration.ipynb
+|   |-- milestone2_rag.ipynb
 |
 |-- src/
 |   |-- bm25.py
 |   |-- semantic.py
+|   |-- hybrid.py
 |   |-- rag_pipeline.py
 |   |-- hybrid_rag_pipeline.py
 |   |-- llm_pipeline.py
@@ -210,7 +215,7 @@ DSCI_575_project_ojasv31_pat0216/
 |
 |-- results/
 |   |-- milestone1_discussion.md
-|   |-- milestone2_discussions.md
+|   |-- milestone2_discussion.md
 |
 |-- app/
     |-- app.py
@@ -240,10 +245,14 @@ conda env create -f environment.yml
 conda activate dsci575-project
 ```
 
-### 3. Set up environment variables
+### 3. Install Ollama and pull the model
 
-Create a `.env` file in the project root:
+```bash
+# Install Ollama: https://ollama.com/download
+ollama pull qwen2.5:3b
+```
 
+Alternatively, set a HuggingFace token in `.env` for the HF API fallback:
 ```
 HF_TOKEN=your_huggingface_token_here
 ```

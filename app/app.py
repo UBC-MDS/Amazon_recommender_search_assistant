@@ -1,4 +1,4 @@
-"""Streamlit app for interactive retrieval search."""
+"""Streamlit app -- Amazon Product Query Assistant."""
 
 from __future__ import annotations
 
@@ -15,26 +15,24 @@ if str(ROOT) not in sys.path:
 
 from src.data_io import format_rating_stars, load_documents, truncate_text  # noqa: E402
 from src.feedback import append_feedback  # noqa: E402
-from src.hybrid_rag_pipeline import FusionConfig, build_default_hybrid_rag_pipeline  # noqa: E402
-from src.llm_pipeline import run_rag_chat  # noqa: E402
-from src.rag_pipeline import build_default_rag_pipeline  # noqa: E402
+from src.hybrid_rag_pipeline import FusionConfig, HybridRAGPipeline  # noqa: E402
 from src.ranking import BM25Retriever, HybridRetriever, SemanticRetriever, ensure_search_text  # noqa: E402
 
 
-def _build_indexes(data_path: str | None = None):
-    documents = ensure_search_text(load_documents(data_path=data_path))
-    processed_dir = ROOT / "data" / "processed"
-    bm25_index_path = processed_dir / "bm25_index.pkl"
-    semantic_index_dir = processed_dir / "semantic_faiss"
+# --------------- cached loaders ---------------
 
-    if data_path is None and bm25_index_path.exists():
-        bm25 = BM25Retriever.load_index(bm25_index_path)
-    else:
-        bm25 = BM25Retriever(documents)
+@st.cache_resource(show_spinner="Loading corpus and indexes ...")
+def load_indexes():
+    processed = ROOT / "data" / "processed"
+    documents = ensure_search_text(load_documents())
 
-    if data_path is None and (semantic_index_dir / "index.faiss").exists() and (semantic_index_dir / "metadata.json").exists():
+    bm25_path = processed / "bm25_index.pkl"
+    bm25 = BM25Retriever.load_index(bm25_path) if bm25_path.exists() else BM25Retriever(documents)
+
+    sem_dir = processed / "semantic_faiss"
+    if (sem_dir / "index.faiss").exists():
         try:
-            semantic = SemanticRetriever.load_index(semantic_index_dir)
+            semantic = SemanticRetriever.load_index(sem_dir)
         except Exception:
             semantic = SemanticRetriever(documents)
     else:
@@ -44,111 +42,7 @@ def _build_indexes(data_path: str | None = None):
     return documents, bm25, semantic, hybrid
 
 
-@st.cache_resource(show_spinner=False)
-def load_indexes(data_path: str | None = None):
-    return _build_indexes(data_path)
-
-
-@st.cache_resource(show_spinner=False)
-def load_semantic_rag_pipeline(
-    data_path: str | None,
-    provider: str,
-    model: str,
-    temperature: float,
-    max_new_tokens: int,
-    hf_token: str | None,
-    ollama_host: str | None,
-):
-    return build_default_rag_pipeline(
-        data_path=data_path,
-        provider=provider,
-        model=model,
-        temperature=temperature,
-        max_new_tokens=max_new_tokens,
-        hf_token=hf_token,
-        ollama_host=ollama_host,
-    )
-
-
-@st.cache_resource(show_spinner=False)
-def load_hybrid_rag_pipeline(
-    data_path: str | None,
-    provider: str,
-    model: str,
-    temperature: float,
-    max_new_tokens: int,
-    hf_token: str | None,
-    ollama_host: str | None,
-    fusion_mode: str,
-    bm25_weight: float,
-    semantic_weight: float,
-):
-    return build_default_hybrid_rag_pipeline(
-        data_path=data_path,
-        provider=provider,
-        model=model,
-        temperature=temperature,
-        max_new_tokens=max_new_tokens,
-        hf_token=hf_token,
-        ollama_host=ollama_host,
-        fusion=FusionConfig(
-            mode=fusion_mode,
-            bm25_weight=bm25_weight,
-            semantic_weight=semantic_weight,
-        ),
-    )
-
-
-def _render_result(result, rank: int, query: str, mode: str, feedback_path: Path) -> None:
-    document = result.document
-    title = document.get("title", "Untitled")
-    review_text = document.get("review_text", "")
-    rating = document.get("rating")
-    score = result.score
-    record_id = document.get("record_id", "")
-    source = document.get("source", "")
-
-    st.markdown(f"### {rank}. {title}")
-    st.write(truncate_text(review_text, 200))
-    st.caption(f"Rating: {format_rating_stars(rating)} ({rating if rating is not None else 'n/a'})")
-    st.caption(f"Retrieval score: {score:.4f}")
-
-    feedback_cols = st.columns(2)
-    if feedback_cols[0].button("👍", key=f"{mode}_{query}_{rank}_up"):
-        append_feedback(
-            feedback_path,
-            {
-                "query": query,
-                "mode": mode,
-                "rank": rank,
-                "record_id": record_id,
-                "title": title,
-                "score": f"{score:.6f}",
-                "rating": rating if rating is not None else "",
-                "feedback": "up",
-                "source": source,
-            },
-        )
-        st.success("Saved thumbs-up feedback")
-    if feedback_cols[1].button("👎", key=f"{mode}_{query}_{rank}_down"):
-        append_feedback(
-            feedback_path,
-            {
-                "query": query,
-                "mode": mode,
-                "rank": rank,
-                "record_id": record_id,
-                "title": title,
-                "score": f"{score:.6f}",
-                "rating": rating if rating is not None else "",
-                "feedback": "down",
-                "source": source,
-            },
-        )
-        st.warning("Saved thumbs-down feedback")
-
-
-def _select_retriever(mode: str, bm25: BM25Retriever, semantic: SemanticRetriever, hybrid: HybridRetriever):
+def _select_retriever(mode, bm25, semantic, hybrid):
     if mode == "BM25":
         return bm25
     if mode == "Semantic":
@@ -156,143 +50,133 @@ def _select_retriever(mode: str, bm25: BM25Retriever, semantic: SemanticRetrieve
     return hybrid
 
 
-def _render_sources(results) -> None:
-    for idx, item in enumerate(results, start=1):
-        document = item.document
-        title = document.get("title", "Untitled")
-        rating = document.get("rating")
-        snippet = truncate_text(document.get("review_text", ""), 180)
-        st.markdown(f"**[{idx}] {title}**")
-        st.caption(f"Score: {item.score:.4f} | Rating: {format_rating_stars(rating)}")
-        st.write(snippet)
-        st.divider()
+def _render_search_result(result, rank, query, mode, feedback_path):
+    doc = result.document
+    title = doc.get("title", "Untitled")
+    rating = doc.get("rating")
+    review = doc.get("review_text", "")
+    score = result.score
+    record_id = doc.get("record_id", "")
+
+    st.markdown(f"**{rank}. {title}**")
+    col1, col2 = st.columns([3, 1])
+    col1.write(truncate_text(review, 200))
+    col2.metric("Rating", f"{rating}/5" if rating else "N/A")
+    st.caption(f"Retrieval score: {score:.4f}")
+
+    fb1, fb2 = st.columns(2)
+    if fb1.button("thumbs up", key=f"s_{mode}_{query}_{rank}_up"):
+        append_feedback(feedback_path, {"query": query, "mode": mode, "rank": rank,
+                                         "record_id": record_id, "title": title,
+                                         "score": f"{score:.6f}", "rating": rating or "", "feedback": "up"})
+        st.success("Saved")
+    if fb2.button("thumbs down", key=f"s_{mode}_{query}_{rank}_dn"):
+        append_feedback(feedback_path, {"query": query, "mode": mode, "rank": rank,
+                                         "record_id": record_id, "title": title,
+                                         "score": f"{score:.6f}", "rating": rating or "", "feedback": "down"})
+        st.warning("Saved")
+    st.divider()
 
 
-def main() -> None:
+# --------------- main ---------------
+
+def main():
     load_dotenv()
-    st.set_page_config(page_title="Amazon Product Query Assistant", page_icon="🔎", layout="wide")
-
+    st.set_page_config(page_title="Amazon Product Query Assistant", layout="wide")
     st.title("Amazon Product Query Assistant")
-    st.write("Search products with BM25, semantic retrieval, or a hybrid blend. Feedback is stored locally in CSV format.")
 
-    data_path_input = st.sidebar.text_input("Optional data path", value="")
-    documents, bm25, semantic, hybrid = load_indexes(data_path_input or None)
+    documents, bm25, semantic, hybrid = load_indexes()
+    st.sidebar.write(f"Corpus: **{len(documents)}** products")
 
-    st.sidebar.subheader("Corpus")
-    st.sidebar.write(f"Loaded documents: {len(documents)}")
-    st.sidebar.write(f"Feedback file: {ROOT / 'data' / 'processed' / 'feedback.csv'}")
-
-    query = st.text_input("Enter a query", placeholder="e.g. best headphones for long flights under 200 dollars")
-    mode = st.radio("Search mode", ["BM25", "Semantic", "Hybrid"], horizontal=True)
-    top_k = st.slider("Top-k retrieval", min_value=1, max_value=8, value=3)
-
-    st.subheader("RAG Chat (Open Source LLM)")
-    llm_provider = st.selectbox("LLM provider", ["huggingface", "ollama"], index=0)
-    if llm_provider == "huggingface":
-        model_name = st.text_input("Model", value="Qwen/Qwen3.5-2B")
-        hf_token = st.text_input("HF token (optional, falls back to HF_TOKEN in .env)", value="", type="password")
-        ollama_host = None
-    else:
-        model_name = st.text_input("Model", value="qwen2.5:3b")
-        ollama_host = st.text_input("Ollama host (optional)", value=os.getenv("OLLAMA_HOST", ""))
+    # ---- LLM settings in sidebar ----
+    st.sidebar.subheader("LLM Settings (RAG Mode)")
+    llm_provider = st.sidebar.selectbox("Provider", ["ollama", "huggingface"], index=0)
+    if llm_provider == "ollama":
+        model_name = st.sidebar.text_input("Model", value="qwen2.5:3b")
+        ollama_host = st.sidebar.text_input("Ollama host", value=os.getenv("OLLAMA_HOST", ""))
         hf_token = None
+    else:
+        model_name = st.sidebar.text_input("Model", value="Qwen/Qwen3.5-2B")
+        hf_token = st.sidebar.text_input("HF token", value="", type="password")
+        ollama_host = None
+    temperature = st.sidebar.slider("Temperature", 0.0, 1.0, 0.2, 0.05)
+    max_tokens = st.sidebar.slider("Max tokens", 64, 1024, 350, 32)
 
-    temperature = st.slider("Temperature", min_value=0.0, max_value=1.0, value=0.2, step=0.05)
-    max_tokens = st.slider("Max generated tokens", min_value=64, max_value=1024, value=350, step=32)
-    prompt_variant = st.selectbox("Prompt variant", ["strict", "concise", "analyst"], index=0)
+    # ---- Tabs ----
+    search_tab, rag_tab = st.tabs(["Search Only", "RAG Mode"])
 
-    st.subheader("RAG Pipeline")
-    rag_pipeline_mode = st.radio(
-        "Generation backend",
-        ["Direct Context RAG", "Semantic RAG Pipeline", "Hybrid RAG Pipeline"],
-        horizontal=True,
-    )
+    # ==================== SEARCH TAB ====================
+    with search_tab:
+        query_s = st.text_input("Enter a search query", key="search_q",
+                                placeholder="e.g. energy efficient dishwasher")
+        mode = st.radio("Retrieval method", ["BM25", "Semantic", "Hybrid"], horizontal=True, key="search_mode")
+        top_k = st.slider("Top-k results", 1, 10, 3, key="search_k")
 
-    fusion_mode = "rrf"
-    bm25_weight = 0.4
-    semantic_weight = 0.6
-    if rag_pipeline_mode == "Hybrid RAG Pipeline":
-        fusion_mode = st.selectbox("Hybrid fusion", ["rrf", "merge-dedup", "simple-merge"], index=0)
-        bm25_weight = st.slider("BM25 weight", min_value=0.0, max_value=1.0, value=0.4, step=0.05)
-        semantic_weight = st.slider("Semantic weight", min_value=0.0, max_value=1.0, value=0.6, step=0.05)
+        if query_s:
+            retriever = _select_retriever(mode, bm25, semantic, hybrid)
+            results = retriever.search(query_s, top_k=top_k)
+            if not results:
+                st.warning("No results found.")
+            else:
+                fb_path = ROOT / "data" / "processed" / "feedback.csv"
+                for rank, r in enumerate(results, 1):
+                    _render_search_result(r, rank, query_s, mode, fb_path)
+        else:
+            st.info("Type a query above to search the product corpus.")
 
-    if not query:
-        st.info("Enter a query to see the top results.")
-        return
+    # ==================== RAG TAB ====================
+    with rag_tab:
+        query_r = st.text_input("Enter a question for the assistant", key="rag_q",
+                                placeholder="e.g. What is the best quiet dishwasher for a small apartment?")
+        prompt_variant = st.selectbox("Prompt style", ["strict", "concise", "analyst"], key="rag_prompt")
 
-    retriever = _select_retriever(mode, bm25, semantic, hybrid)
-    results = retriever.search(query, top_k=top_k)
+        # fusion settings
+        fusion_mode = st.selectbox("Hybrid fusion", ["rrf", "merge-dedup", "simple-merge"], key="rag_fusion")
+        col_w1, col_w2 = st.columns(2)
+        bm25_w = col_w1.slider("BM25 weight", 0.0, 1.0, 0.4, 0.05, key="rag_bw")
+        sem_w = col_w2.slider("Semantic weight", 0.0, 1.0, 0.6, 0.05, key="rag_sw")
+        rag_k = st.slider("Top-k retrieval", 1, 10, 5, key="rag_k")
 
-    if not results:
-        st.warning("No results found.")
-        return
-
-    feedback_path = ROOT / "data" / "processed" / "feedback.csv"
-    for rank, result in enumerate(results, start=1):
-        _render_result(result, rank, query, mode, feedback_path)
-        st.divider()
-
-    if st.button("Generate RAG answer", type="primary"):
-        with st.spinner("Generating answer with retrieved context..."):
-            try:
-                if rag_pipeline_mode == "Semantic RAG Pipeline":
-                    semantic_pipeline = load_semantic_rag_pipeline(
-                        data_path_input or None,
-                        llm_provider,
-                        model_name,
-                        temperature,
-                        max_tokens,
-                        (hf_token or None),
-                        (ollama_host or None),
-                    )
-                    pipeline_result = semantic_pipeline.answer(query=query, k=top_k, prompt_variant=prompt_variant)
-                    rag_answer = pipeline_result.answer
-                    rag_contexts = pipeline_result.retrieved_results
-                    rag_tool_calls = None
-                elif rag_pipeline_mode == "Hybrid RAG Pipeline":
-                    hybrid_pipeline = load_hybrid_rag_pipeline(
-                        data_path_input or None,
-                        llm_provider,
-                        model_name,
-                        temperature,
-                        max_tokens,
-                        (hf_token or None),
-                        (ollama_host or None),
-                        fusion_mode,
-                        bm25_weight,
-                        semantic_weight,
-                    )
-                    pipeline_result = hybrid_pipeline.answer(query=query, k=top_k, prompt_variant=prompt_variant)
-                    rag_answer = pipeline_result.answer
-                    rag_contexts = pipeline_result.retrieved_results
-                    rag_tool_calls = None
-                else:
-                    rag_response = run_rag_chat(
-                        question=query,
-                        contexts=results,
+        if query_r and st.button("Generate Answer", type="primary"):
+            with st.spinner("Retrieving documents and generating answer ..."):
+                try:
+                    pipeline = HybridRAGPipeline(
+                        documents=documents,
                         provider=llm_provider,
                         model=model_name,
+                        default_k=rag_k,
                         temperature=temperature,
                         max_new_tokens=max_tokens,
-                        hf_token=(hf_token or None),
-                        ollama_host=(ollama_host or None),
+                        hf_token=hf_token or None,
+                        ollama_host=ollama_host or None,
+                        bm25=bm25,
+                        semantic=semantic,
+                        fusion=FusionConfig(mode=fusion_mode, bm25_weight=bm25_w, semantic_weight=sem_w),
                     )
-                    rag_answer = rag_response.answer
-                    rag_contexts = rag_response.contexts
-                    rag_tool_calls = rag_response.tool_calls
-            except Exception as exc:
-                st.error(f"RAG generation failed: {exc}")
-                return
+                    result = pipeline.answer(query_r, k=rag_k, prompt_variant=prompt_variant)
+                except Exception as exc:
+                    st.error(f"RAG generation failed: {exc}")
+                    return
 
-        st.markdown("### RAG Answer")
-        st.write(rag_answer or "No answer returned by the model.")
+            # RAG answer panel -- prominently above retrieved docs
+            st.subheader("Answer")
+            st.markdown(result.answer or "_No answer returned by the model._")
 
-        with st.expander("Retrieved context used"):
-            _render_sources(rag_contexts)
+            # Source documents below
+            st.subheader("Retrieved Sources")
+            for idx, sr in enumerate(result.retrieved_results, 1):
+                doc = sr.document
+                title = doc.get("title", "Untitled")
+                rating = doc.get("rating")
+                review = truncate_text(doc.get("review_text", ""), 200)
+                st.markdown(f"**[{idx}] {title}**")
+                st.caption(f"Rating: {format_rating_stars(rating)} ({rating if rating else 'N/A'}) | "
+                           f"Score: {sr.score:.4f} | Method: {sr.method}")
+                st.write(review)
+                st.divider()
 
-        if rag_tool_calls:
-            with st.expander("Model tool calls"):
-                st.json(rag_tool_calls)
+        elif not query_r:
+            st.info("Type a question above, then click Generate Answer to use the Hybrid RAG pipeline.")
 
 
 if __name__ == "__main__":
