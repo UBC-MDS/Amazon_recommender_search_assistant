@@ -2,12 +2,12 @@
 
 ## Selected Model and Serving Path
 
-We selected **`Qwen/Qwen3.5-2B`** via the **HuggingFace Inference API** as the primary model for the initial RAG pipeline.
+We use **Ollama** with **`qwen2.5:3b`** (Qwen 2.5, 3B parameters) as the primary model for RAG generation. The HuggingFace Inference API (`Qwen/Qwen3.5-2B`) is available as a fallback.
 
 ## Why this choice
 
-1. **Fits typical student compute constraints**  
-   A 2B model is a practical quality/performance trade-off for laptop-class setups.
+1. **Fits our hardware**
+   A 3B model runs at ~15-25 tok/s on our M2 Air (16 GB RAM), keeping the demo responsive without needing a GPU.
 
 2. **Open-source and easy to switch**  
    The model is open source, and our implementation keeps provider/model settings configurable so we can swap to Ollama or a larger HuggingFace model later without changing retrieval code.
@@ -166,3 +166,57 @@ Factory function:
 - `build_default_hybrid_rag_pipeline(...)`
 
 This provides a second full RAG path where Step 2 semantic retrieval is replaced by hybrid retrieval.
+
+## Step 5 - Qualitative Evaluation of Hybrid RAG
+
+We ran the Hybrid RAG pipeline (BM25 retrieval + Ollama `qwen2.5:3b` generation, k=5, prompt variant `strict`) on 5 queries from our Milestone 1 query set against the full 94,282-product corpus.
+
+### Evaluation Queries and Results
+
+| # | Query | Accurate? | Complete? | Fluent? |
+|---|-------|-----------|-----------|----------|
+| 1 | energy efficient dishwasher | Partial | No | Yes |
+| 2 | dishwasher that runs quietly at night | Yes | Partial | Yes |
+| 3 | small washing machine for apartment laundry | Yes | Yes | Yes |
+| 4 | nugget ice maker for a home bar that makes ice quickly | Yes | Yes | Yes |
+| 5 | best refrigerator water filter under 50 dollars | Partial | No | Yes |
+
+### Per-Query Analysis
+
+**Query 1: "energy efficient dishwasher"**
+
+Retrieved products included a Samsung Energy Star dishwasher and two Whirlpool Energy Star dishwashers, but also two unrelated range hoods (Windster). The model correctly noted that the context was insufficient and cited [2],[3], but it could have pulled more information from the Energy Star dishwashers that were retrieved. The range hoods appearing in the top-5 is a BM25 issue -- the term "energy" matched their specs.
+
+**Query 2: "dishwasher that runs quietly at night"**
+
+The model correctly identified the Maytag MDB6769PAB from position [4] as having a review mentioning "Runs quietly." The citation was accurate. However, the answer was very brief and didn't compare noise levels across the retrieved options, making it incomplete for a shopping decision.
+
+**Query 3: "small washing machine for apartment laundry"**
+
+This was the best result. All 5 retrieved products were portable/compact washing machines. The model recommended the ZENY (rating 5.0) and Frestec (rating 4.4) with reasoning grounded in the reviews. The answer was well-structured and directly useful for someone apartment shopping.
+
+**Query 4: "nugget ice maker for a home bar that makes ice quickly"**
+
+All 5 retrieved products were nugget ice makers, showing strong retrieval quality. The model recommended the Silonn (rating 4.1) and noted its quick ice-making capability while also mentioning a limitation (melting issues). Good balance of pros and cons drawn from actual reviews.
+
+**Query 5: "best refrigerator water filter under 50 dollars"**
+
+The retriever found relevant water filter products, but the model struggled with the price constraint since price data wasn't consistently available in the reviews. It hedged by listing options without confirming prices. This is a structural limitation -- price filtering requires structured metadata, not just text matching.
+
+### Observations
+
+- Queries 3 and 4 worked well because the query terms directly matched product titles and review text, giving BM25 strong retrieval quality.
+- Queries 1 and 5 exposed weaknesses: vague or multi-attribute queries ("energy efficient" + "dishwasher", or "under 50 dollars") lead to noisy retrieval when BM25 matches individual terms rather than intent.
+- The model consistently refused to hallucinate when context was weak (queries 1 and 5), which is the desired behavior for the `strict` prompt variant.
+
+### Limitations of the Hybrid RAG Pipeline
+
+1. **No structured attribute filtering.** Queries involving price ranges, numerical ratings, or specific feature constraints (e.g., "under $50", "energy efficient") are poorly served by text-only retrieval. BM25 matches tokens like "50" or "energy" without understanding they're constraints. A production system would need metadata-aware filtering before or after retrieval to handle these queries well.
+
+2. **Context window dilution with irrelevant hits.** When BM25 retrieves off-topic products (e.g., range hoods for a dishwasher query), the LLM's context window gets wasted on irrelevant text. With k=5, even one or two bad retrievals noticeably degrade answer quality because the model either ignores the noise (losing coverage) or tries to incorporate it (losing accuracy).
+
+### Suggested Improvements
+
+- Adding a reranker (e.g., a cross-encoder) between retrieval and generation would help filter out irrelevant hits before they reach the LLM context. This would directly address the context dilution problem.
+- Implementing structured pre-filters on price, category, and rating before retrieval would handle constraint-based queries much more effectively than relying on text matching alone.
+- Using the semantic retriever (or the full hybrid with RRF fusion) instead of BM25-only would likely improve queries 1 and 5, since semantic embeddings capture intent better than keyword overlap.
