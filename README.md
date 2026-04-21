@@ -10,10 +10,11 @@ A retrieval-augmented generation (RAG) system for the **Appliances** category of
 
 ## LLM Choice
 
-We use **Ollama** with the **`qwen2.5:3b`** model (Qwen 2.5, 3 billion parameters) as our default LLM for RAG generation.
+We use **Ollama** with **`llama3.2:3b`** (Llama 3.2, Meta, 3 billion parameters) as our default LLM for RAG generation.
 
-- **Why Qwen 2.5 3B:** Good balance between answer quality and inference speed on laptop hardware (M2 Air, 16 GB RAM). Runs at ~15-25 tokens/sec locally, which keeps the demo responsive.
-- **Why Ollama:** Runs fully offline with no API key needed, making it easy for TAs and collaborators to reproduce. No rate limits or token quotas.
+- **Why Llama 3.2 3B:** After comparing `qwen2.5:3b` and `llama3.2:3b` on 5 identical queries with the same retrieved context, Llama 3.2 produced better-grounded answers with more citations and direct review quotes. See `results/final_discussion.md` for the full comparison.
+- **Why 3B:** Good balance between answer quality and inference speed on laptop hardware (M2 Air, 16 GB RAM). Both 3B models run at ~15-25 tokens/sec locally.
+- **Why Ollama:** Runs fully offline with no API key needed, making it easy for TAs and collaborators to reproduce.
 - **Alternative:** The pipeline also supports HuggingFace Inference API (`Qwen/Qwen3.5-2B`) if Ollama is unavailable -- select it in the app sidebar.
 
 ## Dataset
@@ -88,7 +89,7 @@ from src.rag_pipeline import build_default_rag_pipeline
 
 pipeline = build_default_rag_pipeline(
     provider="ollama",
-    model="qwen2.5:3b",
+    model="llama3.2:3b",
     default_k=5,
 )
 
@@ -135,7 +136,7 @@ from src.hybrid_rag_pipeline import FusionConfig, build_default_hybrid_rag_pipel
 
 pipeline = build_default_hybrid_rag_pipeline(
     provider="ollama",
-    model="qwen2.5:3b",
+    model="llama3.2:3b",
     default_k=5,
     fusion=FusionConfig(mode="rrf", bm25_weight=0.4, semantic_weight=0.6),
 )
@@ -180,7 +181,7 @@ The Streamlit app is implemented in `app/app.py` with two tabs:
 - **Search Only** (Milestone 1): keyword / semantic / hybrid retrieval with top-k results, ratings, scores, and feedback buttons
 - **RAG Mode** (Milestone 2): hybrid RAG pipeline that generates an LLM answer above the retrieved source documents
 
-LLM provider and model can be changed in the sidebar (defaults to Ollama `qwen2.5:3b`).
+LLM provider and model can be changed in the sidebar (defaults to Ollama `llama3.2:3b`).
 
 ## Repository Structure
 
@@ -213,9 +214,14 @@ DSCI_575_project_ojasv31_pat0216/
 |   |-- download_full.py
 |   |-- utils.py
 |
+|-- scripts/
+|   |-- compare_llms.py         # LLM comparison script (final submission)
+|
 |-- results/
 |   |-- milestone1_discussion.md
 |   |-- milestone2_discussion.md
+|   |-- final_discussion.md
+|   |-- llm_comparison.json     # raw LLM comparison outputs
 |
 |-- app/
     |-- app.py
@@ -249,7 +255,7 @@ conda activate dsci575-project
 
 ```bash
 # Install Ollama: https://ollama.com/download
-ollama pull qwen2.5:3b
+ollama pull llama3.2:3b
 ```
 
 Alternatively, set a HuggingFace token in `.env` for the HF API fallback:
