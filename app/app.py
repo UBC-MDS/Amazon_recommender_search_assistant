@@ -92,7 +92,7 @@ def main():
     st.sidebar.subheader("LLM Settings (RAG Mode)")
     llm_provider = st.sidebar.selectbox("Provider", ["ollama", "huggingface"], index=0)
     if llm_provider == "ollama":
-        model_name = st.sidebar.text_input("Model", value="qwen2.5:3b")
+        model_name = st.sidebar.text_input("Model", value="llama3.2:3b")
         ollama_host = st.sidebar.text_input("Ollama host", value=os.getenv("OLLAMA_HOST", ""))
         hf_token = None
     else:
