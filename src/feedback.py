@@ -9,6 +9,7 @@ from typing import Any
 
 
 def append_feedback(csv_path: Path, row: dict[str, Any]) -> None:
+    """Append one feedback record to CSV, creating parent dirs and header."""
     csv_path.parent.mkdir(parents=True, exist_ok=True)
     file_exists = csv_path.exists()
 

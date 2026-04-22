@@ -27,10 +27,12 @@ class SearchResult:
 
 
 def tokenize(text: str) -> list[str]:
+    """Tokenize normalized text into lowercase alphanumeric terms."""
     return re.findall(r"[a-z0-9]+", normalize_text(text).lower())
 
 
 def _safe_min_max(values: list[float]) -> list[float]:
+    """Min-max normalize scores safely, including constant-value lists."""
     if not values:
         return []
     minimum = min(values)
@@ -56,6 +58,7 @@ class BM25Retriever:
         self.fit()
 
     def fit(self) -> "BM25Retriever":
+        """Build BM25-ready token statistics and rank_bm25 index."""
         self._doc_tokens = [tokenize(document.get(self.text_field, "")) for document in self.documents]
         self._doc_lengths = [len(tokens) for tokens in self._doc_tokens]
         self._avg_doc_length = sum(self._doc_lengths) / len(self._doc_lengths) if self._doc_lengths else 0.0
@@ -71,11 +74,13 @@ class BM25Retriever:
         return self
 
     def _idf(self, token: str) -> float:
+        """Compute BM25-style inverse document frequency for one token."""
         total_docs = len(self._doc_tokens)
         document_frequency = self._doc_freq.get(token, 0)
         return log((total_docs - document_frequency + 0.5) / (document_frequency + 0.5) + 1.0)
 
     def search(self, query: str, top_k: int = 5) -> list[SearchResult]:
+        """Return top-k BM25-ranked documents for the query."""
         if not query:
             return []
 
@@ -148,6 +153,7 @@ class SemanticRetriever:
         self.fit()
 
     def fit(self) -> "SemanticRetriever":
+        """Fit semantic backend using sentence-transformers or TF-IDF fallback."""
         try:
             from sentence_transformers import SentenceTransformer
             import numpy as np
@@ -188,10 +194,12 @@ class SemanticRetriever:
         return self
 
     def _idf(self, token: str) -> float:
+        """Compute smoothed IDF used by TF-IDF fallback vectors."""
         document_frequency = self._term_document_frequency.get(token, 0)
         return log((self._document_count + 1.0) / (document_frequency + 1.0)) + 1.0
 
     def _build_tfidf_vector(self, tokens: list[str]) -> dict[str, float]:
+        """Convert token sequence into a sparse TF-IDF vector map."""
         if not tokens:
             return {}
         token_counts: dict[str, int] = {}
@@ -205,6 +213,7 @@ class SemanticRetriever:
         return vector
 
     def _cosine_similarity(self, query_vector: dict[str, float], query_norm: float, document_vector: dict[str, float], document_norm: float) -> float:
+        """Compute cosine similarity for sparse dictionary vectors."""
         if not query_vector or not document_vector or query_norm == 0.0 or document_norm == 0.0:
             return 0.0
         overlap = set(query_vector).intersection(document_vector)
@@ -212,6 +221,7 @@ class SemanticRetriever:
         return dot_product / (query_norm * document_norm)
 
     def _cosine_dense(self, query_vector: list[float], document_vector: list[float]) -> float:
+        """Compute cosine similarity for dense embedding vectors."""
         if not query_vector or not document_vector:
             return 0.0
         dot_product = sum(query_value * document_value for query_value, document_value in zip(query_vector, document_vector))
@@ -222,6 +232,7 @@ class SemanticRetriever:
         return dot_product / (query_norm * document_norm)
 
     def search(self, query: str, top_k: int = 5) -> list[SearchResult]:
+        """Return top-k semantic results from the active backend."""
         if not query:
             return []
 
@@ -334,6 +345,7 @@ class HybridRetriever:
         self.semantic = semantic or SemanticRetriever(documents)
 
     def search(self, query: str, top_k: int = 5) -> list[SearchResult]:
+        """Return top-k fused results from BM25 and semantic retrievers."""
         if not query:
             return []
 
@@ -357,11 +369,13 @@ class HybridRetriever:
 
 
 def build_search_text(document: dict[str, Any]) -> str:
+    """Create a retrieval text field from key product attributes."""
     parts = [document.get("title", ""), document.get("review_text", ""), document.get("description", ""), document.get("features", ""), document.get("category", "")]
     return " ".join(part for part in parts if part)
 
 
 def ensure_search_text(documents: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Ensure every document contains a derived search_text field."""
     prepared = []
     for document in documents:
         prepared_document = dict(document)

@@ -171,9 +171,65 @@ Building both indexes from scratch takes ~12 minutes (BM25: ~2 min, FAISS: ~10 m
 
 ## Step 3: Documentation and Code Quality
 
-*To be completed by teammate.*
+We ran a code quality audit across all `src/*.py` modules and applied cleanup where needed.
+
+### 3.1 Audit Checklist Results
+
+| Check | Status | Evidence / Action |
+|---|---|---|
+| No hardcoded file paths | Pass | Modules resolve paths from project root using `pathlib.Path` (e.g., `src/data_io.py`, `src/build_indexes.py`, `src/download_full.py`). |
+| No API keys in source | Pass | LLM credentials are pulled from environment variables (`HF_TOKEN`, `OLLAMA_HOST`) and optional Streamlit input; no hardcoded secrets in source. |
+| Functions have docstrings | Updated | Added missing docstrings in `src/data_io.py`, `src/ranking.py`, `src/hybrid_rag_pipeline.py`, `src/llm_pipeline.py`, `src/qualitative_eval.py`, `src/build_indexes.py`, `src/feedback.py`, and `src/download_full.py`. |
+| Environment files up to date | Pass | `requirements.txt` and `environment.yml` are present and aligned with project dependencies (DuckDB, rank-bm25, sentence-transformers/FAISS path, Streamlit, Ollama/HF support). |
+| No temp/junk tracked | Pass | Data folders are used for runtime artifacts and repository remains clean of OS temp-path assumptions. |
+
+### 3.2 README and Documentation Consistency
+
+README currently reflects final-state usage:
+
+- Default local model set to `llama3.2:3b`
+- Alternative model/provider behavior documented
+- Final comparison and scale discussion referenced via `results/final_discussion.md`
+- Reproduction and app run steps remain valid
+
+### 3.3 Code Quality Summary
+
+Primary cleanup was documentation completeness (docstrings) with no behavioral changes. This improves maintainability and grading clarity by making helper intent explicit across retrieval, indexing, and evaluation modules.
 
 
 ## Step 4: Cloud Deployment Plan
 
-*To be completed by teammate.*
+Below is a production-oriented deployment plan for this RAG system on AWS-class infrastructure.
+
+### 4.1 Data Storage
+
+| Asset | Service | Justification |
+|---|---|---|
+| Raw `.jsonl.gz` review + metadata files | S3 (`s3://dsci575-raw/`) | Low-cost, durable object storage; easy versioning and lifecycle policies. |
+| Processed parquet tables | S3 (`s3://dsci575-processed/`) | Columnar format + object storage works well with DuckDB/Athena style reads. |
+| FAISS index (~138 MB) | EFS (primary) or S3 + local cache | Fast shared access for app tasks; can be cached on startup from S3 if needed. |
+| BM25 index (~631 MB) | EFS (primary) or S3 + local cache | Large artifact loaded at app startup; EFS avoids repeated large downloads per task. |
+
+### 4.2 Compute and Serving
+
+| Component | Service | Notes |
+|---|---|---|
+| Streamlit application | ECS Fargate or EC2 (`t3.xlarge` baseline) | Needs enough RAM to load BM25 + FAISS and serve multiple user sessions. |
+| Retrieval/index loading | App container startup + shared volume | Load persisted indexes at boot rather than rebuilding online. |
+| LLM inference | Managed external endpoint (AWS Bedrock, Together AI, or HF Inference) | Running local Ollama inside autoscaled containers is operationally heavy. |
+| Traffic/concurrency | ALB + ECS auto scaling | Scale task count on CPU/RAM/request metrics. |
+
+### 4.3 Streaming Updates and Re-indexing
+
+1. New review/meta files are uploaded to S3 raw bucket.
+2. S3 event triggers Lambda (or Step Functions) to validate and register new batch.
+3. Scheduled ECS batch task (e.g., weekly/nightly) rebuilds parquet + BM25 + FAISS artifacts.
+4. New indexes are written to versioned S3 prefix and promoted to EFS cache path.
+5. Application tasks pick up updated indexes on rolling restart.
+
+### 4.4 Operational Notes
+
+- Keep index artifacts versioned (`index_version=YYYYMMDD`) for rollback safety.
+- Add CloudWatch dashboards for startup time, retrieval latency, and generation latency.
+- Add a health check that validates both BM25 and semantic retrieval on a probe query before marking task healthy.
+- If load increases substantially, split retrieval API and frontend into separate services.

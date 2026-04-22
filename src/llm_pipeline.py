@@ -36,6 +36,7 @@ class OpenSourceChatModel:
         hf_token: str | None = None,
         ollama_host: str | None = None,
     ):
+        """Initialize chat backend settings for HuggingFace or Ollama."""
         self.provider = provider.lower().strip()
         self.model = model.strip()
         self.temperature = temperature
@@ -44,6 +45,7 @@ class OpenSourceChatModel:
         self.ollama_host = ollama_host or os.getenv("OLLAMA_HOST")
 
     def chat(self, messages: list[dict[str, str]], tools: list[dict[str, Any]] | None = None) -> tuple[str, list[dict[str, Any]] | None]:
+        """Dispatch chat completion to the configured provider backend."""
         if self.provider == "huggingface":
             return self._chat_huggingface(messages, tools=tools)
         if self.provider == "ollama":
@@ -53,6 +55,7 @@ class OpenSourceChatModel:
     def _chat_huggingface(
         self, messages: list[dict[str, str]], tools: list[dict[str, Any]] | None = None
     ) -> tuple[str, list[dict[str, Any]] | None]:
+        """Run one chat completion using huggingface_hub InferenceClient."""
         try:
             from huggingface_hub import InferenceClient
         except Exception as exc:
@@ -77,6 +80,7 @@ class OpenSourceChatModel:
     def _chat_ollama(
         self, messages: list[dict[str, str]], tools: list[dict[str, Any]] | None = None
     ) -> tuple[str, list[dict[str, Any]] | None]:
+        """Run one chat completion using local/remote Ollama."""
         try:
             import ollama
         except Exception as exc:
