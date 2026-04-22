@@ -33,6 +33,7 @@ class BM25DocumentRetriever:
         self._doc_index = {id(document): index for index, document in enumerate(self.documents)}
 
     def retrieve(self, query: str, k: int = 5) -> list[RetrievedDoc]:
+        """Retrieve top-k BM25 documents as RetrievedDoc objects."""
         results = self.retriever.search(query, top_k=k)
         return [RetrievedDoc(index=self._doc_index.get(id(result.document), -1), result=result) for result in results]
 
@@ -55,6 +56,7 @@ class HybridDocumentRetriever:
         self._doc_index = {id(document): index for index, document in enumerate(self.documents)}
 
     def _dedup_by_index(self, results: list[SearchResult]) -> list[SearchResult]:
+        """Remove duplicate documents while preserving first-seen order."""
         seen: set[int] = set()
         deduped: list[SearchResult] = []
         for result in results:
@@ -66,15 +68,18 @@ class HybridDocumentRetriever:
         return deduped
 
     def _combine_simple_merge(self, bm25_results: list[SearchResult], semantic_results: list[SearchResult], top_k: int) -> list[SearchResult]:
+        """Merge BM25 and semantic lists by concatenation and truncation."""
         merged = bm25_results[:top_k] + semantic_results[:top_k]
         return merged[:top_k]
 
     def _combine_merge_dedup(self, bm25_results: list[SearchResult], semantic_results: list[SearchResult], top_k: int) -> list[SearchResult]:
+        """Merge both lists and drop duplicates by document identity."""
         merged = bm25_results + semantic_results
         deduped = self._dedup_by_index(merged)
         return deduped[:top_k]
 
     def _combine_rrf(self, bm25_results: list[SearchResult], semantic_results: list[SearchResult], top_k: int) -> list[SearchResult]:
+        """Fuse rankings with weighted Reciprocal Rank Fusion (RRF)."""
         # Reciprocal Rank Fusion: score = sum(weight / (rrf_k + rank)).
         scores_by_index: dict[int, float] = {}
         docs_by_index: dict[int, dict[str, Any]] = {}
@@ -100,6 +105,7 @@ class HybridDocumentRetriever:
         ]
 
     def search(self, query: str, top_k: int = 5) -> list[SearchResult]:
+        """Run hybrid retrieval and combine results using configured fusion."""
         if not query:
             return []
 
@@ -114,6 +120,7 @@ class HybridDocumentRetriever:
         return self._combine_rrf(bm25_results, semantic_results, top_k)
 
     def retrieve(self, query: str, k: int = 5) -> list[RetrievedDoc]:
+        """Return top-k hybrid results with mapped document indices."""
         return [
             RetrievedDoc(index=self._doc_index.get(id(result.document), -1), result=result)
             for result in self.search(query, top_k=k)
@@ -216,12 +223,15 @@ class HybridRAGPipeline:
         )
 
     def retrieve(self, query: str, k: int | None = None) -> list[RetrievedDoc]:
+        """Retrieve top-k hybrid results using the project retriever."""
         return self.hybrid_retriever.retrieve(query=query, k=k or self.default_k)
 
     def retrieve_indices(self, query: str, k: int | None = None) -> list[int]:
+        """Return only retrieved document indices for evaluation workflows."""
         return [item.index for item in self.retrieve(query=query, k=k)]
 
     def build_context(self, retrieved_docs: list[RetrievedDoc]) -> str:
+        """Format retrieved records into a context block for prompting."""
         blocks: list[str] = []
         for rank, item in enumerate(retrieved_docs, start=1):
             document = item.result.document
@@ -242,6 +252,7 @@ class HybridRAGPipeline:
         return "\n\n".join(blocks)
 
     def build_prompt(self, query: str, context: str, prompt_variant: str = "strict") -> str:
+        """Build final prompt string using a selected project prompt variant."""
         system_prompt = PROMPT_VARIANTS.get(prompt_variant, PROMPT_VARIANTS["strict"])
         return (
             f"SYSTEM:\n{system_prompt}\n\n"
@@ -251,6 +262,7 @@ class HybridRAGPipeline:
         )
 
     def answer(self, query: str, k: int | None = None, prompt_variant: str = "strict") -> RagResult:
+        """Run end-to-end hybrid retrieval and LLM generation."""
         retrieved_docs = self.retrieve(query=query, k=k)
         context = self.build_context(retrieved_docs)
         prompt = self.build_prompt(query=query, context=context, prompt_variant=prompt_variant)
@@ -280,6 +292,7 @@ def build_default_hybrid_rag_pipeline(
     semantic_index_dir: str | Path | None = None,
     fusion: FusionConfig | None = None,
 ) -> HybridRAGPipeline:
+    """Construct a HybridRAGPipeline with project defaults and saved indexes."""
     return HybridRAGPipeline.from_project_data(
         data_path=data_path,
         provider=provider,
@@ -296,6 +309,7 @@ def build_default_hybrid_rag_pipeline(
 
 
 def run_example() -> None:
+    """Run a local smoke-test query through the hybrid pipeline."""
     pipeline = build_default_hybrid_rag_pipeline(
         fusion=FusionConfig(mode="rrf", bm25_weight=0.4, semantic_weight=0.6),
     )
