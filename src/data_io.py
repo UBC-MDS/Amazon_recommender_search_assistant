@@ -61,10 +61,12 @@ SAMPLE_DOCUMENTS: list[DocumentRecord] = [
 
 
 def project_root() -> Path:
+    """Return repository root path inferred from this module location."""
     return Path(__file__).resolve().parents[1]
 
 
 def normalize_text(value: Any) -> str:
+    """Normalize text-like values into a compact single-line string."""
     if value is None:
         return ""
     if isinstance(value, float) and value != value:
@@ -75,12 +77,14 @@ def normalize_text(value: Any) -> str:
 
 
 def _open_text(path: Path):
+    """Open plain or gzipped text files with a consistent text interface."""
     if path.suffix.lower() == ".gz" or path.name.endswith(".gz"):
         return gzip.open(path, "rt", encoding="utf-8", newline="")
     return path.open("r", encoding="utf-8", newline="")
 
 
 def _load_rows(path: Path) -> list[dict[str, Any]]:
+    """Load tabular records from CSV/JSON/JSONL/Parquet into row dicts."""
     suffix = "".join(path.suffixes).lower()
     if suffix.endswith(".csv"):
         with path.open("r", encoding="utf-8", newline="") as handle:
@@ -108,6 +112,7 @@ def _load_rows(path: Path) -> list[dict[str, Any]]:
 
 
 def _to_document_records(rows: Iterable[dict[str, Any]], source: str) -> list[DocumentRecord]:
+    """Map heterogeneous row schemas into canonical DocumentRecord objects."""
     rows = list(rows)
     if not rows:
         return []
@@ -162,6 +167,7 @@ def _to_document_records(rows: Iterable[dict[str, Any]], source: str) -> list[Do
 
 
 def discover_data_file(data_dir: Path | None = None) -> Path | None:
+    """Discover the best available processed dataset file under data/processed."""
     root = data_dir or (project_root() / "data" / "processed")
     if not root.exists():
         return None
@@ -207,6 +213,7 @@ def load_documents(data_path: Path | str | None = None, limit: int | None = None
 
 
 def format_rating_stars(rating: float | None) -> str:
+    """Render a numeric rating as a 5-star unicode display string."""
     if rating is None:
         return "No rating"
     filled = max(0, min(5, int(round(rating))))
@@ -214,6 +221,7 @@ def format_rating_stars(rating: float | None) -> str:
 
 
 def truncate_text(text: str, max_chars: int = 200) -> str:
+    """Trim text to max_chars with an ellipsis for UI/report display."""
     clean_text = normalize_text(text)
     if len(clean_text) <= max_chars:
         return clean_text
