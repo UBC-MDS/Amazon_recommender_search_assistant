@@ -9,6 +9,7 @@ from .ranking import BM25Retriever, SemanticRetriever, ensure_search_text
 
 
 def main() -> None:
+    """Build and persist BM25 and semantic indexes under data/processed."""
     root = Path(__file__).resolve().parents[1]
     processed_dir = root / "data" / "processed"
     processed_dir.mkdir(parents=True, exist_ok=True)

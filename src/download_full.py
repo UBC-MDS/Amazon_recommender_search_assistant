@@ -17,6 +17,7 @@ PROCESSED_DIR = ROOT / "data" / "processed"
 
 
 def main():
+    """Download Appliances review/meta files and write product-level parquet."""
     RAW_DIR.mkdir(parents=True, exist_ok=True)
     PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
 
