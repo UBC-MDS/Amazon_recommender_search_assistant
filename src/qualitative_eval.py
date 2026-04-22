@@ -31,6 +31,7 @@ COMPARISON_QUERIES = [
 
 
 def _format_result_list(results: list[SearchResult]) -> str:
+    """Format ranked retrieval results as markdown bullet blocks."""
     lines = []
     for index, result in enumerate(results, start=1):
         document = result.document
@@ -45,6 +46,7 @@ def _format_result_list(results: list[SearchResult]) -> str:
 
 
 def _result_ids(results: list[SearchResult]) -> list[str]:
+    """Extract record IDs from ranked SearchResult objects."""
     return [str(result.document.get("record_id", "")) for result in results]
 
 
@@ -140,6 +142,7 @@ def _comparison_comments(query: str, bm25_results: list[SearchResult], semantic_
 
 
 def _relative_to_repo(path: Path) -> str:
+    """Return repository-relative path string when possible."""
     root = project_root()
     try:
         return str(path.resolve().relative_to(root.resolve()))
@@ -148,6 +151,7 @@ def _relative_to_repo(path: Path) -> str:
 
 
 def _corpus_banner(data_path: Path | str | None, document_count: int) -> str:
+    """Build a markdown banner that describes evaluation data source."""
     if data_path is not None:
         return f"**Data source:** `{_relative_to_repo(Path(data_path))}` — **{document_count}** documents after loading."
     discovered = discover_data_file()
@@ -179,6 +183,7 @@ def _resolve_eval_corpus(data_path: Path | str | None) -> tuple[list[dict[str, o
 
 
 def generate_report(output_path: Path | None = None, data_path: Path | str | None = None, top_k: int = 5) -> Path:
+    """Generate qualitative evaluation markdown report from current corpus."""
     documents, effective_data_path = _resolve_eval_corpus(data_path)
     bm25 = BM25Retriever(documents)
     semantic = SemanticRetriever(documents)
@@ -264,6 +269,7 @@ def generate_report(output_path: Path | None = None, data_path: Path | str | Non
 
 
 def main() -> None:
+    """CLI entrypoint for generating the milestone qualitative report."""
     import argparse
 
     parser = argparse.ArgumentParser(description="Generate results/milestone1_discussion.md from the current corpus.")
