@@ -2,7 +2,7 @@
 
 **Team:** Prabuddha Tamhane (`pat0216`), Ojasv Issar (`ojasv31`)
 
-**Repository:** [https://github.com/UBC-MDS/DSCI_575_project_ojasv31_pat0216](https://github.com/UBC-MDS/DSCI_575_project_ojasv31_pat0216)
+**Repository:** [[https://github.com/UBC-MDS/DSCI_575_project_ojasv31_pat0216](https://github.com/UBC-MDS/DSCI_575_project_ojasv31_pat0216)](https://github.com/UBC-MDS/Amazon_recommender_search_assistant)
 
 ## About
 
